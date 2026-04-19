@@ -319,6 +319,83 @@
 
 <p>…and instrument your CRTP adapter with <code class="language-plaintext highlighter-rouge">printf</code> / <code class="language-plaintext highlighter-rouge">ESP_LOGD</code> calls in
 <code class="language-plaintext highlighter-rouge">write</code> and <code class="language-plaintext highlighter-rouge">read</code> to dump raw byte traces.</p>
+<h2 id="bus-discovery-and-baud-normalisation">
+  
+  
+    <a href="#bus-discovery-and-baud-normalisation" class="anchor-heading" aria-labelledby="bus-discovery-and-baud-normalisation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Bus discovery and baud normalisation
+  
+  
+</h2>
+    
+
+<p><code class="language-plaintext highlighter-rouge">Driver::DiscoverPresentAddresses()</code> walks Modbus addresses 1..247 at the
+host UART’s <strong>current baud only</strong> — a device that was previously
+configured to a different baud is invisible to it. To find every
+instrument and bring them all to the same baud, layer the discovery in
+two steps:</p>
+
+<ol>
+  <li>
+    <p><strong>Multi-baud discovery (host-driven).</strong> For each baud rate the
+instrument can use (<code class="language-plaintext highlighter-rouge">4800/9600/19200/38400/57600/115200</code>):</p>
+
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>for baud in {4800, 9600, 19200, 38400, 57600, 115200}:
+    host_uart.set_baud(baud)
+    sleep(25 ms)                        // settle / drain RX
+    Driver::DiscoverPresentAddresses(...)
+    record (addr, baud) for every responder
+</pre></td></tr></tbody></table></div></code></pre></div>    </div>
+
+    <p>This is exactly what <code class="language-plaintext highlighter-rouge">AlicatBasis2Handler::DiscoverAcrossBauds()</code> does
+in HardFOC’s flux/vortex HALs — the host code only needs to provide a
+small <code class="language-plaintext highlighter-rouge">set_host_baud(uint32_t)</code> callback because the driver itself
+stays transport-agnostic.</p>
+  </li>
+  <li>
+    <p><strong>Bus normalisation.</strong> For every <code class="language-plaintext highlighter-rouge">(addr, baud)</code> whose <code class="language-plaintext highlighter-rouge">baud != target</code>:</p>
+
+    <ul>
+      <li>Retune the host UART to the device’s current baud.</li>
+      <li>Address that slave and call <code class="language-plaintext highlighter-rouge">Driver::SetBaudRate(target)</code> — the
+device switches <strong>instantly</strong> after acking, so the response may be
+lost or garbled (datasheet calls this out).</li>
+      <li>Retune the host UART to <code class="language-plaintext highlighter-rouge">target</code>.</li>
+      <li>Verify with a quick <code class="language-plaintext highlighter-rouge">ReadIdentity()</code> at the new baud.</li>
+    </ul>
+
+    <p><code class="language-plaintext highlighter-rouge">AlicatBasis2Handler::NormalizeBusBaud(target_bps, devices, set_host_baud)</code>
+wraps this loop and returns how many devices ended up verified at the
+target. Failed devices are reported in an optional bitmap.</p>
+  </li>
+</ol>
+<h3 id="two-devices-answering-at-the-same-address">
+  
+  
+    <a href="#two-devices-answering-at-the-same-address" class="anchor-heading" aria-labelledby="two-devices-answering-at-the-same-address"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Two devices answering at the same address
+  
+  
+</h3>
+    
+
+<p>Two BASIS-2 instruments wired to the same RS-485 segment with the same
+Modbus address will collide — discovery will return either zero
+responses or garbled CRC errors. <strong>There is no software-only fix.</strong> The
+canonical workflow is:</p>
+
+<ol>
+  <li>Power up only one instrument.</li>
+  <li><code class="language-plaintext highlighter-rouge">Driver::SetModbusAddress(N)</code> to give it a unique address.</li>
+  <li>Power-cycle / connect the next one.</li>
+  <li>Repeat.</li>
+</ol>
+
+<p>Once every device has a unique address, multi-baud discovery + baud
+normalisation can run unattended.</p>
 <h2 id="filing-an-issue">
   
   

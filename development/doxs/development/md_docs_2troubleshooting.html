@@ -126,6 +126,37 @@ Extra logging</h1>
 <div class="line">esp_log_level_set(<span class="stringliteral">&quot;Basis2Full&quot;</span>, ESP_LOG_DEBUG);</div>
 </div><!-- fragment --><p>…and instrument your CRTP adapter with <code>printf</code> / <code>ESP_LOGD</code> calls in <code>write</code> and <code>read</code> to dump raw byte traces.</p>
 <h1><a class="anchor" id="autotoc_md60"></a>
+Bus discovery and baud normalisation</h1>
+<p><code>Driver::DiscoverPresentAddresses()</code> walks Modbus addresses 1..247 at the host UART's <b>current baud only</b> — a device that was previously configured to a different baud is invisible to it. To find every instrument and bring them all to the same baud, layer the discovery in two steps:</p>
+<ol type="1">
+<li><p class="startli"><b>Multi-baud discovery (host-driven).</b> For each baud rate the instrument can use (<code>4800/9600/19200/38400/57600/115200</code>):</p>
+<div class="fragment"><div class="line">for baud in {4800, 9600, 19200, 38400, 57600, 115200}:</div>
+<div class="line">    host_uart.set_baud(baud)</div>
+<div class="line">    sleep(25 ms)                        // settle / drain RX</div>
+<div class="line">    Driver::DiscoverPresentAddresses(...)</div>
+<div class="line">    record (addr, baud) for every responder</div>
+</div><!-- fragment --><p class="startli">This is exactly what <code>AlicatBasis2Handler::DiscoverAcrossBauds()</code> does in HardFOC's flux/vortex HALs — the host code only needs to provide a small <code>set_host_baud(uint32_t)</code> callback because the driver itself stays transport-agnostic.</p>
+</li>
+<li><p class="startli"><b>Bus normalisation.</b> For every <code>(addr, baud)</code> whose <code>baud != target</code>:</p><ul>
+<li>Retune the host UART to the device's current baud.</li>
+<li>Address that slave and call <code>Driver::SetBaudRate(target)</code> — the device switches <b>instantly</b> after acking, so the response may be lost or garbled (datasheet calls this out).</li>
+<li>Retune the host UART to <code>target</code>.</li>
+<li>Verify with a quick <code>ReadIdentity()</code> at the new baud.</li>
+</ul>
+<p class="startli"><code>AlicatBasis2Handler::NormalizeBusBaud(target_bps, devices, set_host_baud)</code> wraps this loop and returns how many devices ended up verified at the target. Failed devices are reported in an optional bitmap.</p>
+</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md61"></a>
+Two devices answering at the same address</h2>
+<p>Two BASIS-2 instruments wired to the same RS-485 segment with the same Modbus address will collide — discovery will return either zero responses or garbled CRC errors. <b>There is no software-only fix.</b> The canonical workflow is:</p>
+<ol type="1">
+<li>Power up only one instrument.</li>
+<li><code>Driver::SetModbusAddress(N)</code> to give it a unique address.</li>
+<li>Power-cycle / connect the next one.</li>
+<li>Repeat.</li>
+</ol>
+<p>Once every device has a unique address, multi-baud discovery + baud normalisation can run unattended.</p>
+<h1><a class="anchor" id="autotoc_md62"></a>
 Filing an issue</h1>
 <p>Please attach:</p>
 <ul>

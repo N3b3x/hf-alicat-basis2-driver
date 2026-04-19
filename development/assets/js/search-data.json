@@ -532,26 +532,40 @@
     "relUrl": "/docs/troubleshooting/#extra-logging"
   },"76": {
     "doc": "🛠️ Troubleshooting",
+    "title": "Bus discovery and baud normalisation",
+    "content": "Driver::DiscoverPresentAddresses() walks Modbus addresses 1..247 at the host UART’s current baud only — a device that was previously configured to a different baud is invisible to it. To find every instrument and bring them all to the same baud, layer the discovery in two steps: . | Multi-baud discovery (host-driven). For each baud rate the instrument can use (4800/9600/19200/38400/57600/115200): . | 1 2 3 4 5 . | for baud in {4800, 9600, 19200, 38400, 57600, 115200}: host_uart.set_baud(baud) sleep(25 ms) // settle / drain RX Driver::DiscoverPresentAddresses(...) record (addr, baud) for every responder . | . This is exactly what AlicatBasis2Handler::DiscoverAcrossBauds() does in HardFOC’s flux/vortex HALs — the host code only needs to provide a small set_host_baud(uint32_t) callback because the driver itself stays transport-agnostic. | Bus normalisation. For every (addr, baud) whose baud != target: . | Retune the host UART to the device’s current baud. | Address that slave and call Driver::SetBaudRate(target) — the device switches instantly after acking, so the response may be lost or garbled (datasheet calls this out). | Retune the host UART to target. | Verify with a quick ReadIdentity() at the new baud. | . AlicatBasis2Handler::NormalizeBusBaud(target_bps, devices, set_host_baud) wraps this loop and returns how many devices ended up verified at the target. Failed devices are reported in an optional bitmap. | . ",
+    "url": "/hf-alicat-basis2-driver/development/docs/troubleshooting/#bus-discovery-and-baud-normalisation",
+    
+    "relUrl": "/docs/troubleshooting/#bus-discovery-and-baud-normalisation"
+  },"77": {
+    "doc": "🛠️ Troubleshooting",
+    "title": "Two devices answering at the same address",
+    "content": "Two BASIS-2 instruments wired to the same RS-485 segment with the same Modbus address will collide — discovery will return either zero responses or garbled CRC errors. There is no software-only fix. The canonical workflow is: . | Power up only one instrument. | Driver::SetModbusAddress(N) to give it a unique address. | Power-cycle / connect the next one. | Repeat. | . Once every device has a unique address, multi-baud discovery + baud normalisation can run unattended. ",
+    "url": "/hf-alicat-basis2-driver/development/docs/troubleshooting/#two-devices-answering-at-the-same-address",
+    
+    "relUrl": "/docs/troubleshooting/#two-devices-answering-at-the-same-address"
+  },"78": {
+    "doc": "🛠️ Troubleshooting",
     "title": "Filing an issue",
     "content": "Please attach: . | Driver version (HF_ALICAT_BASIS2_VERSION_STRING). | ESP-IDF version (or other RTOS + compiler). | Output of Driver::ReadIdentity() (firmware version + serial). | A raw byte trace of the failing transaction. | . GitHub: https://github.com/N3b3x/hf-alicat-basis2-driver/issues . ",
     "url": "/hf-alicat-basis2-driver/development/docs/troubleshooting/#filing-an-issue",
     
     "relUrl": "/docs/troubleshooting/#filing-an-issue"
-  },"77": {
+  },"79": {
     "doc": "🛠️ Troubleshooting",
     "title": "🛠️ Troubleshooting",
     "content": " ",
     "url": "/hf-alicat-basis2-driver/development/docs/troubleshooting/",
     
     "relUrl": "/docs/troubleshooting/"
-  },"78": {
+  },"80": {
     "doc": "Manufacturer datasheet",
     "title": "Manufacturer datasheet",
     "content": "# Manufacturer datasheet The official Alicat operating manual is bundled here: 📄 [`DOC-MANUAL-BASIS2.pdf`](/hf-alicat-basis2-driver/development/docs/datasheet/DOC-MANUAL-BASIS2.pdf) — *Operating manual for BASIS-2 meters and controllers, Rev 4 (May 2025)*. Every register address, magic value and behavioural note in the driver traces back to this document. ## Authoritative references - **Operating manual** (B-Series meters and BC-Series controllers): - **Product page** (BASIS-2 mass-flow instruments): - **FlowVision 2.0 software** (PC-side configuration tool): - **ASCII serial terminal** (free, used for first bring-up): - **Modbus FAQ** (general Modbus-RTU references for Alicat): ## Calibration / service - **Service request portal:** - **Limited lifetime warranty:** ## Contact | Region | Email | Phone | --------------- | -------------------- | -------------------- | Worldwide HQ | info@alicat.com | +1 888-290-6060 | Europe | europe@alicat.com | +31 26 203-1651 | China & SE Asia | info-cn@alicat.com | +86 21-6151-9020 | India | info-in@alicat.com | +91 22460-81434 | > The driver in this repository is **not** affiliated with or endorsed > by Alicat Scientific. The register map and command syntax are > implemented from the public DOC-MANUAL-BASIS2 (Rev 4, May 2025). ",
     "url": "/hf-alicat-basis2-driver/development/docs/datasheet/",
     
     "relUrl": "/docs/datasheet/"
-  },"79": {
+  },"81": {
     "doc": "ESP32 Alicat BASIS-2 examples (ESP32-S3 default)",
     "title": "ESP32 Alicat BASIS-2 examples (ESP32-S3 default)",
     "content": "# ESP32 Alicat BASIS-2 examples (ESP32-S3 default) ESP-IDF examples for the **Alicat BASIS-2** mass-flow meter / controller talking Modbus-RTU over RS-485 to an ESP32-S3 UART. **Documentation:** [Docs home](/hf-alicat-basis2-driver/development/docs/) · [Hardware setup](/hf-alicat-basis2-driver/development/docs/hardware_setup/) · [Examples guide](/hf-alicat-basis2-driver/development/docs/examples/) · [ESP-IDF UART (ESP32-S3)](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/api-reference/peripherals/uart.html) ## Submodule (required for `./scripts/build_app.sh`) Initialize the shared tooling submodule once: ```bash # From repository root git submodule update --init --recursive ``` This checks out `examples/esp32/scripts` ([hf-espidf-project-tools](https://github.com/N3b3x/hf-espidf-project-tools)) so you can build and flash from `examples/esp32/` in this driver repo or from any consuming repository that vendors the same layout. ## Wiring (default configuration) | Signal | ESP32-S3 (default) | ------------------- | ------------------ | RS-485 TX (DI) | **GPIO17** | RS-485 RX (RO) | **GPIO18** | RS-485 DE / RE | **GPIO8** | Logic supply (3V3) | 3.3 V to transceiver | Common GND | shared with bus | Edit the `kTxGpio` / `kRxGpio` / `kRtsDeRe` constants in the example source file if you use different pins. Set `kRtsDeRe = -1` if your transceiver pair manages DE/RE on its own (e.g. dual-channel auto-direction transceivers). ## Build with scripts ```bash cd examples/esp32 ./scripts/build_app.sh list ./scripts/build_app.sh alicat_basis2_minimal_example Debug ./scripts/flash_app.sh flash_monitor alicat_basis2_minimal_example Debug ``` ## Build with idf.py ```bash cd examples/esp32 idf.py set-target esp32s3 idf.py -B build \\ \"-DAPP_TYPE=alicat_basis2_full_example\" \\ \"-DBUILD_TYPE=Debug\" \\ \"-DAPP_SOURCE_FILE=alicat_basis2_full_example.cpp\" \\ build idf.py -B build flash monitor ``` ## Layout ``` examples/esp32/ ├── CMakeLists.txt ├── app_config.yml ├── sdkconfig.defaults ├── components/hf_alicat_basis2/ # wraps driver headers + generated version path ├── main/ │ ├── CMakeLists.txt │ ├── alicat_basis2_minimal_example.cpp │ └── alicat_basis2_full_example.cpp └── scripts/ # git submodule → hf-espidf-project-tools ``` ",

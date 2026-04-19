@@ -4,7 +4,7 @@ var searchData=
   ['factoryrestorecommand_1',['FactoryRestoreCommand',['../namespacealicat__basis2_1_1reg.html#a8edfbd0aa7edcc29195d435d26746dc6',1,'alicat_basis2::reg']]],
   ['failure_2',['failure',['../structalicat__basis2_1_1DriverResult.html#aebc35f03753c0e63f89732670c39b82b',1,'alicat_basis2::DriverResult::failure()'],['../structalicat__basis2_1_1DriverResult_3_01void_01_4.html#a3f6030b21140f7eb13db889f0dd86d8e',1,'alicat_basis2::DriverResult&lt; void &gt;::failure()']]],
   ['file_3',['2. Manual include of the build-settings file',['../md_docs_2cmake__integration.html#autotoc_md15',1,'']]],
-  ['filing_20an_20issue_4',['Filing an issue',['../md_docs_2troubleshooting.html#autotoc_md60',1,'']]],
+  ['filing_20an_20issue_4',['Filing an issue',['../md_docs_2troubleshooting.html#autotoc_md62',1,'']]],
   ['firmware_5fversion_5fraw_5',['firmware_version_raw',['../structalicat__basis2_1_1InstrumentIdentity.html#a8e29a988e070ad6394f119d79873f533',1,'alicat_basis2::InstrumentIdentity']]],
   ['firmwareversion_6',['FirmwareVersion',['../namespacealicat__basis2_1_1reg.html#ace60451b0d264a4e67e972ea64fd33a9',1,'alicat_basis2::reg']]],
   ['first_20power_20up_7',['6. Bus discovery (first power-up)',['../md_docs_2quickstart.html#autotoc_md57',1,'']]],
