@@ -97,12 +97,12 @@ $(function(){initNavTree('md_docs_2installation.html',''); initResizable(); });
   <div class="headertitle"><div class="title">Installation</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md37"></a> The driver is <b>header-only</b>. There is nothing to build, link or install in the traditional sense — adding the <code>inc/</code> folder to your include path is enough. The CMake glue exists to:</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md55"></a> The driver is <b>header-only</b>. There is nothing to build, link or install in the traditional sense — adding the <code>inc/</code> folder to your include path is enough. The CMake glue exists to:</p>
 <ul>
 <li>Generate <code>alicat_basis2_version.h</code> from the project version.</li>
 <li>Provide an <code>INTERFACE</code> target (<code>hf::alicat_basis2</code>) that consumers can <code>target_link_libraries</code> against.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md38"></a>
+<h1><a class="anchor" id="autotoc_md56"></a>
 Requirements</h1>
 <ul>
 <li><b>C++17</b> (the driver uses <code>if constexpr</code>, <code>std::array</code>, <code>std::string_view</code>).</li>
@@ -110,7 +110,7 @@ Requirements</h1>
 <li>A <b>byte-level UART</b> transport (any project / RTOS — provide a CRTP adapter, see <a class="el" href="md_docs_2quickstart.html">Quick start</a>).</li>
 <li>For ESP-IDF builds: ESP-IDF <b>≥ 5.4</b> is recommended; the example components target ESP-IDF 5.5 (set in <code>examples/esp32/app_config.yml</code>).</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md39"></a>
+<h1><a class="anchor" id="autotoc_md57"></a>
 Layout</h1>
 <div class="fragment"><div class="line">hf-alicat-basis2-driver/</div>
 <div class="line">├── inc/                                     ← public headers</div>
@@ -130,14 +130,14 @@ Layout</h1>
 <div class="line">├── CMakeLists.txt</div>
 <div class="line">├── LICENSE                                  ← MIT</div>
 <div class="line">└── README.md</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md40"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md58"></a>
 Vendoring as a Git submodule (recommended)</h1>
 <div class="fragment"><div class="line">git submodule add https://github.com/N3b3x/hf-alicat-basis2-driver.git \</div>
 <div class="line">    third_party/hf-alicat-basis2-driver</div>
 </div><!-- fragment --><p>Then in your CMake project:</p>
 <div class="fragment"><div class="line">add_subdirectory(third_party/hf-alicat-basis2-driver)</div>
 <div class="line">target_link_libraries(my_app PRIVATE hf::alicat_basis2)</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md41"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md59"></a>
 Vendoring as an ESP-IDF component</h1>
 <p>Use the wrapper component already shipped under <code>examples/esp32/components/hf_alicat_basis2/</code> or copy it next to your own project:</p>
 <div class="fragment"><div class="line"># components/hf_alicat_basis2/CMakeLists.txt</div>
@@ -149,7 +149,7 @@ Vendoring as an ESP-IDF component</h1>
 <div class="line">    INCLUDE_DIRS ${HF_ALICAT_BASIS2_PUBLIC_INCLUDE_DIRS}</div>
 <div class="line">    REQUIRES ${HF_ALICAT_BASIS2_IDF_REQUIRES}</div>
 <div class="line">)</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md42"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md60"></a>
 Verifying the version header</h1>
 <p>After CMake configure you should see a generated header at <code>&lt;build&gt;/.../hf_alicat_basis2_generated/alicat_basis2_version.h</code> containing:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#define HF_ALICAT_BASIS2_VERSION_MAJOR 1</span></div>

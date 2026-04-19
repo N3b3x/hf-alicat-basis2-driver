@@ -97,11 +97,11 @@ $(function(){initNavTree('md_docs_2api__reference.html',''); initResizable(); })
   <div class="headertitle"><div class="title">API reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md1"></a> The driver lives entirely in the <code><a class="el" href="namespacealicat__basis2.html">alicat_basis2</a></code> namespace; everything relevant to consumers is in five public headers.</p>
-<h1><a class="anchor" id="autotoc_md2"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md19"></a> The driver lives entirely in the <code><a class="el" href="namespacealicat__basis2.html">alicat_basis2</a></code> namespace; everything relevant to consumers is in five public headers.</p>
+<h1><a class="anchor" id="autotoc_md20"></a>
 <code>Driver&lt;UartT&gt;</code> (alicat_basis2.hpp)</h1>
 <p>Templated on the CRTP serial adapter. One <code>Driver</code> instance corresponds to <b>one Modbus slave</b> on the bus.</p>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<h2><a class="anchor" id="autotoc_md21"></a>
 Construction</h2>
 <div class="fragment"><div class="line">Driver(UartT&amp; uart, uint8_t address,</div>
 <div class="line">       uint16_t timeout_ms = kDefaultTimeoutMs);</div>
@@ -110,7 +110,7 @@ Construction</h2>
 <li><code>address</code> — Modbus address <code>1..247</code>, or <code>kBroadcastAddress</code> (0) for unaddressed broadcast writes.</li>
 <li><code>timeout_ms</code> — per-transaction response timeout (default 200 ms).</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md22"></a>
 Live data</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -122,7 +122,7 @@ Live data</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>ReadIdentity()</code>   </td><td class="markdownTableBodyNone"><code>DriverResult&lt;InstrumentIdentity&gt;</code>   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md23"></a>
 Setpoint / control (controllers only)</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -136,7 +136,7 @@ Setpoint / control (controllers only)</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>SetMaxSetpointRamp(uint32_t pct_per_ms_x_10e7)</code>   </td><td class="markdownTableBodyNone">regs 524-5   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md24"></a>
 Configuration</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -162,7 +162,7 @@ Configuration</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>StartMeasurementSamples(uint16_t num_samples)</code>   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md25"></a>
 Bus reconfiguration</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -172,7 +172,7 @@ Bus reconfiguration</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>SetAsciiUnitId(char)</code>   </td><td class="markdownTableBodyNone">&lsquo;'A&rsquo;..'Z'<code>\ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowOdd"&gt; &lt;td class="markdownTableBodyNone"&gt;</code>SetBaudRate(BaudRate)<code>\ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; See datasheet warning \ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowEven"&gt; &lt;td class="markdownTableBodyNone"&gt;</code>FactoryRestore()<code>\ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; Magic write</code>0x5214<code>→ register 80 \ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowOdd"&gt; &lt;td class="markdownTableBodyNone"&gt;</code>DiscoverPresentAddresses(...)`   </td><td class="markdownTableBodyNone">Sweep 1..247   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md26"></a>
 Raw Modbus primitives</h2>
 <p>For advanced use:</p>
 <div class="fragment"><div class="line">DriverError ReadHoldingRegisters(uint16_t reg, uint16_t* out, uint8_t count);</div>
@@ -180,7 +180,7 @@ Raw Modbus primitives</h2>
 <div class="line">DriverResult&lt;void&gt; WriteMultipleRegisters(uint16_t reg,</div>
 <div class="line">                                          <span class="keyword">const</span> uint16_t* regs,</div>
 <div class="line">                                          uint8_t count);</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md27"></a>
 <code>UartInterface&lt;Derived&gt;</code> (alicat_basis2_uart_interface.hpp)</h1>
 <p>CRTP base that the host extends. Required methods:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> write(<span class="keyword">const</span> uint8_t* data, std::size_t length) <span class="keyword">noexcept</span>;</div>
@@ -190,7 +190,7 @@ Raw Modbus primitives</h2>
 </div><!-- fragment --><p>Optional method:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> delay_ms_impl(std::uint32_t ms) <span class="keyword">noexcept</span>;   <span class="comment">// SFINAE-detected</span></div>
 </div><!-- fragment --><p>If <code>delay_ms_impl</code> is missing the driver's <code>delay_ms()</code> becomes a no-op, which is fine for ESP-IDF where <code>uart_read_bytes</code> already enforces idle gaps via the timeout argument.</p>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md28"></a>
 Result types (alicat_basis2_types.hpp)</h1>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><span class="keyword">struct </span>DriverResult {</div>
@@ -203,7 +203,7 @@ Result types (alicat_basis2_types.hpp)</h1>
 <div class="line">template &lt;&gt; struct DriverResult&lt;<span class="keywordtype">void</span>&gt; { <a class="code hl_enumeration" href="namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9">DriverError</a> error; <span class="keywordtype">bool</span> ok() <span class="keyword">const</span>; };</div>
 <div class="ttc" id="anamespacealicat__basis2_html_a29b80d37d1d808c8bee83731bb08eea9"><div class="ttname"><a href="namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9">alicat_basis2::DriverError</a></div><div class="ttdeci">DriverError</div><div class="ttdoc">Driver-level error codes.</div><div class="ttdef"><b>Definition</b> alicat_basis2_types.hpp:39</div></div>
 </div><!-- fragment --><p>Errors are stable enumerators (see <code>enum class DriverError</code>).</p>
-<h1><a class="anchor" id="autotoc_md11"></a>
+<h1><a class="anchor" id="autotoc_md29"></a>
 Decoded data structures (alicat_basis2_types.hpp)</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -217,7 +217,7 @@ Decoded data structures (alicat_basis2_types.hpp)</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>InstrumentStatus</code>   </td><td class="markdownTableBodyNone">Live-status helper derived from <code>InstantaneousData</code> flags   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md12"></a>
+<h1><a class="anchor" id="autotoc_md30"></a>
 Constants and helpers</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">

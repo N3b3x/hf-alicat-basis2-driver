@@ -97,7 +97,7 @@ $(function(){initNavTree('md_docs_2troubleshooting.html',''); initResizable(); }
   <div class="headertitle"><div class="title">Troubleshooting</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md58"></a> </p><table class="markdownTable">
+<div class="textblock"><p><a class="anchor" id="autotoc_md76"></a> </p><table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Symptom   </th><th class="markdownTableHeadNone">Likely cause   </th><th class="markdownTableHeadNone">What to try    </th></tr>
 <tr class="markdownTableRowOdd">
@@ -119,13 +119,13 @@ $(function(){initNavTree('md_docs_2troubleshooting.html',''); initResizable(); }
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>flow</code> field looks 1000× too big or small   </td><td class="markdownTableBodyNone">Decimals mismatch   </td><td class="markdownTableBodyNone">The instrument's flow register is scaled by a factory-set decimal count. The driver defaults to 3 decimals; pass the right value to <code>ReadInstantaneous(decimals)</code> or to <code>SetSetpoint(value, decimals)</code> if your unit was calibrated differently.   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md59"></a>
+<h1><a class="anchor" id="autotoc_md77"></a>
 Extra logging</h1>
 <p>When debugging on ESP-IDF, set the per-tag log level to <b>DEBUG</b>:</p>
 <div class="fragment"><div class="line">esp_log_level_set(<span class="stringliteral">&quot;Basis2Min&quot;</span>, ESP_LOG_DEBUG);</div>
 <div class="line">esp_log_level_set(<span class="stringliteral">&quot;Basis2Full&quot;</span>, ESP_LOG_DEBUG);</div>
 </div><!-- fragment --><p>…and instrument your CRTP adapter with <code>printf</code> / <code>ESP_LOGD</code> calls in <code>write</code> and <code>read</code> to dump raw byte traces.</p>
-<h1><a class="anchor" id="autotoc_md60"></a>
+<h1><a class="anchor" id="autotoc_md78"></a>
 Bus discovery and baud normalisation</h1>
 <p><code>Driver::DiscoverPresentAddresses()</code> walks Modbus addresses 1..247 at the host UART's <b>current baud only</b> — a device that was previously configured to a different baud is invisible to it. To find every instrument and bring them all to the same baud, layer the discovery in two steps:</p>
 <ol type="1">
@@ -146,7 +146,7 @@ Bus discovery and baud normalisation</h1>
 <p class="startli"><code>AlicatBasis2Handler::NormalizeBusBaud(target_bps, devices, set_host_baud)</code> wraps this loop and returns how many devices ended up verified at the target. Failed devices are reported in an optional bitmap.</p>
 </li>
 </ol>
-<h2><a class="anchor" id="autotoc_md61"></a>
+<h2><a class="anchor" id="autotoc_md79"></a>
 Two devices answering at the same address</h2>
 <p>Two BASIS-2 instruments wired to the same RS-485 segment with the same Modbus address will collide — discovery will return either zero responses or garbled CRC errors. <b>There is no software-only fix.</b> The canonical workflow is:</p>
 <ol type="1">
@@ -156,7 +156,7 @@ Two devices answering at the same address</h2>
 <li>Repeat.</li>
 </ol>
 <p>Once every device has a unique address, multi-baud discovery + baud normalisation can run unattended.</p>
-<h1><a class="anchor" id="autotoc_md62"></a>
+<h1><a class="anchor" id="autotoc_md80"></a>
 Filing an issue</h1>
 <p>Please attach:</p>
 <ul>

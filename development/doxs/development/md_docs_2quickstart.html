@@ -97,8 +97,8 @@ $(function(){initNavTree('md_docs_2quickstart.html',''); initResizable(); });
   <div class="headertitle"><div class="title">Quick start</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md51"></a> The whole driver is parameterised on a CRTP adapter that owns the UART transport. Implementing the adapter takes ~20 lines on any platform.</p>
-<h1><a class="anchor" id="autotoc_md52"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md69"></a> The whole driver is parameterised on a CRTP adapter that owns the UART transport. Implementing the adapter takes ~20 lines on any platform.</p>
+<h1><a class="anchor" id="autotoc_md70"></a>
 1. Implement the CRTP adapter</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="alicat__basis2__uart__interface_8hpp.html">alicat_basis2_uart_interface.hpp</a>&quot;</span></div>
 <div class="line"> </div>
@@ -121,7 +121,7 @@ $(function(){initNavTree('md_docs_2quickstart.html',''); initResizable(); });
 <div class="ttc" id="aclassalicat__basis2_1_1UartInterface_html_ad20b496f2da2c1c65f41bc20e5949918"><div class="ttname"><a href="classalicat__basis2_1_1UartInterface.html#ad20b496f2da2c1c65f41bc20e5949918">alicat_basis2::UartInterface::flush_rx</a></div><div class="ttdeci">void flush_rx() noexcept</div><div class="ttdoc">Drop any unread bytes from the RX path.</div><div class="ttdef"><b>Definition</b> alicat_basis2_uart_interface.hpp:63</div></div>
 <div class="ttc" id="aclassalicat__basis2_1_1UartInterface_html_af13d31fa7688bb749302fc0048842960"><div class="ttname"><a href="classalicat__basis2_1_1UartInterface.html#af13d31fa7688bb749302fc0048842960">alicat_basis2::UartInterface::write</a></div><div class="ttdeci">void write(const uint8_t *data, std::size_t length) noexcept</div><div class="ttdoc">Send length bytes synchronously.</div><div class="ttdef"><b>Definition</b> alicat_basis2_uart_interface.hpp:50</div></div>
 </div><!-- fragment --><p><code>write</code> must block until every byte is accepted by the underlying serial driver. <code>read</code> should pull up to <code>max</code> bytes within the timeout and return the number actually written into <code>out</code> (returning 0 on timeout is expected and not an error condition).</p>
-<h1><a class="anchor" id="autotoc_md53"></a>
+<h1><a class="anchor" id="autotoc_md71"></a>
 2. Construct the driver</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="alicat__basis2_8hpp.html">alicat_basis2.hpp</a>&quot;</span></div>
 <div class="line"> </div>
@@ -129,7 +129,7 @@ $(function(){initNavTree('md_docs_2quickstart.html',''); initResizable(); });
 <div class="line"><a class="code hl_class" href="classalicat__basis2_1_1Driver.html">alicat_basis2::Driver&lt;MyUart&gt;</a> meter(uart, <span class="comment">/*modbus_address=*/</span>1);</div>
 <div class="ttc" id="aalicat__basis2_8hpp_html"><div class="ttname"><a href="alicat__basis2_8hpp.html">alicat_basis2.hpp</a></div><div class="ttdoc">Hardware-agnostic driver for Alicat BASIS-2 mass-flow meters and controllers (B-Series / BC-Series).</div></div>
 <div class="ttc" id="aclassalicat__basis2_1_1Driver_html"><div class="ttname"><a href="classalicat__basis2_1_1Driver.html">alicat_basis2::Driver</a></div><div class="ttdoc">Main BASIS-2 driver.</div><div class="ttdef"><b>Definition</b> alicat_basis2.hpp:64</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md54"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md72"></a>
 3. Read the identity once at boot</h1>
 <div class="fragment"><div class="line"><span class="keyword">auto</span> <span class="keywordtype">id</span> = meter.ReadIdentity();</div>
 <div class="line"><span class="keywordflow">if</span> (<span class="keywordtype">id</span>.ok()) {</div>
@@ -140,7 +140,7 @@ $(function(){initNavTree('md_docs_2quickstart.html',''); initResizable(); });
 <div class="line">           <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">long</span><span class="keyword">&gt;</span>(<span class="keywordtype">id</span>.value.full_scale_flow_raw));</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespacealicat__basis2_html_a8a2c1431f26db734701bd288303fa4c5"><div class="ttname"><a href="namespacealicat__basis2.html#a8a2c1431f26db734701bd288303fa4c5">alicat_basis2::ToString</a></div><div class="ttdeci">constexpr std::string_view ToString(DriverError e) noexcept</div><div class="ttdoc">Convert a DriverError to a stable human-readable string (no allocation).</div><div class="ttdef"><b>Definition</b> alicat_basis2_types.hpp:56</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md55"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md73"></a>
 4. Periodically pull live data</h1>
 <div class="fragment"><div class="line"><span class="keyword">auto</span> live = meter.ReadInstantaneous();</div>
 <div class="line"><span class="keywordflow">if</span> (live.ok()) {</div>
@@ -153,7 +153,7 @@ $(function(){initNavTree('md_docs_2quickstart.html',''); initResizable(); });
 <div class="line">}</div>
 <div class="ttc" id="anamespacealicat__basis2_html_a1d6d55cc3ec672925e16db7dafbe4c88"><div class="ttname"><a href="namespacealicat__basis2.html#a1d6d55cc3ec672925e16db7dafbe4c88">alicat_basis2::GasShortName</a></div><div class="ttdeci">constexpr std::string_view GasShortName(Gas g) noexcept</div><div class="ttdef"><b>Definition</b> alicat_basis2_types.hpp:119</div></div>
 </div><!-- fragment --><p><code>ReadInstantaneous()</code> issues a single Modbus burst over registers <b>2100..2109</b>, decoding gas, status bits, temperature, flow, totalizer, setpoint, valve drive and batch remaining in one round-trip.</p>
-<h1><a class="anchor" id="autotoc_md56"></a>
+<h1><a class="anchor" id="autotoc_md74"></a>
 5. Common control operations</h1>
 <div class="fragment"><div class="line">meter.Tare();</div>
 <div class="line">meter.SetGas(<a class="code hl_enumvalue" href="namespacealicat__basis2.html#abefb3456872913f7b469c0193e7e8e47a1e9ef3ba495fd4c6531b2841fd404a17">alicat_basis2::Gas::Nitrogen</a>);</div>
@@ -163,7 +163,7 @@ $(function(){initNavTree('md_docs_2quickstart.html',''); initResizable(); });
 <div class="line">meter.SetSetpoint(2.5f);   <span class="comment">// controllers only</span></div>
 <div class="ttc" id="anamespacealicat__basis2_html_a775c2932edb4a88eff8f93d8cfe3e48ea9f70b040c2674ca60325269264516bf3"><div class="ttname"><a href="namespacealicat__basis2.html#a775c2932edb4a88eff8f93d8cfe3e48ea9f70b040c2674ca60325269264516bf3">alicat_basis2::SetpointSource::DigitalUnsaved</a></div><div class="ttdeci">@ DigitalUnsaved</div></div>
 <div class="ttc" id="anamespacealicat__basis2_html_abefb3456872913f7b469c0193e7e8e47a1e9ef3ba495fd4c6531b2841fd404a17"><div class="ttname"><a href="namespacealicat__basis2.html#abefb3456872913f7b469c0193e7e8e47a1e9ef3ba495fd4c6531b2841fd404a17">alicat_basis2::Gas::Nitrogen</a></div><div class="ttdeci">@ Nitrogen</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md57"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md75"></a>
 6. Bus discovery (first power-up)</h1>
 <p>When you don't know which addresses are programmed on the bus, use <code>DiscoverPresentAddresses()</code>:</p>
 <div class="fragment"><div class="line">std::array&lt;std::uint8_t, 32&gt; bitmap{};</div>

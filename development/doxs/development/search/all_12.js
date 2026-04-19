@@ -11,7 +11,7 @@ var searchData=
   ['nml_5fm_8',['NmL_m',['../namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aaeec3839982b639942dbdf5c3c14625fe',1,'alicat_basis2']]],
   ['nml_5fs_9',['NmL_s',['../namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aaaa4f1add3e752a8dca230c768eaf8c15',1,'alicat_basis2']]],
   ['none_10',['None',['../namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a6adf97f83acf6453d4a6a4b1070f3754',1,'alicat_basis2']]],
-  ['normalisation_11',['Bus discovery and baud normalisation',['../md_docs_2troubleshooting.html#autotoc_md60',1,'']]],
+  ['normalisation_11',['Bus discovery and baud normalisation',['../md_docs_2troubleshooting.html#autotoc_md78',1,'']]],
   ['notinitialized_12',['NotInitialized',['../namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a9646ad3a1c3e708b4fa8b4b4270fbab6',1,'alicat_basis2']]],
   ['num_5fsamples_5fcollected_13',['num_samples_collected',['../structalicat__basis2_1_1MeasurementData.html#ae36be23b50d7899d3c85b1b8ab4b75f7',1,'alicat_basis2::MeasurementData']]]
 ];

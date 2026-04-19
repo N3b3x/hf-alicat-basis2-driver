@@ -97,19 +97,19 @@ $(function(){initNavTree('md_docs_2cmake__integration.html',''); initResizable()
   <div class="headertitle"><div class="title">CMake integration</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md13"></a> The driver ships a complete CMake project (<code>CMakeLists.txt</code> + <code>cmake/hf_alicat_basis2_build_settings.cmake</code>) so it can be consumed three ways:</p>
-<h1><a class="anchor" id="autotoc_md14"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md31"></a> The driver ships a complete CMake project (<code>CMakeLists.txt</code> + <code>cmake/hf_alicat_basis2_build_settings.cmake</code>) so it can be consumed three ways:</p>
+<h1><a class="anchor" id="autotoc_md32"></a>
 1. <code>add_subdirectory()</code></h1>
 <div class="fragment"><div class="line">add_subdirectory(third_party/hf-alicat-basis2-driver)</div>
 <div class="line">target_link_libraries(my_app PRIVATE hf::alicat_basis2)</div>
 </div><!-- fragment --><p><code>hf::alicat_basis2</code> is an <code>INTERFACE</code> target — it only carries include directories and the C++17 feature requirement.</p>
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md33"></a>
 2. Manual include of the build-settings file</h1>
 <p>When you don't want the driver's <code>CMakeLists.txt</code> to be processed (for example inside an ESP-IDF component), include the build-settings fragment directly:</p>
 <div class="fragment"><div class="line">include(&quot;${HF_ALICAT_BASIS2_ROOT}/cmake/hf_alicat_basis2_build_settings.cmake&quot;)</div>
 <div class="line">target_include_directories(my_lib PRIVATE ${HF_ALICAT_BASIS2_PUBLIC_INCLUDE_DIRS})</div>
 <div class="line">target_compile_features(my_lib PRIVATE cxx_std_17)</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md16"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md34"></a>
 3. ESP-IDF component wrapper</h1>
 <p>The example tree under <code>examples/esp32/components/hf_alicat_basis2/</code> demonstrates the standard wrapper:</p>
 <div class="fragment"><div class="line">set(HF_ALICAT_BASIS2_ROOT &quot;${CMAKE_CURRENT_LIST_DIR}/../../..&quot; CACHE PATH</div>
@@ -122,7 +122,7 @@ $(function(){initNavTree('md_docs_2cmake__integration.html',''); initResizable()
 <div class="line">    REQUIRES ${HF_ALICAT_BASIS2_IDF_REQUIRES}</div>
 <div class="line">)</div>
 </div><!-- fragment --><p><code>HF_ALICAT_BASIS2_IDF_REQUIRES</code> currently lists <code>driver</code> so the example also pulls in ESP-IDF's UART driver. Add <code>esp_driver_uart</code> to your own component if you need the modern split-driver headers.</p>
-<h1><a class="anchor" id="autotoc_md17"></a>
+<h1><a class="anchor" id="autotoc_md35"></a>
 Variables exported by <code>hf_alicat_basis2_build_settings.cmake</code></h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -138,7 +138,7 @@ Variables exported by <code>hf_alicat_basis2_build_settings.cmake</code></h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>HF_ALICAT_BASIS2_IDF_REQUIRES</code>   </td><td class="markdownTableBodyNone">Component dependencies for ESP-IDF integration   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md18"></a>
+<h1><a class="anchor" id="autotoc_md36"></a>
 Generated header</h1>
 <p>The build-settings script runs <code>configure_file()</code> on <code>inc/alicat_basis2_version.h.in</code> to produce <code>&lt;build&gt;/.../hf_alicat_basis2_generated/alicat_basis2_version.h</code> so user code can <code>#include "alicat_basis2_version.h"</code> for <code>HF_ALICAT_BASIS2_VERSION_*</code> macros.</p>
 <p><b>Next:</b> <a class="el" href="md_docs_2api__reference.html">API reference →</a> </p>
