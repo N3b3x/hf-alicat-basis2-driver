@@ -32,6 +32,58 @@ esp_log_level_set("Basis2Full", ESP_LOG_DEBUG);
 …and instrument your CRTP adapter with `printf` / `ESP_LOGD` calls in
 `write` and `read` to dump raw byte traces.
 
+## Bus discovery and baud normalisation
+
+`Driver::DiscoverPresentAddresses()` walks Modbus addresses 1..247 at the
+host UART's **current baud only** — a device that was previously
+configured to a different baud is invisible to it. To find every
+instrument and bring them all to the same baud, layer the discovery in
+two steps:
+
+1. **Multi-baud discovery (host-driven).** For each baud rate the
+   instrument can use (`4800/9600/19200/38400/57600/115200`):
+
+   ```text
+   for baud in {4800, 9600, 19200, 38400, 57600, 115200}:
+       host_uart.set_baud(baud)
+       sleep(25 ms)                        // settle / drain RX
+       Driver::DiscoverPresentAddresses(...)
+       record (addr, baud) for every responder
+   ```
+
+   This is exactly what `AlicatBasis2Handler::DiscoverAcrossBauds()` does
+   in HardFOC's flux/vortex HALs — the host code only needs to provide a
+   small `set_host_baud(uint32_t)` callback because the driver itself
+   stays transport-agnostic.
+
+2. **Bus normalisation.** For every `(addr, baud)` whose `baud != target`:
+
+   - Retune the host UART to the device's current baud.
+   - Address that slave and call `Driver::SetBaudRate(target)` — the
+     device switches **instantly** after acking, so the response may be
+     lost or garbled (datasheet calls this out).
+   - Retune the host UART to `target`.
+   - Verify with a quick `ReadIdentity()` at the new baud.
+
+   `AlicatBasis2Handler::NormalizeBusBaud(target_bps, devices, set_host_baud)`
+   wraps this loop and returns how many devices ended up verified at the
+   target. Failed devices are reported in an optional bitmap.
+
+### Two devices answering at the same address
+
+Two BASIS-2 instruments wired to the same RS-485 segment with the same
+Modbus address will collide — discovery will return either zero
+responses or garbled CRC errors. **There is no software-only fix.** The
+canonical workflow is:
+
+1. Power up only one instrument.
+2. `Driver::SetModbusAddress(N)` to give it a unique address.
+3. Power-cycle / connect the next one.
+4. Repeat.
+
+Once every device has a unique address, multi-baud discovery + baud
+normalisation can run unattended.
+
 ## Filing an issue
 
 Please attach:
