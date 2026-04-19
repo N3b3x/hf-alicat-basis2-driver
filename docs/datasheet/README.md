@@ -12,8 +12,8 @@ traces back to this document.
 
 - **Operating manual** (B-Series meters and BC-Series controllers):
   <https://www.alicat.com/manuals/>
-- **Product page** (BASIS-2 mass-flow instruments):
-  <https://www.alicat.com/product/basis-mass-flow-instruments/>
+- **Product page** (BASIS series compact mass-flow meters):
+  <https://www.alicat.com/products/gas-flow/mass-flow-meter/small-thermal-mass-flow-meters>
 - **FlowVision 2.0 software** (PC-side configuration tool):
   <https://www.alicat.com/flowvision/>
 - **ASCII serial terminal** (free, used for first bring-up):

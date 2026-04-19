@@ -26,7 +26,7 @@ The driver is the same shape as the rest of the `hf-*-driver` family:
 - Single `Driver<UartT>` template parameterised on the adapter type.
 - Stable `DriverError` / `DriverResult<T>` result domain.
 
-📚 **[Documentation site](https://n3b3x.github.io/hf-alicat-basis2-driver/)** ·
+📚 **[Documentation](https://github.com/N3b3x/hf-alicat-basis2-driver/tree/main/docs)** ·
 🛠️ **[Examples](examples/esp32/README.md)** ·
 📄 **[Datasheet (PDF)](docs/datasheet/DOC-MANUAL-BASIS2.pdf)** ·
 🐛 **[Issues](https://github.com/N3b3x/hf-alicat-basis2-driver/issues)**

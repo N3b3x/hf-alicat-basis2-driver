@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400" role="img" aria-labelledby="title2 desc2">
+  <title id="title2">Modbus-RTU read-holding frame (byte and bit indices)</title>
+  <desc id="desc2">Each column is one octet (8 bits). Column width is expanded for readable labels; tick marks still mark octet boundaries.</desc>
+  <defs>
+    <style type="text/css"><![CDATA[
+      .byte { fill: #f7fafc; stroke: #2d3748; stroke-width: 1.2; }
+      .byte-hi { fill: #bee3f8; stroke: #2b6cb0; stroke-width: 1.2; }
+      .byte-crc { fill: #e6fffa; stroke: #234e52; stroke-width: 1.2; }
+      .lbl { font-family: "DejaVu Sans Mono", Consolas, monospace; font-size: 11px; fill: #1a202c; }
+      .lbl-wide { font-family: system-ui, sans-serif; font-size: 10px; fill: #1a202c; }
+      .bits { font-family: system-ui, sans-serif; font-size: 9px; fill: #4a5568; }
+      .cap { font-family: system-ui, sans-serif; font-size: 13px; font-weight: 600; fill: #1a365d; }
+      .sub { font-family: system-ui, sans-serif; font-size: 10px; fill: #2d3748; }
+      .tick { stroke: #718096; stroke-width: 1; }
+      .bitnum { font-family: "DejaVu Sans Mono", Consolas, monospace; font-size: 9px; fill: #2d3748; }
+      .legend-title { font-family: system-ui, sans-serif; font-size: 11px; font-weight: 600; fill: #1a365d; }
+      .legend-body { font-family: system-ui, sans-serif; font-size: 10px; fill: #4a5568; }
+      .arrow { stroke: #2c5282; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .arrow-cap { font-family: system-ui, sans-serif; font-size: 9.5px; fill: #2c5282; font-style: italic; }
+    ]]></style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 z" fill="#2c5282"/>
+    </marker>
+  </defs>
+  <!-- viewBox 720x400: diagram to x~420; longest legend line ~650px from x=24; bottom y~376 + margin. -->
+
+  <!-- Octet pitch W: wide enough for full words in labels (each cell is still exactly one byte). -->
+  <!-- Request: 8 octets. Response example: 9 octets. -->
+
+  <text class="cap" x="24" y="18">Modbus-RTU request (host to instrument), function 0x03</text>
+  <text class="sub" x="24" y="32">Each column = 1 octet = 8 bits. Big-endian fields use high byte first.</text>
+
+  <g transform="translate(24, 40)">
+    <!-- 8 x 44px = 352 -->
+    <rect class="byte" x="0" y="0" width="44" height="50"/>
+    <rect class="byte-hi" x="44" y="0" width="44" height="50"/>
+    <rect class="byte" x="88" y="0" width="44" height="50"/>
+    <rect class="byte" x="132" y="0" width="44" height="50"/>
+    <rect class="byte" x="176" y="0" width="44" height="50"/>
+    <rect class="byte" x="220" y="0" width="44" height="50"/>
+    <rect class="byte-crc" x="264" y="0" width="44" height="50"/>
+    <rect class="byte-crc" x="308" y="0" width="44" height="50"/>
+
+    <text class="lbl" x="22" y="24" text-anchor="middle">Addr</text>
+    <text class="lbl" x="66" y="24" text-anchor="middle">FC</text>
+    <text class="lbl" x="110" y="19" text-anchor="middle">Reg</text>
+    <text class="lbl-wide" x="110" y="31" text-anchor="middle">high</text>
+    <text class="lbl" x="154" y="19" text-anchor="middle">Reg</text>
+    <text class="lbl-wide" x="154" y="31" text-anchor="middle">low</text>
+    <text class="lbl" x="198" y="19" text-anchor="middle">Cnt</text>
+    <text class="lbl-wide" x="198" y="31" text-anchor="middle">high</text>
+    <text class="lbl" x="242" y="19" text-anchor="middle">Cnt</text>
+    <text class="lbl-wide" x="242" y="31" text-anchor="middle">low</text>
+    <text class="lbl" x="286" y="19" text-anchor="middle">CRC</text>
+    <text class="lbl-wide" x="286" y="31" text-anchor="middle">LSB</text>
+    <text class="lbl" x="330" y="19" text-anchor="middle">CRC</text>
+    <text class="lbl-wide" x="330" y="31" text-anchor="middle">MSB</text>
+
+    <text class="bits" x="22" y="46" text-anchor="middle">8 b</text>
+    <text class="bits" x="66" y="46" text-anchor="middle">8 b</text>
+    <text class="bits" x="110" y="46" text-anchor="middle">8 b</text>
+    <text class="bits" x="154" y="46" text-anchor="middle">8 b</text>
+    <text class="bits" x="198" y="46" text-anchor="middle">8 b</text>
+    <text class="bits" x="242" y="46" text-anchor="middle">8 b</text>
+    <text class="bits" x="286" y="46" text-anchor="middle">8 b</text>
+    <text class="bits" x="330" y="46" text-anchor="middle">8 b</text>
+
+    <g transform="translate(0, 56)">
+      <line class="tick" x1="0" y1="0" x2="0" y2="8"/>
+      <line class="tick" x1="44" y1="0" x2="44" y2="8"/>
+      <line class="tick" x1="88" y1="0" x2="88" y2="8"/>
+      <line class="tick" x1="132" y1="0" x2="132" y2="8"/>
+      <line class="tick" x1="176" y1="0" x2="176" y2="8"/>
+      <line class="tick" x1="220" y1="0" x2="220" y2="8"/>
+      <line class="tick" x1="264" y1="0" x2="264" y2="8"/>
+      <line class="tick" x1="308" y1="0" x2="308" y2="8"/>
+      <line class="tick" x1="352" y1="0" x2="352" y2="8"/>
+      <text class="bitnum" x="0" y="22" text-anchor="middle">0</text>
+      <text class="bitnum" x="44" y="22" text-anchor="middle">8</text>
+      <text class="bitnum" x="88" y="22" text-anchor="middle">16</text>
+      <text class="bitnum" x="132" y="22" text-anchor="middle">24</text>
+      <text class="bitnum" x="176" y="22" text-anchor="middle">32</text>
+      <text class="bitnum" x="220" y="22" text-anchor="middle">40</text>
+      <text class="bitnum" x="264" y="22" text-anchor="middle">48</text>
+      <text class="bitnum" x="308" y="22" text-anchor="middle">56</text>
+      <text class="bitnum" x="352" y="22" text-anchor="middle">64</text>
+    </g>
+  </g>
+
+  <!-- FC column center: 24 + 44 + 22 = 90 -->
+  <path class="arrow" d="M 90 92 L 90 198"/>
+  <text class="arrow-cap" x="94" y="148">same FC</text>
+
+  <text class="cap" x="24" y="178">Modbus-RTU response (instrument to host)</text>
+  <text class="sub" x="24" y="192">Example: Byte cnt = 4 means four data octets (e.g. two 16-bit registers). Total shown = 9 octets.</text>
+
+  <g transform="translate(24, 200)">
+    <!-- 9 x 44 = 396 -->
+    <rect class="byte" x="0" y="0" width="44" height="50"/>
+    <rect class="byte-hi" x="44" y="0" width="44" height="50"/>
+    <rect class="byte" x="88" y="0" width="44" height="50"/>
+    <rect class="byte" x="132" y="0" width="44" height="50"/>
+    <rect class="byte" x="176" y="0" width="44" height="50"/>
+    <rect class="byte" x="220" y="0" width="44" height="50"/>
+    <rect class="byte" x="264" y="0" width="44" height="50"/>
+    <rect class="byte-crc" x="308" y="0" width="44" height="50"/>
+    <rect class="byte-crc" x="352" y="0" width="44" height="50"/>
+
+    <text class="lbl" x="22" y="24" text-anchor="middle">Addr</text>
+    <text class="lbl" x="66" y="24" text-anchor="middle">FC</text>
+    <text class="lbl-wide" x="110" y="19" text-anchor="middle">Byte</text>
+    <text class="lbl-wide" x="110" y="31" text-anchor="middle">count</text>
+    <text class="lbl-wide" x="154" y="19" text-anchor="middle">Data</text>
+    <text class="lbl-wide" x="154" y="31" text-anchor="middle">octet 0</text>
+    <text class="lbl-wide" x="198" y="19" text-anchor="middle">Data</text>
+    <text class="lbl-wide" x="198" y="31" text-anchor="middle">octet 1</text>
+    <text class="lbl-wide" x="242" y="19" text-anchor="middle">Data</text>
+    <text class="lbl-wide" x="242" y="31" text-anchor="middle">octet 2</text>
+    <text class="lbl-wide" x="286" y="19" text-anchor="middle">Data</text>
+    <text class="lbl-wide" x="286" y="31" text-anchor="middle">octet 3</text>
+    <text class="lbl" x="330" y="19" text-anchor="middle">CRC</text>
+    <text class="lbl-wide" x="330" y="31" text-anchor="middle">LSB</text>
+    <text class="lbl" x="374" y="19" text-anchor="middle">CRC</text>
+    <text class="lbl-wide" x="374" y="31" text-anchor="middle">MSB</text>
+
+    <text class="bits" x="22" y="46" text-anchor="middle">8 b</text>
+    <text class="bits" x="66" y="46" text-anchor="middle">8 b</text>
+    <text class="bits" x="110" y="46" text-anchor="middle">8 b</text>
+    <text class="bits" x="154" y="46" text-anchor="middle">8 b</text>
+    <text class="bits" x="198" y="46" text-anchor="middle">8 b</text>
+    <text class="bits" x="242" y="46" text-anchor="middle">8 b</text>
+    <text class="bits" x="286" y="46" text-anchor="middle">8 b</text>
+    <text class="bits" x="330" y="46" text-anchor="middle">8 b</text>
+    <text class="bits" x="374" y="46" text-anchor="middle">8 b</text>
+
+    <g transform="translate(0, 56)">
+      <line class="tick" x1="0" y1="0" x2="0" y2="8"/>
+      <line class="tick" x1="44" y1="0" x2="44" y2="8"/>
+      <line class="tick" x1="88" y1="0" x2="88" y2="8"/>
+      <line class="tick" x1="132" y1="0" x2="132" y2="8"/>
+      <line class="tick" x1="176" y1="0" x2="176" y2="8"/>
+      <line class="tick" x1="220" y1="0" x2="220" y2="8"/>
+      <line class="tick" x1="264" y1="0" x2="264" y2="8"/>
+      <line class="tick" x1="308" y1="0" x2="308" y2="8"/>
+      <line class="tick" x1="352" y1="0" x2="352" y2="8"/>
+      <line class="tick" x1="396" y1="0" x2="396" y2="8"/>
+      <text class="bitnum" x="0" y="22" text-anchor="middle">0</text>
+      <text class="bitnum" x="44" y="22" text-anchor="middle">8</text>
+      <text class="bitnum" x="88" y="22" text-anchor="middle">16</text>
+      <text class="bitnum" x="132" y="22" text-anchor="middle">24</text>
+      <text class="bitnum" x="176" y="22" text-anchor="middle">32</text>
+      <text class="bitnum" x="220" y="22" text-anchor="middle">40</text>
+      <text class="bitnum" x="264" y="22" text-anchor="middle">48</text>
+      <text class="bitnum" x="308" y="22" text-anchor="middle">56</text>
+      <text class="bitnum" x="352" y="22" text-anchor="middle">64</text>
+      <text class="bitnum" x="396" y="22" text-anchor="middle">72</text>
+    </g>
+  </g>
+
+  <g transform="translate(24, 292)">
+    <text class="legend-title" x="0" y="0">Legend</text>
+    <text class="legend-body" x="0" y="16">- Cells are wider for legibility; each box is still exactly one octet (8 bits). &quot;8 b&quot; under each cell marks width.</text>
+    <text class="legend-body" x="0" y="30">- Tick numbers (0, 8, 16, ...) are cumulative bit indices from the start of the frame (left edge of the first octet).</text>
+    <text class="legend-body" x="0" y="44">- 16-bit fields in the request (start address, quantity) and register values in data are big-endian: high octet first.</text>
+    <text class="legend-body" x="0" y="58">- CRC-16 uses two octets on the wire: LSB first, then MSB (Modbus RTU).</text>
+    <text class="legend-body" x="0" y="72">- Response length varies: N data octets after Byte count; total = 5 + N octets. This figure uses N = 4.</text>
+  </g>
+</svg>
