@@ -97,8 +97,8 @@ $(function(){initNavTree('md_docs_2hardware__setup.html',''); initResizable(); }
   <div class="headertitle"><div class="title">Hardware setup — RS-485 bus</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md24"></a> </p>
-<h1><a class="anchor" id="autotoc_md25"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md42"></a> </p>
+<h1><a class="anchor" id="autotoc_md43"></a>
 Connector pinout</h1>
 <p>Per the BASIS-2 datasheet, the 6-pin JST-GH connector on top of every instrument carries:</p>
 <table class="markdownTable">
@@ -120,7 +120,7 @@ Connector pinout</h1>
 <blockquote class="doxtable">
 <p>&zwj;⚠️ Apply power on <b>pin 4 only</b>. Connecting power to any other pin can permanently damage the instrument. </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md26"></a>
+<h1><a class="anchor" id="autotoc_md44"></a>
 RS-485 multidrop topology</h1>
 <p>Up to <b>247</b> BASIS-2 instruments may share the same RS-485 pair. Wire A/B as a single trunk with 120 Ω termination at both ends; T-stubs to each instrument should stay short (≤ 30 cm).</p>
 <div class="fragment"><div class="line">   ┌────────────┐   RS-485 A/B</div>
@@ -133,7 +133,7 @@ RS-485 multidrop topology</h1>
 <div class="line">│ B-2  │  │ B-2  │  │ B-2  │  │ B-2  │  │ B-2  │       │ B-2  │</div>
 <div class="line">│ #01  │  │ #02  │  │ #03  │  │ #04  │  │ #05  │       │ #247 │</div>
 <div class="line">└──────┘  └──────┘  └──────┘  └──────┘  └──────┘       └──────┘</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md27"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md45"></a>
 Transceiver wiring (ESP32-S3 reference)</h1>
 <p>Use any half-duplex RS-485 transceiver (SN65HVD11, MAX485, ADM2587E, …). Tie DE+RE together and drive them from a single GPIO; ESP-IDF's <code>UART_MODE_RS485_HALF_DUPLEX</code> toggles the line for you.</p>
 <div class="fragment"><div class="line">ESP32-S3                  Transceiver                BASIS-2 chain</div>
@@ -147,7 +147,7 @@ Transceiver wiring (ESP32-S3 reference)</h1>
 <div class="line">3V3        ──────────────► VCC (logic side)</div>
 <div class="line">                          120 Ω termination at each end of the bus</div>
 <div class="line">12–24 V        ────────────────────────────── pin 4 (POWER)</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md28"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md46"></a>
 First power-up — assigning addresses</h1>
 <p>Out of the factory <b>every</b> BASIS-2 ships with Modbus address <code>1</code> and ASCII unit id &lsquo;'A&rsquo;`. To enumerate a fresh bench:</p>
 <ol type="1">
@@ -158,7 +158,7 @@ First power-up — assigning addresses</h1>
 <li>Plug in the next instrument and repeat.</li>
 </ol>
 <p>After every instrument has its own address you can permanently leave the chain wired together; the driver addresses each slave by its programmed Modbus id.</p>
-<h1><a class="anchor" id="autotoc_md29"></a>
+<h1><a class="anchor" id="autotoc_md47"></a>
 Baud-rate change (datasheet warning)</h1>
 <p><code>SetBaudRate()</code> switches the slave to the new baud immediately after ack'ing the write. The host must:</p>
 <ol type="1">
