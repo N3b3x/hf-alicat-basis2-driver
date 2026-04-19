@@ -1,39 +1,76 @@
+---
+layout: home
+title: "🌬️ Alicat BASIS-2 Driver"
+description: "Hardware-agnostic C++17 driver for Alicat BASIS-2 mass-flow meters and controllers"
+nav_order: 1
+permalink: /
+---
+
 # hf-alicat-basis2-driver
 
-Hardware-agnostic C++17 driver for **Alicat BASIS-2 mass-flow meters and
-controllers** (B-Series and BC-Series). Implements the Modbus-RTU register
-set documented in *DOC-MANUAL-BASIS2 Rev 4* (May 2025) over any byte-level
-UART transport.
+[![ESP32 build CI](https://github.com/N3b3x/hf-alicat-basis2-driver/actions/workflows/esp32-examples-build-ci.yml/badge.svg)](https://github.com/N3b3x/hf-alicat-basis2-driver/actions/workflows/esp32-examples-build-ci.yml)
+[![C++ lint](https://github.com/N3b3x/hf-alicat-basis2-driver/actions/workflows/ci-cpp-lint.yml/badge.svg)](https://github.com/N3b3x/hf-alicat-basis2-driver/actions/workflows/ci-cpp-lint.yml)
+[![Markdown lint](https://github.com/N3b3x/hf-alicat-basis2-driver/actions/workflows/ci-markdown-lint.yml/badge.svg)](https://github.com/N3b3x/hf-alicat-basis2-driver/actions/workflows/ci-markdown-lint.yml)
+[![Docs publish](https://github.com/N3b3x/hf-alicat-basis2-driver/actions/workflows/ci-docs-publish.yml/badge.svg)](https://github.com/N3b3x/hf-alicat-basis2-driver/actions/workflows/ci-docs-publish.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-The driver is the same shape as the rest of the HardFOC `hf-*-driver`
-family (see `hf-mcp9700-driver`, `hf-tle92466ed-driver`, `hf-ads7952-driver`):
+Header-only C++17 driver for **Alicat BASIS-2 mass-flow meters and
+controllers** (B-Series and BC-Series). Implements the Modbus-RTU
+register set documented in *DOC-MANUAL-BASIS2 Rev 4* (May 2025) over
+any byte-level UART transport via a CRTP serial adapter.
+
+The driver is the same shape as the rest of the `hf-*-driver` family:
 
 - Header-only, allocation-free, exception-free.
 - Generic CRTP serial adapter (`UartInterface<>`) → zero virtual dispatch.
 - Single `Driver<UartT>` template parameterised on the adapter type.
 - Stable `DriverError` / `DriverResult<T>` result domain.
 
+📚 **[Documentation site](https://n3b3x.github.io/hf-alicat-basis2-driver/)** ·
+🛠️ **[Examples](examples/esp32/README.md)** ·
+🐛 **[Issues](https://github.com/N3b3x/hf-alicat-basis2-driver/issues)**
+
+---
+
 ## Repository layout
 
 ```
-inc/
-  alicat_basis2.hpp                 ← Driver<UartT> class
-  alicat_basis2_uart_interface.hpp  ← CRTP base for transport adapters
-  alicat_basis2_modbus.hpp          ← CRC-16 + frame builders/parsers
-  alicat_basis2_registers.hpp       ← Holding-register address constants
-  alicat_basis2_types.hpp           ← Gas / FlowUnits / BaudRate / data structs
-  alicat_basis2_version.h.in        ← Version header template
-cmake/
-  hf_alicat_basis2_build_settings.cmake
-  hf_alicat_basis2Config.cmake.in
-CMakeLists.txt
-README.md
-LICENSE
+hf-alicat-basis2-driver/
+├── inc/                                     ← public headers
+│   ├── alicat_basis2.hpp                    ← Driver<UartT> class
+│   ├── alicat_basis2_uart_interface.hpp     ← CRTP base for transport adapters
+│   ├── alicat_basis2_modbus.hpp             ← CRC-16 + frame builders/parsers
+│   ├── alicat_basis2_registers.hpp          ← Holding-register address constants
+│   ├── alicat_basis2_types.hpp              ← Gas / FlowUnits / BaudRate / data structs
+│   └── alicat_basis2_version.h.in           ← Version header template
+├── cmake/
+│   ├── hf_alicat_basis2_build_settings.cmake
+│   └── hf_alicat_basis2Config.cmake.in
+├── examples/esp32/
+│   ├── CMakeLists.txt + app_config.yml + sdkconfig.defaults
+│   ├── components/hf_alicat_basis2/         ← IDF component wrapper
+│   ├── main/
+│   │   ├── alicat_basis2_minimal_example.cpp   (~80 LOC)
+│   │   └── alicat_basis2_full_example.cpp      (~180 LOC)
+│   └── scripts/                             ← submodule: hf-espidf-project-tools
+├── docs/                                    ← Markdown docs (rendered by Jekyll)
+│   ├── index.md / installation.md / quickstart.md
+│   ├── modbus_protocol.md / hardware_setup.md / cmake_integration.md
+│   ├── api_reference.md / examples.md / troubleshooting.md
+│   └── datasheet/                           ← drop the official PDF here
+├── _config/                                 ← Jekyll + Doxygen scaffolding
+│   ├── Doxyfile + _config.yml + _layouts + _includes
+│   ├── doxygen-extensions/doxygen-awesome-css   ← submodule
+│   └── lint configs (.clang-format, .clang-tidy, .markdownlint.json, .yamllint)
+├── .github/workflows/                       ← 8 CI workflows (lint / build / docs / release)
+├── CMakeLists.txt
+├── LICENSE                                  ← MIT
+└── README.md
 ```
 
-## Datasheet coverage
+## Datasheet feature coverage
 
-| Datasheet feature | Driver entry point |
+| Datasheet section | Driver entry point |
 |-------------------|--------------------|
 | Read full instantaneous data frame (regs 2100..2109) | `ReadInstantaneous()` |
 | Identity (firmware, serial, address, units, full-scale) | `ReadIdentity()` |
@@ -53,15 +90,15 @@ LICENSE
 | Sampled measurement window (regs 4201..4214) | `StartMeasurementSamples()` + `ReadMeasurement()` |
 | Modbus address (reg 45) | `SetModbusAddress()` |
 | ASCII unit id (reg 46) | `SetAsciiUnitId()` |
-| Baud rate (reg 21) | `SetBaudRate()` *(see warning below)* |
+| Baud rate (reg 21) | `SetBaudRate()` *(see hardware setup)* |
 | Factory restore (reg 80) | `FactoryRestore()` |
 | Bus discovery sweep (1..247) | `DiscoverPresentAddresses()` |
 
-The driver intentionally focuses on the **Modbus-RTU** path because it's the
-only one that scales to multidrop RS-485 with up to 247 instruments on a
-single MCU UART. The ASCII protocol is documented for completeness; if you
-need it, build it on top of the same CRTP `UartInterface` adapter — the
-parsing and formatting are simple textual operations.
+The driver intentionally focuses on the **Modbus-RTU** path because it
+scales to multidrop RS-485 with up to 247 instruments on a single MCU
+UART. The ASCII protocol is documented for completeness; if you need it,
+build it on top of the same CRTP `UartInterface` adapter — the parsing
+and formatting are simple textual operations.
 
 ## Bus topology
 
@@ -78,61 +115,49 @@ parsing and formatting are simple textual operations.
 └──────┘  └──────┘  └──────┘  └──────┘  └──────┘       └──────┘
 ```
 
-Each instrument carries:
-- A **Modbus address** (1..247) used as the slave id on the bus.
-- An **ASCII unit_id** (`A`..`Z`) used by the legacy ASCII protocol.
+Each instrument carries a **Modbus address** (1..247) and an **ASCII
+unit_id** (`A`..`Z`). Out of the factory **all instruments default to
+address 1 / unit `A`**. See [Hardware setup](docs/hardware_setup.md) for
+the first-bring-up procedure.
 
-Out of the factory **all instruments default to address 1 / unit `A`**.
-The `DiscoverPresentAddresses()` sweep + `SetModbusAddress()` /
-`SetAsciiUnitId()` can be used at first bring-up to enumerate and program
-a fresh bench one instrument at a time (connect them physically one at a
-time, change address, then connect the next).
-
-## Wiring an adapter (ESP-IDF example)
+## Quick example
 
 ```cpp
 #include "alicat_basis2.hpp"
-#include "BaseUart.h"
+#include "alicat_basis2_uart_interface.hpp"
 
-class AlicatUartEspAdapter
-    : public alicat_basis2::UartInterface<AlicatUartEspAdapter> {
+class MyUart : public alicat_basis2::UartInterface<MyUart> {
 public:
-    explicit AlicatUartEspAdapter(BaseUart& uart) : uart_(uart) {}
-
-    void write(const uint8_t* data, std::size_t len) noexcept {
-        uart_.Write(data, static_cast<hf_u16_t>(len));
-    }
-    std::size_t read(uint8_t* out, std::size_t max, uint32_t timeout_ms) noexcept {
-        // BaseUart::Read returns the number actually read; treat <=0 as 0.
-        const auto rc = uart_.Read(out, static_cast<hf_u16_t>(max), timeout_ms);
-        return (rc == hf_uart_err_t::UART_SUCCESS) ? max : 0;
-    }
-    void flush_rx() noexcept { (void)uart_.FlushRx(); }
-    void delay_ms_impl(uint32_t ms) noexcept { vTaskDelay(pdMS_TO_TICKS(ms)); }
-
-private:
-    BaseUart& uart_;
+    void write(const uint8_t* data, std::size_t len) noexcept;
+    std::size_t read(uint8_t* out, std::size_t max, uint32_t timeout_ms) noexcept;
+    void flush_rx() noexcept;
 };
 
-AlicatUartEspAdapter adapter{uart};
-alicat_basis2::Driver<AlicatUartEspAdapter> meter(adapter, /*addr=*/1);
+MyUart uart;
+alicat_basis2::Driver<MyUart> meter(uart, /*addr=*/1);
 
 auto id = meter.ReadIdentity();
 if (id.ok()) {
-    ESP_LOGI("BASIS2", "FW %u.%u.%u  SN %s  units=%s",
-             id.value.fw_major, id.value.fw_minor, id.value.fw_patch,
-             id.value.serial_number,
-             alicat_basis2::ToString(id.value.flow_units).data());
+    printf("FW %u.%u.%u  SN=%s  units=%s\n",
+           id.value.fw_major, id.value.fw_minor, id.value.fw_patch,
+           id.value.serial_number,
+           alicat_basis2::ToString(id.value.flow_units).data());
 }
 
-auto live = meter.ReadInstantaneous();
-if (live.ok()) {
-    ESP_LOGI("BASIS2", "%.2f °C  %.3f flow  setpoint=%.3f  drive=%.1f%%",
-             live.value.temperature_c, live.value.flow,
-             live.value.setpoint, live.value.valve_drive_pct);
+if (auto live = meter.ReadInstantaneous(); live.ok()) {
+    printf("flow=%.4f  T=%.2f C  drive=%.1f%%\n",
+           static_cast<double>(live.value.flow),
+           static_cast<double>(live.value.temperature_c),
+           static_cast<double>(live.value.valve_drive_pct));
 }
 ```
 
+See [`docs/quickstart.md`](docs/quickstart.md) for the full guide and
+[`examples/esp32/`](examples/esp32/) for ESP-IDF projects you can flash
+directly.
+
 ## License
 
-See `LICENSE` (MIT).
+[MIT](LICENSE) — see file. The driver is **not** affiliated with or
+endorsed by Alicat Scientific. The register map and command syntax are
+implemented from the public *DOC-MANUAL-BASIS2* Rev 4 (May 2025).

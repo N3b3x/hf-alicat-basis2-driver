@@ -29,9 +29,10 @@
  *       programmed.
  *
  * @par Thread safety
- *   The driver is **not** internally synchronised. The host should either
- *   own a single bus for one thread or wrap the driver in a mutex (the
- *   handler in `hf-core` does the latter).
+ *   The driver is **not** internally synchronised. When several threads
+ *   share the same bus the host must serialise transactions externally
+ *   (a single mutex around every public call is sufficient). See
+ *   `examples/esp32/` for one such pattern.
  *
  * @copyright Copyright (c) 2026 HardFOC. All rights reserved.
  */

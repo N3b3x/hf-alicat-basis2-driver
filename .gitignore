@@ -1,41 +1,48 @@
-# Prerequisites
-*.d
+# Build / cache directories
+build/
+builds/
+.cache/
+.idf/
+.devcontainer/.cache/
+node_modules/
+_site/
+.jekyll-cache/
+.jekyll-metadata
+sdkconfig
+sdkconfig.old
+managed_components/
+dependencies.lock
+*.swp
+*.swo
+*.bak
+*.tmp
+.DS_Store
 
-# Compiled Object files
-*.slo
-*.lo
+# Doxygen-generated output (do not commit)
+docs/html/
+docs/latex/
+docs/xml/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Python venvs
+.venv/
+venv/
+
+# Compiled
 *.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
-
-# Compiled Dynamic libraries
+*.a
 *.so
 *.dylib
 *.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
-# debug information files
-*.dwo
+*.elf
+*.bin
+*.map
+*.lst
