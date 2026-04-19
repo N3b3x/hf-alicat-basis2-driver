@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HF-Alicat-BASIS2 Driver: alicat_basis2::Driver&lt; UartT &gt; Class Template Reference</title>
+<title>Alicat BASIS-2 Driver: alicat_basis2::Driver&lt; UartT &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">HF-Alicat-BASIS2 Driver<span id="projectnumber">&#160;0.1.0-dev</span>
+   <div id="projectname">Alicat BASIS-2 Driver<span id="projectnumber">&#160;0.1.0-dev</span>
    </div>
-   <div id="projectbrief">HF-Alicat-BASIS2 C++ Driver</div>
+   <div id="projectbrief">Hardware-agnostic C++17 driver for Alicat BASIS-2 mass-flow meters and controllers (Modbus-RTU)</div>
   </td>
  </tr>
  </tbody>
@@ -135,45 +135,57 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a43b9405b4ad134cbb957e65aa9583d40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the digital setpoint (controllers only).  <br /></td></tr>
 <tr class="separator:a43b9405b4ad134cbb957e65aa9583d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af62b2c35f3014b13b25b166ee1c86cb6" id="r_af62b2c35f3014b13b25b166ee1c86cb6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af62b2c35f3014b13b25b166ee1c86cb6">SetSetpointSource</a> (<a class="el" href="namespacealicat__basis2.html#a775c2932edb4a88eff8f93d8cfe3e48e">SetpointSource</a> src) noexcept</td></tr>
+<tr class="memdesc:af62b2c35f3014b13b25b166ee1c86cb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Switch the setpoint source (controllers only).  <br /></td></tr>
 <tr class="separator:af62b2c35f3014b13b25b166ee1c86cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a7dd92ac1ef75f22287aa80e03e98a4" id="r_a3a7dd92ac1ef75f22287aa80e03e98a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a7dd92ac1ef75f22287aa80e03e98a4">SetCommWatchdogMs</a> (uint16_t ms) noexcept</td></tr>
-<tr class="memdesc:a3a7dd92ac1ef75f22287aa80e03e98a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">0..5000 ms (0 disables); see datasheet "Communication Watchdog".  <br /></td></tr>
+<tr class="memdesc:a3a7dd92ac1ef75f22287aa80e03e98a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the communication watchdog (controllers only).  <br /></td></tr>
 <tr class="separator:a3a7dd92ac1ef75f22287aa80e03e98a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cbc8ab03f05426c3f56702623f47d80" id="r_a8cbc8ab03f05426c3f56702623f47d80"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8cbc8ab03f05426c3f56702623f47d80">SetMaxSetpointRamp</a> (uint32_t pct_per_ms_x_10e7) noexcept</td></tr>
 <tr class="separator:a8cbc8ab03f05426c3f56702623f47d80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d12c95c8c4618abaf1fb83aa750c562" id="r_a6d12c95c8c4618abaf1fb83aa750c562"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d12c95c8c4618abaf1fb83aa750c562">Tare</a> () noexcept</td></tr>
+<tr class="memdesc:a6d12c95c8c4618abaf1fb83aa750c562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force a tare (zero-flow reference) on the instrument.  <br /></td></tr>
 <tr class="separator:a6d12c95c8c4618abaf1fb83aa750c562"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fe66e54cbc729e5d28cdeac0fc2b33b" id="r_a6fe66e54cbc729e5d28cdeac0fc2b33b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fe66e54cbc729e5d28cdeac0fc2b33b">SetAutotareEnabled</a> (bool enabled) noexcept</td></tr>
+<tr class="memdesc:a6fe66e54cbc729e5d28cdeac0fc2b33b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable / disable automatic taring (controllers only).  <br /></td></tr>
 <tr class="separator:a6fe66e54cbc729e5d28cdeac0fc2b33b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea033e3934456ec9ffe80b7b0dae376a" id="r_aea033e3934456ec9ffe80b7b0dae376a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea033e3934456ec9ffe80b7b0dae376a">SetGas</a> (<a class="el" href="namespacealicat__basis2.html#abefb3456872913f7b469c0193e7e8e47">Gas</a> g) noexcept</td></tr>
+<tr class="memdesc:aea033e3934456ec9ffe80b7b0dae376a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select one of the 9 factory-calibrated gases.  <br /></td></tr>
 <tr class="separator:aea033e3934456ec9ffe80b7b0dae376a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4ca96e880f72e51eee6047009d43b0f" id="r_aa4ca96e880f72e51eee6047009d43b0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4ca96e880f72e51eee6047009d43b0f">ResetTotalizer</a> () noexcept</td></tr>
+<tr class="memdesc:aa4ca96e880f72e51eee6047009d43b0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the totalizer to zero.  <br /></td></tr>
 <tr class="separator:aa4ca96e880f72e51eee6047009d43b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad7a14cb23e88aeb5198d4ab875f5705" id="r_aad7a14cb23e88aeb5198d4ab875f5705"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad7a14cb23e88aeb5198d4ab875f5705">SetTotalizerLimitMode</a> (<a class="el" href="namespacealicat__basis2.html#a8235bc3f7f23806c4a3fd97b1facc1bf">TotalizerLimitMode</a> mode) noexcept</td></tr>
+<tr class="memdesc:aad7a14cb23e88aeb5198d4ab875f5705"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure totalizer overflow behaviour.  <br /></td></tr>
 <tr class="separator:aad7a14cb23e88aeb5198d4ab875f5705"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91c4cb9adb67045eadbc803854279992" id="r_a91c4cb9adb67045eadbc803854279992"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91c4cb9adb67045eadbc803854279992">SetTotalizerBatch</a> (uint32_t value_scaled) noexcept</td></tr>
-<tr class="memdesc:a91c4cb9adb67045eadbc803854279992"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the totalizer batch volume (controllers only) in instrument units.  <br /></td></tr>
+<tr class="memdesc:a91c4cb9adb67045eadbc803854279992"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the totalizer batch volume (controllers only).  <br /></td></tr>
 <tr class="separator:a91c4cb9adb67045eadbc803854279992"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a478e94e8aea88b05dec0261808bc0623" id="r_a478e94e8aea88b05dec0261808bc0623"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a478e94e8aea88b05dec0261808bc0623">SetFlowAveragingMs</a> (uint16_t ms) noexcept</td></tr>
+<tr class="memdesc:a478e94e8aea88b05dec0261808bc0623"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure on-chip flow averaging (IIR-style time constant).  <br /></td></tr>
 <tr class="separator:a478e94e8aea88b05dec0261808bc0623"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5dbc278adfae17bfbbdf55a37af9a097" id="r_a5dbc278adfae17bfbbdf55a37af9a097"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5dbc278adfae17bfbbdf55a37af9a097">SetReferenceTemperatureC</a> (float c) noexcept</td></tr>
+<tr class="memdesc:a5dbc278adfae17bfbbdf55a37af9a097"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the reference temperature used for standard / normal flow.  <br /></td></tr>
 <tr class="separator:a5dbc278adfae17bfbbdf55a37af9a097"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0cece96e44d152b1c306523891d52ab" id="r_aa0cece96e44d152b1c306523891d52ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0cece96e44d152b1c306523891d52ab">ConfigureMeasurementTrigger</a> (uint16_t trigger_bits) noexcept</td></tr>
+<tr class="memdesc:aa0cece96e44d152b1c306523891d52ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure when a new measurement window auto-restarts.  <br /></td></tr>
 <tr class="separator:aa0cece96e44d152b1c306523891d52ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ce0fd97a590f370f148b64bd080a9df" id="r_a4ce0fd97a590f370f148b64bd080a9df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ce0fd97a590f370f148b64bd080a9df">StartMeasurementSamples</a> (uint16_t num_samples) noexcept</td></tr>
+<tr class="memdesc:a4ce0fd97a590f370f148b64bd080a9df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a measurement window of <code>num_samples</code> samples.  <br /></td></tr>
 <tr class="separator:a4ce0fd97a590f370f148b64bd080a9df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a229e1f3f0d9f4ea94fcae42fba64dff6" id="r_a229e1f3f0d9f4ea94fcae42fba64dff6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; <a class="el" href="structalicat__basis2_1_1MeasurementData.html">MeasurementData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a229e1f3f0d9f4ea94fcae42fba64dff6">ReadMeasurement</a> () noexcept</td></tr>
+<tr class="memdesc:a229e1f3f0d9f4ea94fcae42fba64dff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the current / most-recent measurement window result.  <br /></td></tr>
 <tr class="separator:a229e1f3f0d9f4ea94fcae42fba64dff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a1acdbf3b6a5658a87c90f2fa392fdd" id="r_a4a1acdbf3b6a5658a87c90f2fa392fdd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a1acdbf3b6a5658a87c90f2fa392fdd">SetModbusAddress</a> (uint8_t new_address) noexcept</td></tr>
-<tr class="memdesc:a4a1acdbf3b6a5658a87c90f2fa392fdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the instrument's Modbus address.  <br /></td></tr>
+<tr class="memdesc:a4a1acdbf3b6a5658a87c90f2fa392fdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the instrument's Modbus slave address.  <br /></td></tr>
 <tr class="separator:a4a1acdbf3b6a5658a87c90f2fa392fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62f033452050ff83de7d7057e0213cb4" id="r_a62f033452050ff83de7d7057e0213cb4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62f033452050ff83de7d7057e0213cb4">SetAsciiUnitId</a> (char id) noexcept</td></tr>
-<tr class="memdesc:a62f033452050ff83de7d7057e0213cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the instrument's ASCII unit-id ('A'..'Z').  <br /></td></tr>
+<tr class="memdesc:a62f033452050ff83de7d7057e0213cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the instrument's ASCII unit-id (used by the legacy ASCII serial protocol).  <br /></td></tr>
 <tr class="separator:a62f033452050ff83de7d7057e0213cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7415eff47670b3ea115f875de453a1b3" id="r_a7415eff47670b3ea115f875de453a1b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7415eff47670b3ea115f875de453a1b3">SetBaudRate</a> (<a class="el" href="namespacealicat__basis2.html#a194530ff179a4a184b17915a6a113d7e">BaudRate</a> br) noexcept</td></tr>
 <tr class="memdesc:a7415eff47670b3ea115f875de453a1b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the serial baud rate (instrument register 21).  <br /></td></tr>
 <tr class="separator:a7415eff47670b3ea115f875de453a1b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2797a88ec6d6002c9c037444acd93d5" id="r_ac2797a88ec6d6002c9c037444acd93d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2797a88ec6d6002c9c037444acd93d5">FactoryRestore</a> () noexcept</td></tr>
+<tr class="memdesc:ac2797a88ec6d6002c9c037444acd93d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restore the instrument to factory defaults.  <br /></td></tr>
 <tr class="separator:ac2797a88ec6d6002c9c037444acd93d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59f32481c979c29240b7761e98f1211b" id="r_a59f32481c979c29240b7761e98f1211b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structalicat__basis2_1_1DriverResult.html">DriverResult</a>&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59f32481c979c29240b7761e98f1211b">DiscoverPresentAddresses</a> (uint8_t *present_bitmap, std::size_t bitmap_bytes, uint16_t probe_timeout_ms=30, uint8_t first_addr=1, uint8_t last_addr=<a class="el" href="namespacealicat__basis2.html#a0e5791506807ae5eff27f36593e1965d">kMaxModbusAddress</a>) noexcept</td></tr>
 <tr class="memdesc:a59f32481c979c29240b7761e98f1211b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Probe the entire bus to find which addresses respond.  <br /></td></tr>
@@ -295,6 +307,15 @@ template&lt;typename UartT &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Configure when a new measurement window auto-restarts. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">trigger_bits</td><td>OR-combination of <code><a class="el" href="namespacealicat__basis2_1_1MeasurementTrigger.html" title="Measurement-trigger bitmask — register 4200 (controllers only).">MeasurementTrigger</a>::*</code> flags (<code>OnDigitalSetpointChange</code>, <code>OnHoldPercentChange</code>, <code>OnAverageFlowRead</code>). 0 disables auto-trigger. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Success or transport / Modbus error. </dd></dl>
+
 </div>
 </div>
 <a id="a59f32481c979c29240b7761e98f1211b" name="a59f32481c979c29240b7761e98f1211b"></a>
@@ -379,6 +400,9 @@ template&lt;typename UartT &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Restore the instrument to factory defaults. </p>
+<p>Writes the magic value <code>0x5214</code> to register 80. The datasheet recommends a power-cycle afterwards to make sure every cached value picks up the reset. </p><dl class="section return"><dt>Returns</dt><dd>Success or transport / Modbus error. </dd></dl>
+
 </div>
 </div>
 <a id="a25730c6d4142bc82433d9222d17b6143" name="a25730c6d4142bc82433d9222d17b6143"></a>
@@ -405,6 +429,7 @@ template&lt;typename UartT &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Current Modbus slave address (1..247) this driver is talking to. </dd></dl>
 
 </div>
 </div>
@@ -432,6 +457,7 @@ template&lt;typename UartT &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Current per-transaction timeout in milliseconds. </dd></dl>
 
 </div>
 </div>
@@ -524,7 +550,8 @@ template&lt;typename UartT &gt; </div>
 </div><div class="memdoc">
 
 <p>Pull the static identification of the instrument. </p>
-<p>Reads firmware version (reg 25), serial number (regs 26..31), Modbus address (reg 45), ASCII unit id (reg 46), full-scale flow in user units (regs 47..48) and the flow-units code (reg 49). </p>
+<p>Reads firmware version (reg 25), serial number (regs 26..31), Modbus address (reg 45), ASCII unit id (reg 46), full-scale flow in user units (regs 47..48) and the flow-units code (reg 49).</p>
+<dl class="section return"><dt>Returns</dt><dd><code><a class="el" href="structalicat__basis2_1_1DriverResult.html" title="Lightweight result wrapper. Aborts on value() if !ok().">DriverResult</a>&lt;<a class="el" href="structalicat__basis2_1_1InstrumentIdentity.html" title="Static identification of an instrument (read once at init).">InstrumentIdentity</a>&gt;</code> populated with all of the above on success; transport / Modbus error otherwise. </dd></dl>
 
 </div>
 </div>
@@ -561,6 +588,7 @@ template&lt;typename UartT &gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd><code><a class="el" href="structalicat__basis2_1_1DriverResult.html" title="Lightweight result wrapper. Aborts on value() if !ok().">DriverResult</a>&lt;<a class="el" href="structalicat__basis2_1_1InstantaneousData.html" title="Decoded snapshot of registers 2100..2109 (one Modbus burst).">InstantaneousData</a>&gt;</code> — <code>value</code> carries the decoded snapshot on success, <code>error</code> is <code><a class="el" href="namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a6adf97f83acf6453d4a6a4b1070f3754" title="Operation succeeded.">DriverError::None</a></code>. On failure <code>value</code> is default-constructed and <code>error</code> carries the underlying transport / Modbus error. </dd></dl>
 
 </div>
 </div>
@@ -589,6 +617,9 @@ template&lt;typename UartT &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Read the current / most-recent measurement window result. </p>
+<dl class="section return"><dt>Returns</dt><dd><code><a class="el" href="structalicat__basis2_1_1DriverResult.html" title="Lightweight result wrapper. Aborts on value() if !ok().">DriverResult</a>&lt;<a class="el" href="structalicat__basis2_1_1MeasurementData.html" title="Decoded measurement-window result (registers 4200..4214).">MeasurementData</a>&gt;</code> populated with min / max / average temperature and flow on success; transport / Modbus error on failure. </dd></dl>
+
 </div>
 </div>
 <a id="aa4ca96e880f72e51eee6047009d43b0f" name="aa4ca96e880f72e51eee6047009d43b0f"></a>
@@ -615,6 +646,9 @@ template&lt;typename UartT &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Reset the totalizer to zero. </p>
+<p>Writes <code>0xAA55</code> to register 53. Total volume since the last power-up / reset is cleared and any active totalizer-overrange (OVR) bit is also dropped. </p><dl class="section return"><dt>Returns</dt><dd>Success or transport / Modbus error. </dd></dl>
 
 </div>
 </div>
@@ -672,7 +706,13 @@ template&lt;typename UartT &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Change the instrument's ASCII unit-id ('A'..'Z'). </p>
+<p>Change the instrument's ASCII unit-id (used by the legacy ASCII serial protocol). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>A capital letter &lsquo;'A&rsquo;..'Z'<code>. @return Success or transport / Modbus error; </code><a class="el" href="namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a627251310d3384b591e4138be21145d5" title="Out-of-range argument.">DriverError::InvalidParameter</a><code>if</code>id<code>is outside</code>A..Z`. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -700,6 +740,15 @@ template&lt;typename UartT &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Enable / disable automatic taring (controllers only). </p>
+<p>When enabled, the instrument tares automatically after the setpoint has been at 0 for at least two seconds. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enabled</td><td><code>true</code> to enable autotare, <code>false</code> to disable. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Success or transport / Modbus error. </dd></dl>
 
 </div>
 </div>
@@ -764,7 +813,14 @@ template&lt;typename UartT &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>0..5000 ms (0 disables); see datasheet "Communication Watchdog". </p>
+<p>Configure the communication watchdog (controllers only). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ms</td><td>0..5000 ms; 0 disables. The instrument forces a zero setpoint and closes the valve if no Modbus traffic is seen within this window when the setpoint source is DigitalUnsaved (see datasheet "Communication Watchdog"). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Success or transport / Modbus error; <code><a class="el" href="namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a627251310d3384b591e4138be21145d5" title="Out-of-range argument.">DriverError::InvalidParameter</a></code> if <code>ms &gt; 5000</code>. </dd></dl>
 
 </div>
 </div>
@@ -793,6 +849,15 @@ template&lt;typename UartT &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Configure on-chip flow averaging (IIR-style time constant). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ms</td><td>Time constant in milliseconds, 0..2500. Higher values smooth fluctuations at the cost of response. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Success or <code><a class="el" href="namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a627251310d3384b591e4138be21145d5" title="Out-of-range argument.">DriverError::InvalidParameter</a></code> if <code>ms &gt; 2500</code>. </dd></dl>
+
 </div>
 </div>
 <a id="aea033e3934456ec9ffe80b7b0dae376a" name="aea033e3934456ec9ffe80b7b0dae376a"></a>
@@ -819,6 +884,15 @@ template&lt;typename UartT &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Select one of the 9 factory-calibrated gases. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>One of <code><a class="el" href="namespacealicat__basis2.html#abefb3456872913f7b469c0193e7e8e47a71c546fa61f3964d72bdf25223b78669">Gas::Air</a> / Argon / CarbonDioxide / Nitrogen / Oxygen / NitrousOxide / Hydrogen / Helium / Methane</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Success or transport / Modbus error. </dd></dl>
 
 </div>
 </div>
@@ -874,8 +948,15 @@ template&lt;typename UartT &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Change the instrument's Modbus address. </p>
-<dl class="section note"><dt>Note</dt><dd>After the slave acknowledges, this driver instance switches its target address automatically. </dd></dl>
+<p>Change the instrument's Modbus slave address. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_address</td><td>New slave address, 1..247 (kMaxModbusAddress). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Success or transport / Modbus error; <code><a class="el" href="namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a66196dd9678aef4aaad947e7181049c0" title="Modbus address outside 1..247.">DriverError::InvalidAddress</a></code> if <code>new_address</code> is outside the legal range.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>After the slave acknowledges, this driver instance switches its target address automatically; subsequent calls keep working without further changes. </dd></dl>
 
 </div>
 </div>
@@ -903,6 +984,15 @@ template&lt;typename UartT &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Set the reference temperature used for standard / normal flow. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Temperature in °C, 0..30. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Success or <code><a class="el" href="namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a627251310d3384b591e4138be21145d5" title="Out-of-range argument.">DriverError::InvalidParameter</a></code> if out of range. </dd></dl>
 
 </div>
 </div>
@@ -936,6 +1026,7 @@ template&lt;typename UartT &gt; </div>
 </div><div class="memdoc">
 
 <p>Set the digital setpoint (controllers only). </p>
+<p>Writes the signed 32-bit setpoint to registers 2053..2054. The datasheet defines the on-the-wire scaling as <code>value × 1000</code> so the host passes the engineering value (e.g. 12.5 SLPM) and the driver does the multiplication.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">value_in_user_units</td><td>Real setpoint, e.g. 12.5 SLPM. </td></tr>
@@ -943,6 +1034,7 @@ template&lt;typename UartT &gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd><code><a class="el" href="structalicat__basis2_1_1DriverResult.html" title="Lightweight result wrapper. Aborts on value() if !ok().">DriverResult</a>&lt;void&gt;</code> — success or a Modbus / transport error. A meter (non-controller) instrument will return <code><a class="el" href="namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9aa012a5d858320ad811726d497cded549" title="Slave returned a Modbus exception PDU.">DriverError::ModbusException</a></code>. </dd></dl>
 
 </div>
 </div>
@@ -970,6 +1062,15 @@ template&lt;typename UartT &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Switch the setpoint source (controllers only). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>Analog input pin / digital saved-to-flash / digital volatile. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Success or transport / Modbus error. </dd></dl>
 
 </div>
 </div>
@@ -1027,7 +1128,15 @@ template&lt;typename UartT &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Set the totalizer batch volume (controllers only) in instrument units. </p>
+<p>Set the totalizer batch volume (controllers only). </p>
+<p>Once the totalizer reaches the batch volume the controller closes the valve. Pass the value already pre-scaled per the instrument's factory-set decimal count.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value_scaled</td><td>Batch volume × 10^decimals (per datasheet). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Success or transport / Modbus error. </dd></dl>
 
 </div>
 </div>
@@ -1056,6 +1165,15 @@ template&lt;typename UartT &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Configure totalizer overflow behaviour. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mode</td><td><code>SaturateNoError</code> / <code>ResetNoError</code> / <code>SaturateWithOvr</code> / <code>ResetWithOvr</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Success or transport / Modbus error. </dd></dl>
+
 </div>
 </div>
 <a id="a4ce0fd97a590f370f148b64bd080a9df" name="a4ce0fd97a590f370f148b64bd080a9df"></a>
@@ -1083,6 +1201,16 @@ template&lt;typename UartT &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Start a measurement window of <code>num_samples</code> samples. </p>
+<p>Each sample is taken at approximately a 2.5 ms interval. Writing the register cancels any in-progress window and shifts the accumulated data into the "previous measurement" slot.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">num_samples</td><td>Number of samples to collect (unsigned 16-bit). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Success or transport / Modbus error. </dd></dl>
+
 </div>
 </div>
 <a id="a6d12c95c8c4618abaf1fb83aa750c562" name="a6d12c95c8c4618abaf1fb83aa750c562"></a>
@@ -1109,6 +1237,9 @@ template&lt;typename UartT &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Force a tare (zero-flow reference) on the instrument. </p>
+<p>Writes the magic value <code>0xAA55</code> to register 39. The instrument must be exposed to <em>true</em> zero flow with the actual process gas in the line for the result to be in-spec. </p><dl class="section return"><dt>Returns</dt><dd>Success or transport / Modbus error. </dd></dl>
 
 </div>
 </div>

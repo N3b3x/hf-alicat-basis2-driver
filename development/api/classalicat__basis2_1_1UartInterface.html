@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HF-Alicat-BASIS2 Driver: alicat_basis2::UartInterface&lt; Derived &gt; Class Template Reference</title>
+<title>Alicat BASIS-2 Driver: alicat_basis2::UartInterface&lt; Derived &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">HF-Alicat-BASIS2 Driver<span id="projectnumber">&#160;0.1.0-dev</span>
+   <div id="projectname">Alicat BASIS-2 Driver<span id="projectnumber">&#160;0.1.0-dev</span>
    </div>
-   <div id="projectbrief">HF-Alicat-BASIS2 C++ Driver</div>
+   <div id="projectbrief">Hardware-agnostic C++17 driver for Alicat BASIS-2 mass-flow meters and controllers (Modbus-RTU)</div>
   </td>
  </tr>
  </tbody>
@@ -109,7 +109,7 @@ $(function(){initNavTree('classalicat__basis2_1_1UartInterface.html',''); initRe
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af13d31fa7688bb749302fc0048842960" id="r_af13d31fa7688bb749302fc0048842960"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af13d31fa7688bb749302fc0048842960">write</a> (const uint8_t *data, std::size_t length) noexcept</td></tr>
-<tr class="memdesc:af13d31fa7688bb749302fc0048842960"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send <code>length</code> bytes synchronously. Must block until all bytes are accepted by the underlying serial driver.  <br /></td></tr>
+<tr class="memdesc:af13d31fa7688bb749302fc0048842960"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send <code>length</code> bytes synchronously.  <br /></td></tr>
 <tr class="separator:af13d31fa7688bb749302fc0048842960"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1bf48ef2d2d7af8b8c67433d3c07945b" id="r_a1bf48ef2d2d7af8b8c67433d3c07945b"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1bf48ef2d2d7af8b8c67433d3c07945b">read</a> (uint8_t *out, std::size_t max, uint32_t timeout_ms) noexcept</td></tr>
 <tr class="memdesc:a1bf48ef2d2d7af8b8c67433d3c07945b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read up to <code>max</code> bytes into <code>out</code> with a per-call timeout.  <br /></td></tr>
@@ -118,10 +118,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ad20b496f2da2c1c65f41bc20e5949918"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drop any unread bytes from the RX path.  <br /></td></tr>
 <tr class="separator:ad20b496f2da2c1c65f41bc20e5949918"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c63cafd4b8065462cf5584fa37e6d04" id="r_a2c63cafd4b8065462cf5584fa37e6d04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c63cafd4b8065462cf5584fa37e6d04">delay_ms</a> (uint32_t ms) noexcept</td></tr>
-<tr class="memdesc:a2c63cafd4b8065462cf5584fa37e6d04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sleep <code>ms</code> milliseconds. Default implementation is a no-op; adapters that have a sleep primitive should override.  <br /></td></tr>
+<tr class="memdesc:a2c63cafd4b8065462cf5584fa37e6d04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sleep <code>ms</code> milliseconds.  <br /></td></tr>
 <tr class="separator:a2c63cafd4b8065462cf5584fa37e6d04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a620c307b61e2bf0415929e9b9d47916e" id="r_a620c307b61e2bf0415929e9b9d47916e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a620c307b61e2bf0415929e9b9d47916e">log</a> (const char *tag, const char *fmt,...) noexcept</td></tr>
-<tr class="memdesc:a620c307b61e2bf0415929e9b9d47916e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional structured logging hook. Default is no-op.  <br /></td></tr>
+<tr class="memdesc:a620c307b61e2bf0415929e9b9d47916e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional structured logging hook.  <br /></td></tr>
 <tr class="separator:a620c307b61e2bf0415929e9b9d47916e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -160,7 +160,8 @@ template&lt;typename Derived &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Sleep <code>ms</code> milliseconds. Default implementation is a no-op; adapters that have a sleep primitive should override. </p>
+<p>Sleep <code>ms</code> milliseconds. </p>
+<p>Default implementation is a no-op; adapters that have a sleep primitive should override. </p>
 
 </div>
 </div>
@@ -227,7 +228,8 @@ template&lt;typename Derived &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Optional structured logging hook. Default is no-op. </p>
+<p>Optional structured logging hook. </p>
+<p>Default is no-op. </p>
 
 </div>
 </div>
@@ -299,7 +301,8 @@ template&lt;typename Derived &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Send <code>length</code> bytes synchronously. Must block until all bytes are accepted by the underlying serial driver. </p>
+<p>Send <code>length</code> bytes synchronously. </p>
+<p>Must block until all bytes are accepted by the underlying serial driver. </p>
 
 </div>
 </div>

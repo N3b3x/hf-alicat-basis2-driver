@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['warning_0',['Baud-rate change (datasheet warning)',['../md_docs_2hardware__setup.html#autotoc_md33',1,'']]],
-  ['what_20the_20comprehensive_20example_20demonstrates_1',['What the comprehensive example demonstrates',['../md_docs_2examples.html#autotoc_md27',1,'']]],
-  ['wiring_20esp32_20s3_20reference_2',['Transceiver wiring (ESP32-S3 reference)',['../md_docs_2hardware__setup.html#autotoc_md31',1,'']]],
-  ['with_20the_20project_20tools_20recommended_3',['Build with the project tools (recommended)',['../md_docs_2examples.html#autotoc_md24',1,'']]],
-  ['with_20tt_20idf_20py_20tt_20directly_4',['Build with &lt;tt&gt;idf.py&lt;/tt&gt; directly',['../md_docs_2examples.html#autotoc_md25',1,'']]],
+  ['warning_0',['Baud-rate change (datasheet warning)',['../md_docs_2hardware__setup.html#autotoc_md29',1,'']]],
+  ['what_20the_20comprehensive_20example_20demonstrates_1',['What the comprehensive example demonstrates',['../md_docs_2examples.html#autotoc_md23',1,'']]],
+  ['wiring_20esp32_20s3_20reference_2',['Transceiver wiring (ESP32-S3 reference)',['../md_docs_2hardware__setup.html#autotoc_md27',1,'']]],
+  ['with_20the_20project_20tools_20recommended_3',['Build with the project tools (recommended)',['../md_docs_2examples.html#autotoc_md20',1,'']]],
+  ['with_20tt_20idf_20py_20tt_20directly_4',['Build with &lt;tt&gt;idf.py&lt;/tt&gt; directly',['../md_docs_2examples.html#autotoc_md21',1,'']]],
   ['wrapper_5',['3. ESP-IDF component wrapper',['../md_docs_2cmake__integration.html#autotoc_md16',1,'']]],
   ['write_6',['write',['../classalicat__basis2_1_1UartInterface.html#af13d31fa7688bb749302fc0048842960',1,'alicat_basis2::UartInterface']]],
   ['writemultiple_7',['WriteMultiple',['../namespacealicat__basis2_1_1reg_1_1fn.html#a3593cfb251ea10d1c6330b08a6fdb47b',1,'alicat_basis2::reg::fn']]],

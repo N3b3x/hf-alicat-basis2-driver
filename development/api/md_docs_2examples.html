@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HF-Alicat-BASIS2 Driver: Examples</title>
+<title>Alicat BASIS-2 Driver: Examples</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">HF-Alicat-BASIS2 Driver<span id="projectnumber">&#160;0.1.0-dev</span>
+   <div id="projectname">Alicat BASIS-2 Driver<span id="projectnumber">&#160;0.1.0-dev</span>
    </div>
-   <div id="projectbrief">HF-Alicat-BASIS2 C++ Driver</div>
+   <div id="projectbrief">Hardware-agnostic C++17 driver for Alicat BASIS-2 mass-flow meters and controllers (Modbus-RTU)</div>
   </td>
  </tr>
  </tbody>
@@ -97,7 +97,7 @@ $(function(){initNavTree('md_docs_2examples.html',''); initResizable(); });
   <div class="headertitle"><div class="title">Examples</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md23"></a> Two ESP-IDF projects ship under <code>examples/esp32/</code>:</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md19"></a> Two ESP-IDF projects ship under <code>examples/esp32/</code>:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">App   </th><th class="markdownTableHeadNone">Source file   </th><th class="markdownTableHeadNone">Purpose    </th></tr>
@@ -107,7 +107,7 @@ $(function(){initNavTree('md_docs_2examples.html',''); initResizable(); });
 <td class="markdownTableBodyNone"><code>alicat_basis2_full_example</code>   </td><td class="markdownTableBodyNone"><code><a class="el" href="alicat__basis2__full__example_8cpp.html">alicat_basis2_full_example.cpp</a></code>   </td><td class="markdownTableBodyNone">Discovery + identity + configuration walkthrough + measurement window + periodic instantaneous loop   </td></tr>
 </table>
 <p>Both target the <b>ESP32-S3</b> by default and use <code>UART1</code> on TX=GPIO17 / RX=GPIO18 with the DE/RE pin on GPIO8. Edit the constants at the top of the source file for your wiring.</p>
-<h1><a class="anchor" id="autotoc_md24"></a>
+<h1><a class="anchor" id="autotoc_md20"></a>
 Build with the project tools (recommended)</h1>
 <p>The example tree includes the <a href="https://github.com/N3b3x/hf-espidf-project-tools"><code>hf-espidf-project-tools</code></a> submodule under <code>examples/esp32/scripts/</code>:</p>
 <div class="fragment"><div class="line">git submodule update --init --recursive</div>
@@ -116,7 +116,7 @@ Build with the project tools (recommended)</h1>
 <div class="line">./scripts/build_app.sh list</div>
 <div class="line">./scripts/build_app.sh alicat_basis2_minimal_example Debug</div>
 <div class="line">./scripts/flash_app.sh flash_monitor alicat_basis2_minimal_example Debug</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md25"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md21"></a>
 Build with <code>idf.py</code> directly</h1>
 <div class="fragment"><div class="line">cd examples/esp32</div>
 <div class="line">idf.py set-target esp32s3</div>
@@ -126,7 +126,7 @@ Build with <code>idf.py</code> directly</h1>
 <div class="line">  &quot;-DAPP_SOURCE_FILE=alicat_basis2_full_example.cpp&quot; \</div>
 <div class="line">  build</div>
 <div class="line">idf.py -B build flash monitor</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md26"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md22"></a>
 Layout</h1>
 <div class="fragment"><div class="line">examples/esp32/</div>
 <div class="line">├── CMakeLists.txt</div>
@@ -138,7 +138,7 @@ Layout</h1>
 <div class="line">│   ├── alicat_basis2_minimal_example.cpp</div>
 <div class="line">│   └── alicat_basis2_full_example.cpp</div>
 <div class="line">└── scripts/                        # git submodule → hf-espidf-project-tools</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md27"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md23"></a>
 What the comprehensive example demonstrates</h1>
 <ol type="1">
 <li>UART1 brought up in <code>UART_MODE_RS485_HALF_DUPLEX</code>.</li>

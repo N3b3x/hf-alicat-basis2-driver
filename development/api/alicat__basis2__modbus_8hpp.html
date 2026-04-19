@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HF-Alicat-BASIS2 Driver: inc/alicat_basis2_modbus.hpp File Reference</title>
+<title>Alicat BASIS-2 Driver: inc/alicat_basis2_modbus.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">HF-Alicat-BASIS2 Driver<span id="projectnumber">&#160;0.1.0-dev</span>
+   <div id="projectname">Alicat BASIS-2 Driver<span id="projectnumber">&#160;0.1.0-dev</span>
    </div>
-   <div id="projectbrief">HF-Alicat-BASIS2 C++ Driver</div>
+   <div id="projectbrief">Hardware-agnostic C++17 driver for Alicat BASIS-2 mass-flow meters and controllers (Modbus-RTU)</div>
   </td>
  </tr>
  </tbody>
@@ -140,15 +140,19 @@ Functions</h2></td></tr>
 <tr class="memdesc:a0097531f06f849c885dfbc4da8d25b95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verify the CRC at <code>frame[length-2..length-1]</code> matches the body.  <br /></td></tr>
 <tr class="separator:a0097531f06f849c885dfbc4da8d25b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75c1e6e85f65021162500f06fa8ea912" id="r_a75c1e6e85f65021162500f06fa8ea912"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealicat__basis2_1_1modbus.html#a75c1e6e85f65021162500f06fa8ea912">alicat_basis2::modbus::BuildReadHolding</a> (uint8_t unit_addr, uint16_t reg_addr, uint16_t reg_count, uint8_t *out, std::size_t out_capacity) noexcept</td></tr>
+<tr class="memdesc:a75c1e6e85f65021162500f06fa8ea912"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a Function-03 (Read Holding Registers) request.  <br /></td></tr>
 <tr class="separator:a75c1e6e85f65021162500f06fa8ea912"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d198463b1873d6912f35e847662ef91" id="r_a8d198463b1873d6912f35e847662ef91"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealicat__basis2_1_1modbus.html#a8d198463b1873d6912f35e847662ef91">alicat_basis2::modbus::BuildWriteSingle</a> (uint8_t unit_addr, uint16_t reg_addr, uint16_t value, uint8_t *out, std::size_t out_capacity) noexcept</td></tr>
 <tr class="memdesc:a8d198463b1873d6912f35e847662ef91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a Function-06 (Write Single Register) request.  <br /></td></tr>
 <tr class="separator:a8d198463b1873d6912f35e847662ef91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19f48d9ebd0a238477fcb5c337842a38" id="r_a19f48d9ebd0a238477fcb5c337842a38"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealicat__basis2_1_1modbus.html#a19f48d9ebd0a238477fcb5c337842a38">alicat_basis2::modbus::BuildWriteMultiple</a> (uint8_t unit_addr, uint16_t reg_addr, const uint16_t *regs, uint8_t count, uint8_t *out, std::size_t out_capacity) noexcept</td></tr>
+<tr class="memdesc:a19f48d9ebd0a238477fcb5c337842a38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a Function-16 (Write Multiple Registers) request.  <br /></td></tr>
 <tr class="separator:a19f48d9ebd0a238477fcb5c337842a38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a490f995ab3f7794e42114b0a1e96a4" id="r_a1a490f995ab3f7794e42114b0a1e96a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9">DriverError</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealicat__basis2_1_1modbus.html#a1a490f995ab3f7794e42114b0a1e96a4">alicat_basis2::modbus::ParseReadHolding</a> (const uint8_t *frame, std::size_t length, uint8_t expected_addr, uint8_t expected_count, uint16_t *regs) noexcept</td></tr>
+<tr class="memdesc:a1a490f995ab3f7794e42114b0a1e96a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a Function-03 response into <code>regs[]</code>.  <br /></td></tr>
 <tr class="separator:a1a490f995ab3f7794e42114b0a1e96a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ac03acd7a97babc172d3318d9a4a961" id="r_a6ac03acd7a97babc172d3318d9a4a961"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9">DriverError</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealicat__basis2_1_1modbus.html#a6ac03acd7a97babc172d3318d9a4a961">alicat_basis2::modbus::ParseWriteSingleEcho</a> (const uint8_t *frame, std::size_t length, const uint8_t *request, std::size_t req_len) noexcept</td></tr>
+<tr class="memdesc:a6ac03acd7a97babc172d3318d9a4a961"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate the echo of a Function-06 (Write Single) request against the just-sent request.  <br /></td></tr>
 <tr class="separator:a6ac03acd7a97babc172d3318d9a4a961"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2144713dbe33b70490972ba48ea4a35" id="r_ae2144713dbe33b70490972ba48ea4a35"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9">DriverError</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacealicat__basis2_1_1modbus.html#ae2144713dbe33b70490972ba48ea4a35">alicat_basis2::modbus::ParseWriteMultipleEcho</a> (const uint8_t *frame, std::size_t length, uint8_t expected_addr, uint16_t expected_reg_addr, uint16_t expected_count) noexcept</td></tr>
 <tr class="memdesc:ae2144713dbe33b70490972ba48ea4a35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate the response of a Function-16 (Write Multiple) request.  <br /></td></tr>

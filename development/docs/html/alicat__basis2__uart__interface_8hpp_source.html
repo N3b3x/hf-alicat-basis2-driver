@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HF-Alicat-BASIS2 Driver: inc/alicat_basis2_uart_interface.hpp Source File</title>
+<title>Alicat BASIS-2 Driver: inc/alicat_basis2_uart_interface.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">HF-Alicat-BASIS2 Driver<span id="projectnumber">&#160;0.1.0-dev</span>
+   <div id="projectname">Alicat BASIS-2 Driver<span id="projectnumber">&#160;0.1.0-dev</span>
    </div>
-   <div id="projectbrief">HF-Alicat-BASIS2 C++ Driver</div>
+   <div id="projectbrief">Hardware-agnostic C++17 driver for Alicat BASIS-2 mass-flow meters and controllers (Modbus-RTU)</div>
   </td>
  </tr>
  </tbody>
@@ -161,10 +161,10 @@ $(function(){initNavTree('alicat__basis2__uart__interface_8hpp_source.html','');
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}  <span class="comment">// namespace alicat_basis2</span></div>
 <div class="ttc" id="aclassalicat__basis2_1_1UartInterface_html"><div class="ttname"><a href="classalicat__basis2_1_1UartInterface.html">alicat_basis2::UartInterface</a></div><div class="ttdoc">CRTP base for the BASIS-2 serial transport.</div><div class="ttdef"><b>Definition</b> alicat_basis2_uart_interface.hpp:44</div></div>
 <div class="ttc" id="aclassalicat__basis2_1_1UartInterface_html_a1bf48ef2d2d7af8b8c67433d3c07945b"><div class="ttname"><a href="classalicat__basis2_1_1UartInterface.html#a1bf48ef2d2d7af8b8c67433d3c07945b">alicat_basis2::UartInterface::read</a></div><div class="ttdeci">std::size_t read(uint8_t *out, std::size_t max, uint32_t timeout_ms) noexcept</div><div class="ttdoc">Read up to max bytes into out with a per-call timeout.</div><div class="ttdef"><b>Definition</b> alicat_basis2_uart_interface.hpp:58</div></div>
-<div class="ttc" id="aclassalicat__basis2_1_1UartInterface_html_a2c63cafd4b8065462cf5584fa37e6d04"><div class="ttname"><a href="classalicat__basis2_1_1UartInterface.html#a2c63cafd4b8065462cf5584fa37e6d04">alicat_basis2::UartInterface::delay_ms</a></div><div class="ttdeci">void delay_ms(uint32_t ms) noexcept</div><div class="ttdoc">Sleep ms milliseconds. Default implementation is a no-op; adapters that have a sleep primitive should...</div><div class="ttdef"><b>Definition</b> alicat_basis2_uart_interface.hpp:71</div></div>
-<div class="ttc" id="aclassalicat__basis2_1_1UartInterface_html_a620c307b61e2bf0415929e9b9d47916e"><div class="ttname"><a href="classalicat__basis2_1_1UartInterface.html#a620c307b61e2bf0415929e9b9d47916e">alicat_basis2::UartInterface::log</a></div><div class="ttdeci">void log(const char *tag, const char *fmt,...) noexcept</div><div class="ttdoc">Optional structured logging hook. Default is no-op.</div><div class="ttdef"><b>Definition</b> alicat_basis2_uart_interface.hpp:82</div></div>
+<div class="ttc" id="aclassalicat__basis2_1_1UartInterface_html_a2c63cafd4b8065462cf5584fa37e6d04"><div class="ttname"><a href="classalicat__basis2_1_1UartInterface.html#a2c63cafd4b8065462cf5584fa37e6d04">alicat_basis2::UartInterface::delay_ms</a></div><div class="ttdeci">void delay_ms(uint32_t ms) noexcept</div><div class="ttdoc">Sleep ms milliseconds.</div><div class="ttdef"><b>Definition</b> alicat_basis2_uart_interface.hpp:71</div></div>
+<div class="ttc" id="aclassalicat__basis2_1_1UartInterface_html_a620c307b61e2bf0415929e9b9d47916e"><div class="ttname"><a href="classalicat__basis2_1_1UartInterface.html#a620c307b61e2bf0415929e9b9d47916e">alicat_basis2::UartInterface::log</a></div><div class="ttdeci">void log(const char *tag, const char *fmt,...) noexcept</div><div class="ttdoc">Optional structured logging hook.</div><div class="ttdef"><b>Definition</b> alicat_basis2_uart_interface.hpp:82</div></div>
 <div class="ttc" id="aclassalicat__basis2_1_1UartInterface_html_ad20b496f2da2c1c65f41bc20e5949918"><div class="ttname"><a href="classalicat__basis2_1_1UartInterface.html#ad20b496f2da2c1c65f41bc20e5949918">alicat_basis2::UartInterface::flush_rx</a></div><div class="ttdeci">void flush_rx() noexcept</div><div class="ttdoc">Drop any unread bytes from the RX path.</div><div class="ttdef"><b>Definition</b> alicat_basis2_uart_interface.hpp:63</div></div>
-<div class="ttc" id="aclassalicat__basis2_1_1UartInterface_html_af13d31fa7688bb749302fc0048842960"><div class="ttname"><a href="classalicat__basis2_1_1UartInterface.html#af13d31fa7688bb749302fc0048842960">alicat_basis2::UartInterface::write</a></div><div class="ttdeci">void write(const uint8_t *data, std::size_t length) noexcept</div><div class="ttdoc">Send length bytes synchronously. Must block until all bytes are accepted by the underlying serial dri...</div><div class="ttdef"><b>Definition</b> alicat_basis2_uart_interface.hpp:50</div></div>
+<div class="ttc" id="aclassalicat__basis2_1_1UartInterface_html_af13d31fa7688bb749302fc0048842960"><div class="ttname"><a href="classalicat__basis2_1_1UartInterface.html#af13d31fa7688bb749302fc0048842960">alicat_basis2::UartInterface::write</a></div><div class="ttdeci">void write(const uint8_t *data, std::size_t length) noexcept</div><div class="ttdoc">Send length bytes synchronously.</div><div class="ttdef"><b>Definition</b> alicat_basis2_uart_interface.hpp:50</div></div>
 <div class="ttc" id="anamespacealicat__basis2_html"><div class="ttname"><a href="namespacealicat__basis2.html">alicat_basis2</a></div><div class="ttdef"><b>Definition</b> alicat_basis2.hpp:51</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

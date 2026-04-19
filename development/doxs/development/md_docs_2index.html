@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HF-Alicat-BASIS2 Driver: HF-Alicat-BASIS2 documentation</title>
+<title>Alicat BASIS-2 Driver: HF-Alicat-BASIS2 documentation</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">HF-Alicat-BASIS2 Driver<span id="projectnumber">&#160;0.1.0-dev</span>
+   <div id="projectname">Alicat BASIS-2 Driver<span id="projectnumber">&#160;0.1.0-dev</span>
    </div>
-   <div id="projectbrief">HF-Alicat-BASIS2 C++ Driver</div>
+   <div id="projectbrief">Hardware-agnostic C++17 driver for Alicat BASIS-2 mass-flow meters and controllers (Modbus-RTU)</div>
   </td>
  </tr>
  </tbody>
@@ -97,38 +97,38 @@ $(function(){initNavTree('md_docs_2index.html',''); initResizable(); });
   <div class="headertitle"><div class="title">HF-Alicat-BASIS2 documentation</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md34"></a> Welcome. This site mirrors the <a href="https://github.com/N3b3x/hf-alicat-basis2-driver/tree/main/docs"><code>docs/</code></a> folder in the repository and adds navigation, search, and diagrams for the <b>Alicat BASIS-2</b> mass-flow meter / controller (B-Series and BC-Series) driver.</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md30"></a> Welcome. This site mirrors the <a href="https://github.com/N3b3x/hf-alicat-basis2-driver/tree/main/docs"><code>docs/</code></a> folder in the repository and adds navigation, search, and diagrams for the <b>Alicat BASIS-2</b> mass-flow meter / controller (B-Series and BC-Series) driver.</p>
 <blockquote class="doxtable">
 <p>&zwj;<b>Browse on GitHub:</b> <a href="https://github.com/N3b3x/hf-alicat-basis2-driver">repository home</a> · <a href="https://github.com/N3b3x/hf-alicat-basis2-driver/issues">Issues</a> </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md35"></a>
+<h1><a class="anchor" id="autotoc_md31"></a>
 Documentation structure</h1>
-<h2><a class="anchor" id="autotoc_md36"></a>
+<h2><a class="anchor" id="autotoc_md32"></a>
 Getting started</h2>
 <ol type="1">
 <li><b><a class="el" href="md_docs_2installation.html">Installation</a></b> — Compiler / CMake requirements and include layout</li>
 <li><b><a class="el" href="md_docs_2quickstart.html">Quick start</a></b> — Smallest CRTP serial adapter you need to read live data</li>
 <li><b><a class="el" href="md_docs_2modbus__protocol.html">Modbus protocol</a></b> — Frame format, register map highlights, CRC</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md37"></a>
+<h2><a class="anchor" id="autotoc_md33"></a>
 Hardware &amp; integration</h2>
 <ol type="1">
 <li><b><a class="el" href="md_docs_2hardware__setup.html">Hardware setup — RS-485 bus</a></b> — Pinout, transceiver, multidrop wiring</li>
 <li><b><a class="el" href="md_docs_2cmake__integration.html">CMake integration</a></b> — <code>hf_alicat_basis2_build_settings.cmake</code>, <code>hf::alicat_basis2</code> target</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md38"></a>
+<h2><a class="anchor" id="autotoc_md34"></a>
 Reference &amp; examples</h2>
 <ol type="1">
 <li><b><a class="el" href="md_docs_2api__reference.html">API reference</a></b> — <code>Driver&lt;UartT&gt;</code>, <code>UartInterface&lt;&gt;</code>, types, results</li>
 <li><b><a class="el" href="md_docs_2examples.html">Examples</a></b> — ESP-IDF examples (minimal + comprehensive) and build/flash flow</li>
 <li><b><a class="el" href="md_docs_2troubleshooting.html">Troubleshooting</a></b> — Bus discovery, baud changes, exception codes</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md39"></a>
+<h2><a class="anchor" id="autotoc_md35"></a>
 Manufacturer</h2>
 <ol type="1">
-<li><b><a class="el" href="/home/runner/work/hf-alicat-basis2-driver/hf-alicat-basis2-driver/docs/datasheet/README.md#md_docs_2datasheet_2README">Datasheet &amp; links</a></b> — Official Alicat documentation and product pages</li>
+<li><b>Datasheet &amp; links</b> — Bundled <a href="datasheet/DOC-MANUAL-BASIS2.pdf"><code>DOC-MANUAL-BASIS2.pdf</code></a> (Rev 4, May 2025) plus links to Alicat product pages, FlowVision software and the Modbus FAQ.</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md40"></a>
+<h1><a class="anchor" id="autotoc_md36"></a>
 Visual overview</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">

@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "HF-Alicat-BASIS2 Driver", "index.html", [
+  [ "Alicat BASIS-2 Driver", "index.html", [
     [ "hf-alicat-basis2-driver", "index.html", null ],
     [ "API reference", "md_docs_2api__reference.html", [
       [ "Driver<UartT> (alicat_basis2.hpp)", "md_docs_2api__reference.html#autotoc_md2", [
@@ -48,55 +48,55 @@ var NAVTREE =
       [ "Generated header", "md_docs_2cmake__integration.html#autotoc_md18", null ]
     ] ],
     [ "Examples", "md_docs_2examples.html", [
-      [ "Build with the project tools (recommended)", "md_docs_2examples.html#autotoc_md24", null ],
-      [ "Build with idf.py directly", "md_docs_2examples.html#autotoc_md25", null ],
-      [ "Layout", "md_docs_2examples.html#autotoc_md26", null ],
-      [ "What the comprehensive example demonstrates", "md_docs_2examples.html#autotoc_md27", null ]
+      [ "Build with the project tools (recommended)", "md_docs_2examples.html#autotoc_md20", null ],
+      [ "Build with idf.py directly", "md_docs_2examples.html#autotoc_md21", null ],
+      [ "Layout", "md_docs_2examples.html#autotoc_md22", null ],
+      [ "What the comprehensive example demonstrates", "md_docs_2examples.html#autotoc_md23", null ]
     ] ],
     [ "Hardware setup — RS-485 bus", "md_docs_2hardware__setup.html", [
-      [ "Connector pinout", "md_docs_2hardware__setup.html#autotoc_md29", null ],
-      [ "RS-485 multidrop topology", "md_docs_2hardware__setup.html#autotoc_md30", null ],
-      [ "Transceiver wiring (ESP32-S3 reference)", "md_docs_2hardware__setup.html#autotoc_md31", null ],
-      [ "First power-up — assigning addresses", "md_docs_2hardware__setup.html#autotoc_md32", null ],
-      [ "Baud-rate change (datasheet warning)", "md_docs_2hardware__setup.html#autotoc_md33", null ]
+      [ "Connector pinout", "md_docs_2hardware__setup.html#autotoc_md25", null ],
+      [ "RS-485 multidrop topology", "md_docs_2hardware__setup.html#autotoc_md26", null ],
+      [ "Transceiver wiring (ESP32-S3 reference)", "md_docs_2hardware__setup.html#autotoc_md27", null ],
+      [ "First power-up — assigning addresses", "md_docs_2hardware__setup.html#autotoc_md28", null ],
+      [ "Baud-rate change (datasheet warning)", "md_docs_2hardware__setup.html#autotoc_md29", null ]
     ] ],
     [ "HF-Alicat-BASIS2 documentation", "md_docs_2index.html", [
-      [ "Documentation structure", "md_docs_2index.html#autotoc_md35", [
-        [ "Getting started", "md_docs_2index.html#autotoc_md36", null ],
-        [ "Hardware & integration", "md_docs_2index.html#autotoc_md37", null ],
-        [ "Reference & examples", "md_docs_2index.html#autotoc_md38", null ],
-        [ "Manufacturer", "md_docs_2index.html#autotoc_md39", null ]
+      [ "Documentation structure", "md_docs_2index.html#autotoc_md31", [
+        [ "Getting started", "md_docs_2index.html#autotoc_md32", null ],
+        [ "Hardware & integration", "md_docs_2index.html#autotoc_md33", null ],
+        [ "Reference & examples", "md_docs_2index.html#autotoc_md34", null ],
+        [ "Manufacturer", "md_docs_2index.html#autotoc_md35", null ]
       ] ],
-      [ "Visual overview", "md_docs_2index.html#autotoc_md40", null ]
+      [ "Visual overview", "md_docs_2index.html#autotoc_md36", null ]
     ] ],
     [ "Installation", "md_docs_2installation.html", [
-      [ "Requirements", "md_docs_2installation.html#autotoc_md42", null ],
-      [ "Layout", "md_docs_2installation.html#autotoc_md43", null ],
-      [ "Vendoring as a Git submodule (recommended)", "md_docs_2installation.html#autotoc_md44", null ],
-      [ "Vendoring as an ESP-IDF component", "md_docs_2installation.html#autotoc_md45", null ],
-      [ "Verifying the version header", "md_docs_2installation.html#autotoc_md46", null ]
+      [ "Requirements", "md_docs_2installation.html#autotoc_md38", null ],
+      [ "Layout", "md_docs_2installation.html#autotoc_md39", null ],
+      [ "Vendoring as a Git submodule (recommended)", "md_docs_2installation.html#autotoc_md40", null ],
+      [ "Vendoring as an ESP-IDF component", "md_docs_2installation.html#autotoc_md41", null ],
+      [ "Verifying the version header", "md_docs_2installation.html#autotoc_md42", null ]
     ] ],
     [ "Modbus-RTU protocol", "md_docs_2modbus__protocol.html", [
-      [ "Frame format", "md_docs_2modbus__protocol.html#autotoc_md48", null ],
-      [ "Register map highlights", "md_docs_2modbus__protocol.html#autotoc_md49", [
-        [ "Instantaneous data (one Modbus burst, 10 registers)", "md_docs_2modbus__protocol.html#autotoc_md50", null ],
-        [ "Identity (read once at boot)", "md_docs_2modbus__protocol.html#autotoc_md51", null ],
-        [ "Setpoint (controllers only)", "md_docs_2modbus__protocol.html#autotoc_md52", null ],
-        [ "Configuration", "md_docs_2modbus__protocol.html#autotoc_md53", null ]
+      [ "Frame format", "md_docs_2modbus__protocol.html#autotoc_md44", null ],
+      [ "Register map highlights", "md_docs_2modbus__protocol.html#autotoc_md45", [
+        [ "Instantaneous data (one Modbus burst, 10 registers)", "md_docs_2modbus__protocol.html#autotoc_md46", null ],
+        [ "Identity (read once at boot)", "md_docs_2modbus__protocol.html#autotoc_md47", null ],
+        [ "Setpoint (controllers only)", "md_docs_2modbus__protocol.html#autotoc_md48", null ],
+        [ "Configuration", "md_docs_2modbus__protocol.html#autotoc_md49", null ]
       ] ],
-      [ "Exception handling", "md_docs_2modbus__protocol.html#autotoc_md54", null ]
+      [ "Exception handling", "md_docs_2modbus__protocol.html#autotoc_md50", null ]
     ] ],
     [ "Quick start", "md_docs_2quickstart.html", [
-      [ "Implement the CRTP adapter", "md_docs_2quickstart.html#autotoc_md56", null ],
-      [ "Construct the driver", "md_docs_2quickstart.html#autotoc_md57", null ],
-      [ "Read the identity once at boot", "md_docs_2quickstart.html#autotoc_md58", null ],
-      [ "Periodically pull live data", "md_docs_2quickstart.html#autotoc_md59", null ],
-      [ "Common control operations", "md_docs_2quickstart.html#autotoc_md60", null ],
-      [ "Bus discovery (first power-up)", "md_docs_2quickstart.html#autotoc_md61", null ]
+      [ "Implement the CRTP adapter", "md_docs_2quickstart.html#autotoc_md52", null ],
+      [ "Construct the driver", "md_docs_2quickstart.html#autotoc_md53", null ],
+      [ "Read the identity once at boot", "md_docs_2quickstart.html#autotoc_md54", null ],
+      [ "Periodically pull live data", "md_docs_2quickstart.html#autotoc_md55", null ],
+      [ "Common control operations", "md_docs_2quickstart.html#autotoc_md56", null ],
+      [ "Bus discovery (first power-up)", "md_docs_2quickstart.html#autotoc_md57", null ]
     ] ],
     [ "Troubleshooting", "md_docs_2troubleshooting.html", [
-      [ "Extra logging", "md_docs_2troubleshooting.html#autotoc_md63", null ],
-      [ "Filing an issue", "md_docs_2troubleshooting.html#autotoc_md64", null ]
+      [ "Extra logging", "md_docs_2troubleshooting.html#autotoc_md59", null ],
+      [ "Filing an issue", "md_docs_2troubleshooting.html#autotoc_md60", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -129,8 +129,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "alicat__basis2_8hpp.html",
-"md_docs_2api__reference.html#autotoc_md12",
-"structalicat__basis2_1_1InstantaneousData.html#ad7cab1a7ce4d196313acb7e9a6068874"
+"md_docs_2api__reference.html#autotoc_md2",
+"structalicat__basis2_1_1InstantaneousData.html#add100462f60f9da32aec0208f7261501"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

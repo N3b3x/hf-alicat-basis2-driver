@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HF-Alicat-BASIS2 Driver: Troubleshooting</title>
+<title>Alicat BASIS-2 Driver: Troubleshooting</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">HF-Alicat-BASIS2 Driver<span id="projectnumber">&#160;0.1.0-dev</span>
+   <div id="projectname">Alicat BASIS-2 Driver<span id="projectnumber">&#160;0.1.0-dev</span>
    </div>
-   <div id="projectbrief">HF-Alicat-BASIS2 C++ Driver</div>
+   <div id="projectbrief">Hardware-agnostic C++17 driver for Alicat BASIS-2 mass-flow meters and controllers (Modbus-RTU)</div>
   </td>
  </tr>
  </tbody>
@@ -97,7 +97,7 @@ $(function(){initNavTree('md_docs_2troubleshooting.html',''); initResizable(); }
   <div class="headertitle"><div class="title">Troubleshooting</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md62"></a> </p><table class="markdownTable">
+<div class="textblock"><p><a class="anchor" id="autotoc_md58"></a> </p><table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Symptom   </th><th class="markdownTableHeadNone">Likely cause   </th><th class="markdownTableHeadNone">What to try    </th></tr>
 <tr class="markdownTableRowOdd">
@@ -119,13 +119,13 @@ $(function(){initNavTree('md_docs_2troubleshooting.html',''); initResizable(); }
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>flow</code> field looks 1000× too big or small   </td><td class="markdownTableBodyNone">Decimals mismatch   </td><td class="markdownTableBodyNone">The instrument's flow register is scaled by a factory-set decimal count. The driver defaults to 3 decimals; pass the right value to <code>ReadInstantaneous(decimals)</code> or to <code>SetSetpoint(value, decimals)</code> if your unit was calibrated differently.   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md63"></a>
+<h1><a class="anchor" id="autotoc_md59"></a>
 Extra logging</h1>
 <p>When debugging on ESP-IDF, set the per-tag log level to <b>DEBUG</b>:</p>
 <div class="fragment"><div class="line">esp_log_level_set(<span class="stringliteral">&quot;Basis2Min&quot;</span>, ESP_LOG_DEBUG);</div>
 <div class="line">esp_log_level_set(<span class="stringliteral">&quot;Basis2Full&quot;</span>, ESP_LOG_DEBUG);</div>
 </div><!-- fragment --><p>…and instrument your CRTP adapter with <code>printf</code> / <code>ESP_LOGD</code> calls in <code>write</code> and <code>read</code> to dump raw byte traces.</p>
-<h1><a class="anchor" id="autotoc_md64"></a>
+<h1><a class="anchor" id="autotoc_md60"></a>
 Filing an issue</h1>
 <p>Please attach:</p>
 <ul>

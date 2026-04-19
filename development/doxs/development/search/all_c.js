@@ -8,6 +8,6 @@ var searchData=
   ['generated_20header_5',['Generated header',['../md_docs_2cmake__integration.html#autotoc_md18',1,'']]],
   ['getaddress_6',['GetAddress',['../classalicat__basis2_1_1Driver.html#a25730c6d4142bc82433d9222d17b6143',1,'alicat_basis2::Driver']]],
   ['gettimeoutms_7',['GetTimeoutMs',['../classalicat__basis2_1_1Driver.html#ad29719cbf4ec67594e0e1d0e3b73ab2c',1,'alicat_basis2::Driver']]],
-  ['getting_20started_8',['Getting started',['../md_docs_2index.html#autotoc_md36',1,'']]],
-  ['git_20submodule_20recommended_9',['Vendoring as a Git submodule (recommended)',['../md_docs_2installation.html#autotoc_md44',1,'']]]
+  ['getting_20started_8',['Getting started',['../md_docs_2index.html#autotoc_md32',1,'']]],
+  ['git_20submodule_20recommended_9',['Vendoring as a Git submodule (recommended)',['../md_docs_2installation.html#autotoc_md40',1,'']]]
 ];

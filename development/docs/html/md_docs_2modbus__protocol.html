@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HF-Alicat-BASIS2 Driver: Modbus-RTU protocol</title>
+<title>Alicat BASIS-2 Driver: Modbus-RTU protocol</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">HF-Alicat-BASIS2 Driver<span id="projectnumber">&#160;0.1.0-dev</span>
+   <div id="projectname">Alicat BASIS-2 Driver<span id="projectnumber">&#160;0.1.0-dev</span>
    </div>
-   <div id="projectbrief">HF-Alicat-BASIS2 C++ Driver</div>
+   <div id="projectbrief">Hardware-agnostic C++17 driver for Alicat BASIS-2 mass-flow meters and controllers (Modbus-RTU)</div>
   </td>
  </tr>
  </tbody>
@@ -97,7 +97,7 @@ $(function(){initNavTree('md_docs_2modbus__protocol.html',''); initResizable(); 
   <div class="headertitle"><div class="title">Modbus-RTU protocol</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md47"></a> The driver implements the <b>Modbus-RTU</b> subset that the Alicat BASIS-2 firmware actually understands, per <em>DOC-MANUAL-BASIS2 Rev 4</em>:</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md43"></a> The driver implements the <b>Modbus-RTU</b> subset that the Alicat BASIS-2 firmware actually understands, per <em>DOC-MANUAL-BASIS2 Rev 4</em>:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Function code   </th><th class="markdownTableHeadNone">Name   </th><th class="markdownTableHeadNone">Driver entry point    </th></tr>
@@ -109,7 +109,7 @@ $(function(){initNavTree('md_docs_2modbus__protocol.html',''); initResizable(); 
 <td class="markdownTableBodyNone">0x10   </td><td class="markdownTableBodyNone">Write Multiple Registers   </td><td class="markdownTableBodyNone">Internal — used by 32-bit writes (setpoint, batch, ramp)   </td></tr>
 </table>
 <p>All other Modbus function codes are intentionally not implemented because the BASIS-2 returns an exception for them.</p>
-<h1><a class="anchor" id="autotoc_md48"></a>
+<h1><a class="anchor" id="autotoc_md44"></a>
 Frame format</h1>
 <div class="fragment"><div class="line">┌──────────┬──────────┬─────────────────────────────┬──────────┐</div>
 <div class="line">│ slave id │  fn code │  payload (≥ 2 bytes)        │  CRC-16  │</div>
@@ -118,10 +118,10 @@ Frame format</h1>
 <div class="line">└──────────┴──────────┴─────────────────────────────┴──────────┘</div>
 </div><!-- fragment --><p>CRC-16 polynomial <b>0xA001</b> (Modbus standard, LSB first), seeded at <b>0xFFFF</b>, transmitted <b>little-endian</b> at the end of every frame. Implementation lives in <code><a class="el" href="alicat__basis2__modbus_8hpp.html" title="Modbus-RTU framing and CRC-16 helpers used by the BASIS-2 driver.">inc/alicat_basis2_modbus.hpp</a></code> (<code>Crc16</code>, <code>AppendCrc</code>, <code>CheckCrc</code>).</p>
 <p>The Modbus-RTU spec also mandates a ≥ <b>3.5-character</b> idle gap between back-to-back frames. ESP-IDF's <code>UART_MODE_RS485_HALF_DUPLEX</code> mode handles the DE/RE timing automatically; the driver itself never needs to know about RS-485.</p>
-<h1><a class="anchor" id="autotoc_md49"></a>
+<h1><a class="anchor" id="autotoc_md45"></a>
 Register map highlights</h1>
 <p>The full address table lives in <code><a class="el" href="alicat__basis2__registers_8hpp.html" title="Modbus-RTU holding-register addresses for Alicat BASIS-2.">inc/alicat_basis2_registers.hpp</a></code> (one constant per register, names mirror the datasheet). The most useful are:</p>
-<h2><a class="anchor" id="autotoc_md50"></a>
+<h2><a class="anchor" id="autotoc_md46"></a>
 Instantaneous data (one Modbus burst, 10 registers)</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -144,7 +144,7 @@ Instantaneous data (one Modbus burst, 10 registers)</h2>
 <td class="markdownTableBodyNone">2108–2109   </td><td class="markdownTableBodyNone">Batch remaining   </td><td class="markdownTableBodyNone">32-bit, scaled like flow   </td></tr>
 </table>
 <p><code>Driver::ReadInstantaneous()</code> pulls all of these in one Modbus transaction and returns an <code>InstantaneousData</code> struct with everything already decoded.</p>
-<h2><a class="anchor" id="autotoc_md51"></a>
+<h2><a class="anchor" id="autotoc_md47"></a>
 Identity (read once at boot)</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -158,7 +158,7 @@ Identity (read once at boot)</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">46   </td><td class="markdownTableBodyNone">ASCII unit id   </td><td class="markdownTableBodyNone">&lsquo;'A&rsquo;..'Z'<code>\ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowOdd"&gt; &lt;td class="markdownTableBodyNone"&gt; 47–48 \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; Full-scale flow \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; unsigned 32-bit;</code>value / 1000<code>in user units \ilinebr &lt;/td&gt; &lt;/tr&gt; &lt;tr class="markdownTableRowEven"&gt; &lt;td class="markdownTableBodyNone"&gt; 49 \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt; Flow units code \ilinebr &lt;/td&gt; &lt;td class="markdownTableBodyNone"&gt;</code>FlowUnits` enum (SCCM, SLPM, …)   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md52"></a>
+<h2><a class="anchor" id="autotoc_md48"></a>
 Setpoint (controllers only)</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -177,7 +177,7 @@ Setpoint (controllers only)</h2>
 <blockquote class="doxtable">
 <p>&zwj;⚠️ The datasheet warns that <code>DigitalSaved</code> (source = 1) writes to non-volatile memory on every change. Use <code>DigitalUnsaved</code> (source = 2) when the setpoint changes more often than once every few minutes. </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md53"></a>
+<h2><a class="anchor" id="autotoc_md49"></a>
 Configuration</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -199,7 +199,7 @@ Configuration</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">80   </td><td class="markdownTableBodyNone">Factory restore command   </td><td class="markdownTableBodyNone">write <code>0x5214</code>   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md54"></a>
+<h1><a class="anchor" id="autotoc_md50"></a>
 Exception handling</h1>
 <p>When the slave doesn't implement a register or rejects a write, it replies with a Modbus exception (function code OR'd with <code>0x80</code>). The driver maps this to <code>DriverError::ModbusException</code>. A <code>Timeout</code> means the slave never responded (wrong address, baud mismatch, broken bus).</p>
 <p>Every API call returns <code>DriverResult&lt;T&gt;</code>:</p>
