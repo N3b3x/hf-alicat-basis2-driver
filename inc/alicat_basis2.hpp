@@ -81,10 +81,12 @@ public:
 
     /// Update the per-transaction timeout (ms).
     void SetTimeoutMs(uint16_t ms) noexcept { timeout_ms_ = ms; }
+    /// @return Current per-transaction timeout in milliseconds.
     uint16_t GetTimeoutMs() const noexcept  { return timeout_ms_; }
 
     /// Switch the slave address this driver targets at runtime.
     void SetAddress(uint8_t addr) noexcept { address_ = addr; }
+    /// @return Current Modbus slave address (1..247) this driver is talking to.
     uint8_t GetAddress() const noexcept    { return address_; }
 
     //==========================================================================
@@ -101,6 +103,10 @@ public:
      * @param flow_decimals  The factory-set number of decimals reported on
      *                       this instrument's flow register; pulled at
      *                       init time via `ReadIdentity()`.
+     * @return `DriverResult<InstantaneousData>` — `value` carries the
+     *         decoded snapshot on success, `error` is `DriverError::None`.
+     *         On failure `value` is default-constructed and `error` carries
+     *         the underlying transport / Modbus error.
      */
     DriverResult<InstantaneousData> ReadInstantaneous(uint8_t flow_decimals = 3) noexcept {
         std::array<uint16_t, 10> regs{};
@@ -152,6 +158,9 @@ public:
      * Reads firmware version (reg 25), serial number (regs 26..31),
      * Modbus address (reg 45), ASCII unit id (reg 46), full-scale flow
      * in user units (regs 47..48) and the flow-units code (reg 49).
+     *
+     * @return `DriverResult<InstrumentIdentity>` populated with all of the
+     *         above on success; transport / Modbus error otherwise.
      */
     DriverResult<InstrumentIdentity> ReadIdentity() noexcept {
         InstrumentIdentity id{};
@@ -201,9 +210,18 @@ public:
 
     /**
      * @brief Set the digital setpoint (controllers only).
+     *
+     * Writes the signed 32-bit setpoint to registers 2053..2054. The
+     * datasheet defines the on-the-wire scaling as `value × 1000` so
+     * the host passes the engineering value (e.g. 12.5 SLPM) and the
+     * driver does the multiplication.
+     *
      * @param value_in_user_units Real setpoint, e.g. 12.5 SLPM.
      * @param flow_decimals       Number of decimals for this instrument
      *                            (call `ReadIdentity` once and cache).
+     * @return `DriverResult<void>` — success or a Modbus / transport error.
+     *         A meter (non-controller) instrument will return
+     *         `DriverError::ModbusException`.
      */
     DriverResult<void> SetSetpoint(float value_in_user_units, uint8_t flow_decimals = 3) noexcept {
         const int32_t scaled = static_cast<int32_t>(
@@ -218,11 +236,24 @@ public:
         return WriteMultipleRegisters(reg::SetpointCommand, regs.data(), 2);
     }
 
+    /**
+     * @brief Switch the setpoint source (controllers only).
+     * @param src Analog input pin / digital saved-to-flash / digital volatile.
+     * @return Success or transport / Modbus error.
+     */
     DriverResult<void> SetSetpointSource(SetpointSource src) noexcept {
         return WriteSingleRegister(reg::SetpointSource, static_cast<uint16_t>(src));
     }
 
-    /// 0..5000 ms (0 disables); see datasheet "Communication Watchdog".
+    /**
+     * @brief Configure the communication watchdog (controllers only).
+     * @param ms 0..5000 ms; 0 disables. The instrument forces a zero
+     *           setpoint and closes the valve if no Modbus traffic is
+     *           seen within this window when the setpoint source is
+     *           DigitalUnsaved (see datasheet "Communication Watchdog").
+     * @return Success or transport / Modbus error;
+     *         `DriverError::InvalidParameter` if `ms > 5000`.
+     */
     DriverResult<void> SetCommWatchdogMs(uint16_t ms) noexcept {
         if (ms > 5000) return DriverResult<void>::failure(DriverError::InvalidParameter);
         return WriteSingleRegister(reg::CommWatchdogMs, ms);
@@ -240,10 +271,26 @@ public:
     // TARING / AUTOTARE
     //==========================================================================
 
+    /**
+     * @brief Force a tare (zero-flow reference) on the instrument.
+     *
+     * Writes the magic value `0xAA55` to register 39. The instrument
+     * must be exposed to *true* zero flow with the actual process gas
+     * in the line for the result to be in-spec.
+     * @return Success or transport / Modbus error.
+     */
     DriverResult<void> Tare() noexcept {
         return WriteSingleRegister(reg::TareCommand, kMagicTare);
     }
 
+    /**
+     * @brief Enable / disable automatic taring (controllers only).
+     *
+     * When enabled, the instrument tares automatically after the
+     * setpoint has been at 0 for at least two seconds.
+     * @param enabled `true` to enable autotare, `false` to disable.
+     * @return Success or transport / Modbus error.
+     */
     DriverResult<void> SetAutotareEnabled(bool enabled) noexcept {
         return WriteSingleRegister(reg::AutotareEnable, enabled ? 1U : 0U);
     }
@@ -252,6 +299,12 @@ public:
     // GAS SELECTION
     //==========================================================================
 
+    /**
+     * @brief Select one of the 9 factory-calibrated gases.
+     * @param g One of `Gas::Air / Argon / CarbonDioxide / Nitrogen /
+     *          Oxygen / NitrousOxide / Hydrogen / Helium / Methane`.
+     * @return Success or transport / Modbus error.
+     */
     DriverResult<void> SetGas(Gas g) noexcept {
         return WriteSingleRegister(reg::SelectedGas, static_cast<uint16_t>(g));
     }
@@ -260,15 +313,37 @@ public:
     // TOTALIZER
     //==========================================================================
 
+    /**
+     * @brief Reset the totalizer to zero.
+     *
+     * Writes `0xAA55` to register 53. Total volume since the last
+     * power-up / reset is cleared and any active totalizer-overrange
+     * (OVR) bit is also dropped.
+     * @return Success or transport / Modbus error.
+     */
     DriverResult<void> ResetTotalizer() noexcept {
         return WriteSingleRegister(reg::TotalizerResetCommand, kMagicTare);
     }
 
+    /**
+     * @brief Configure totalizer overflow behaviour.
+     * @param mode `SaturateNoError` / `ResetNoError` / `SaturateWithOvr` / `ResetWithOvr`.
+     * @return Success or transport / Modbus error.
+     */
     DriverResult<void> SetTotalizerLimitMode(TotalizerLimitMode mode) noexcept {
         return WriteSingleRegister(reg::TotalizerLimitMode, static_cast<uint16_t>(mode));
     }
 
-    /// Set the totalizer batch volume (controllers only) in instrument units.
+    /**
+     * @brief Set the totalizer batch volume (controllers only).
+     *
+     * Once the totalizer reaches the batch volume the controller closes
+     * the valve. Pass the value already pre-scaled per the instrument's
+     * factory-set decimal count.
+     *
+     * @param value_scaled Batch volume × 10^decimals (per datasheet).
+     * @return Success or transport / Modbus error.
+     */
     DriverResult<void> SetTotalizerBatch(uint32_t value_scaled) noexcept {
         std::array<uint16_t, 2> regs = {
             static_cast<uint16_t>((value_scaled >> 16) & 0xFFFFU),
@@ -281,11 +356,22 @@ public:
     // FLOW PROCESSING
     //==========================================================================
 
+    /**
+     * @brief Configure on-chip flow averaging (IIR-style time constant).
+     * @param ms Time constant in milliseconds, 0..2500. Higher values
+     *           smooth fluctuations at the cost of response.
+     * @return Success or `DriverError::InvalidParameter` if `ms > 2500`.
+     */
     DriverResult<void> SetFlowAveragingMs(uint16_t ms) noexcept {
         if (ms > 2500) return DriverResult<void>::failure(DriverError::InvalidParameter);
         return WriteSingleRegister(reg::FlowAveragingMs, ms);
     }
 
+    /**
+     * @brief Set the reference temperature used for standard / normal flow.
+     * @param c Temperature in °C, 0..30.
+     * @return Success or `DriverError::InvalidParameter` if out of range.
+     */
     DriverResult<void> SetReferenceTemperatureC(float c) noexcept {
         if (c < 0.0f || c > 30.0f) return DriverResult<void>::failure(DriverError::InvalidParameter);
         const uint16_t raw = static_cast<uint16_t>(c * 100.0f);
@@ -296,14 +382,37 @@ public:
     // MEASUREMENT WINDOW (datasheet "Configure Measurement Triggering")
     //==========================================================================
 
+    /**
+     * @brief Configure when a new measurement window auto-restarts.
+     * @param trigger_bits OR-combination of `MeasurementTrigger::*` flags
+     *        (`OnDigitalSetpointChange`, `OnHoldPercentChange`,
+     *        `OnAverageFlowRead`). 0 disables auto-trigger.
+     * @return Success or transport / Modbus error.
+     */
     DriverResult<void> ConfigureMeasurementTrigger(uint16_t trigger_bits) noexcept {
         return WriteSingleRegister(reg::MeasurementTriggerMode, trigger_bits);
     }
 
+    /**
+     * @brief Start a measurement window of `num_samples` samples.
+     *
+     * Each sample is taken at approximately a 2.5 ms interval. Writing
+     * the register cancels any in-progress window and shifts the
+     * accumulated data into the "previous measurement" slot.
+     *
+     * @param num_samples Number of samples to collect (unsigned 16-bit).
+     * @return Success or transport / Modbus error.
+     */
     DriverResult<void> StartMeasurementSamples(uint16_t num_samples) noexcept {
         return WriteSingleRegister(reg::MeasurementSampleCount, num_samples);
     }
 
+    /**
+     * @brief Read the current / most-recent measurement window result.
+     * @return `DriverResult<MeasurementData>` populated with min / max /
+     *         average temperature and flow on success; transport /
+     *         Modbus error on failure.
+     */
     DriverResult<MeasurementData> ReadMeasurement() noexcept {
         std::array<uint16_t, 14> regs{};  // 4201..4214
         const auto rc = ReadHoldingRegisters(reg::MeasurementSampleCount, regs.data(),
@@ -331,9 +440,16 @@ public:
     //==========================================================================
 
     /**
-     * @brief Change the instrument's Modbus address.
+     * @brief Change the instrument's Modbus slave address.
+     *
+     * @param new_address New slave address, 1..247 (kMaxModbusAddress).
+     * @return Success or transport / Modbus error;
+     *         `DriverError::InvalidAddress` if `new_address` is outside
+     *         the legal range.
+     *
      * @note  After the slave acknowledges, this driver instance switches
-     *        its target address automatically.
+     *        its target address automatically; subsequent calls keep
+     *        working without further changes.
      */
     DriverResult<void> SetModbusAddress(uint8_t new_address) noexcept {
         if (new_address < 1 || new_address > kMaxModbusAddress) {
@@ -345,7 +461,11 @@ public:
     }
 
     /**
-     * @brief Change the instrument's ASCII unit-id ('A'..'Z').
+     * @brief Change the instrument's ASCII unit-id (used by the legacy
+     *        ASCII serial protocol).
+     * @param id A capital letter `'A'..'Z'`.
+     * @return Success or transport / Modbus error;
+     *         `DriverError::InvalidParameter` if `id` is outside `A..Z`.
      */
     DriverResult<void> SetAsciiUnitId(char id) noexcept {
         if (id < 'A' || id > 'Z') {
@@ -371,6 +491,14 @@ public:
         return WriteSingleRegister(reg::BaudRate, static_cast<uint16_t>(br));
     }
 
+    /**
+     * @brief Restore the instrument to factory defaults.
+     *
+     * Writes the magic value `0x5214` to register 80. The datasheet
+     * recommends a power-cycle afterwards to make sure every cached
+     * value picks up the reset.
+     * @return Success or transport / Modbus error.
+     */
     DriverResult<void> FactoryRestore() noexcept {
         return WriteSingleRegister(reg::FactoryRestoreCommand, kMagicFactoryRestore);
     }

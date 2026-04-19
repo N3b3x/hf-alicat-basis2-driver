@@ -28,6 +28,7 @@ The driver is the same shape as the rest of the `hf-*-driver` family:
 
 📚 **[Documentation site](https://n3b3x.github.io/hf-alicat-basis2-driver/)** ·
 🛠️ **[Examples](examples/esp32/README.md)** ·
+📄 **[Datasheet (PDF)](docs/datasheet/DOC-MANUAL-BASIS2.pdf)** ·
 🐛 **[Issues](https://github.com/N3b3x/hf-alicat-basis2-driver/issues)**
 
 ---

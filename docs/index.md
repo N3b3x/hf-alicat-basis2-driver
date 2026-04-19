@@ -35,7 +35,10 @@ Welcome. This site mirrors the [`docs/`](https://github.com/N3b3x/hf-alicat-basi
 
 ### Manufacturer
 
-9. **[Datasheet & links](datasheet/README.md)** — Official Alicat documentation and product pages
+9. **[Datasheet & links](datasheet/README.md)** — Bundled
+   [`DOC-MANUAL-BASIS2.pdf`](datasheet/DOC-MANUAL-BASIS2.pdf) (Rev 4,
+   May 2025) plus links to Alicat product pages, FlowVision software
+   and the Modbus FAQ.
 
 ---
 

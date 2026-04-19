@@ -1,9 +1,12 @@
 # Manufacturer datasheet
 
-Place the official Alicat **DOC-MANUAL-BASIS2** PDF in this directory
-(filename of your choice, e.g. `DOC-MANUAL-BASIS2-Rev4.pdf`). The
-GitHub Pages site rendered from `docs/` will link to whatever PDF lives
-here automatically.
+The official Alicat operating manual is bundled here:
+
+📄 [`DOC-MANUAL-BASIS2.pdf`](DOC-MANUAL-BASIS2.pdf) — *Operating manual
+for BASIS-2 meters and controllers, Rev 4 (May 2025)*.
+
+Every register address, magic value and behavioural note in the driver
+traces back to this document.
 
 ## Authoritative references
 
