@@ -1,0 +1,106 @@
+var namespacealicat__basis2 =
+[
+    [ "MeasurementTrigger", "namespacealicat__basis2_1_1MeasurementTrigger.html", [
+      [ "OnAverageFlowRead", "namespacealicat__basis2_1_1MeasurementTrigger.html#aa0cd6def7b5b01c62590eb6d60ad6135", null ],
+      [ "OnDigitalSetpointChange", "namespacealicat__basis2_1_1MeasurementTrigger.html#a98e8ad10944b725e290d044d2f55c690", null ],
+      [ "OnHoldPercentChange", "namespacealicat__basis2_1_1MeasurementTrigger.html#a09c30681e011b2635cd478f79d53903d", null ]
+    ] ],
+    [ "modbus", "namespacealicat__basis2_1_1modbus.html", [
+      [ "AppendCrc", "namespacealicat__basis2_1_1modbus.html#aef70d4f6032d8dc6b02f2051a4f7686d", null ],
+      [ "BuildReadHolding", "namespacealicat__basis2_1_1modbus.html#a75c1e6e85f65021162500f06fa8ea912", null ],
+      [ "BuildWriteMultiple", "namespacealicat__basis2_1_1modbus.html#a19f48d9ebd0a238477fcb5c337842a38", null ],
+      [ "BuildWriteSingle", "namespacealicat__basis2_1_1modbus.html#a8d198463b1873d6912f35e847662ef91", null ],
+      [ "CheckCrc", "namespacealicat__basis2_1_1modbus.html#a0097531f06f849c885dfbc4da8d25b95", null ],
+      [ "Crc16", "namespacealicat__basis2_1_1modbus.html#a61158cee0e299a1e12b8b761cf807c55", null ],
+      [ "ParseReadHolding", "namespacealicat__basis2_1_1modbus.html#a1a490f995ab3f7794e42114b0a1e96a4", null ],
+      [ "ParseWriteMultipleEcho", "namespacealicat__basis2_1_1modbus.html#ae2144713dbe33b70490972ba48ea4a35", null ],
+      [ "ParseWriteSingleEcho", "namespacealicat__basis2_1_1modbus.html#a6ac03acd7a97babc172d3318d9a4a961", null ]
+    ] ],
+    [ "reg", "namespacealicat__basis2_1_1reg.html", "namespacealicat__basis2_1_1reg" ],
+    [ "Driver", "classalicat__basis2_1_1Driver.html", "classalicat__basis2_1_1Driver" ],
+    [ "DriverResult", "structalicat__basis2_1_1DriverResult.html", "structalicat__basis2_1_1DriverResult" ],
+    [ "DriverResult< void >", "structalicat__basis2_1_1DriverResult_3_01void_01_4.html", "structalicat__basis2_1_1DriverResult_3_01void_01_4" ],
+    [ "InstantaneousData", "structalicat__basis2_1_1InstantaneousData.html", "structalicat__basis2_1_1InstantaneousData" ],
+    [ "InstrumentIdentity", "structalicat__basis2_1_1InstrumentIdentity.html", "structalicat__basis2_1_1InstrumentIdentity" ],
+    [ "InstrumentStatus", "structalicat__basis2_1_1InstrumentStatus.html", "structalicat__basis2_1_1InstrumentStatus" ],
+    [ "MeasurementData", "structalicat__basis2_1_1MeasurementData.html", "structalicat__basis2_1_1MeasurementData" ],
+    [ "UartInterface", "classalicat__basis2_1_1UartInterface.html", "classalicat__basis2_1_1UartInterface" ],
+    [ "BaudRate", "namespacealicat__basis2.html#a194530ff179a4a184b17915a6a113d7e", [
+      [ "Bps_4800", "namespacealicat__basis2.html#a194530ff179a4a184b17915a6a113d7eae02fbd6813f2033cadecd5ab75726760", null ],
+      [ "Bps_9600", "namespacealicat__basis2.html#a194530ff179a4a184b17915a6a113d7ea2e51c920bc75e7ee7d347f15b0116634", null ],
+      [ "Bps_19200", "namespacealicat__basis2.html#a194530ff179a4a184b17915a6a113d7ea95595c30ca4775b66390e9b28780bb72", null ],
+      [ "Bps_38400", "namespacealicat__basis2.html#a194530ff179a4a184b17915a6a113d7ead21aa65674bfdbab93bcf5ec6c614ff8", null ],
+      [ "Bps_57600", "namespacealicat__basis2.html#a194530ff179a4a184b17915a6a113d7ea6bcfb23f5361ade4527ddac0fadfbd20", null ],
+      [ "Bps_115200", "namespacealicat__basis2.html#a194530ff179a4a184b17915a6a113d7ea0dc568ae87a60b173daf0fc5d3327eae", null ]
+    ] ],
+    [ "DriverError", "namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9", [
+      [ "None", "namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a6adf97f83acf6453d4a6a4b1070f3754", null ],
+      [ "NotInitialized", "namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a9646ad3a1c3e708b4fa8b4b4270fbab6", null ],
+      [ "InvalidParameter", "namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a627251310d3384b591e4138be21145d5", null ],
+      [ "InvalidAddress", "namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a66196dd9678aef4aaad947e7181049c0", null ],
+      [ "BufferTooSmall", "namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9ab801c4d44abd4738b7f69c4e390ed61d", null ],
+      [ "SerialError", "namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a50c4f126b3bfe206cac019225d68b451", null ],
+      [ "Timeout", "namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9ac85a251cc457840f1e032f1b733e9398", null ],
+      [ "BadCrc", "namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a63afce0aa4ad8e31dbdfc57d15771a1c", null ],
+      [ "InvalidFrame", "namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a27fc8e09c99b279c48f7da6a079c5eab", null ],
+      [ "ModbusException", "namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9aa012a5d858320ad811726d497cded549", null ],
+      [ "UnsupportedRequest", "namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a14d57d7f5c1d624cfe0af0b79fefa1ed", null ],
+      [ "ResponseMismatch", "namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9a930d67442b86c4831daddb955ccee8c5", null ],
+      [ "AsciiBadResponse", "namespacealicat__basis2.html#a29b80d37d1d808c8bee83731bb08eea9af8969c8964e85eb431dd56649f20f393", null ]
+    ] ],
+    [ "FlowUnits", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87a", [
+      [ "SCCM", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aa524e73b277475b4f20e15cb9a487ed7d", null ],
+      [ "NCCM", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aa40496d533aa8307b8fd5e4d474a05222", null ],
+      [ "SLPM", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aa044ad5095572155d76cab5d2857e960f", null ],
+      [ "NLPM", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aafe98d040be63caab6cb41bbcbcbdd0d9", null ],
+      [ "SmL_s", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aa38f0f4b2f3cd58c6f614ed4d64459635", null ],
+      [ "NmL_s", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aaaa4f1add3e752a8dca230c768eaf8c15", null ],
+      [ "SmL_m", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aa2cf2325ab33addaa349ec3afa255f928", null ],
+      [ "NmL_m", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aaeec3839982b639942dbdf5c3c14625fe", null ],
+      [ "SL_h", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aa93338fb255290674969d5684d30a6a45", null ],
+      [ "NL_h", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aa7af7e3c6a9f52a2861519ebd0499a0ba", null ],
+      [ "SCCS", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aa34909468b506fe655a2be72af85a27bf", null ],
+      [ "NCCS", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aa3ae36bb182d54ad84a4876cedd3f99dd", null ],
+      [ "Sm3_h", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aa470a6a4dbd72a17f93114fed25e8b43a", null ],
+      [ "Nm3_h", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aa22713db3daf4f40ec3c89f796eac81f2", null ],
+      [ "Sm3_d", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aab1257fcd104451628428f5d929019622", null ],
+      [ "Nm3_d", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aa5e905520425279df41f73bd0b5536849", null ],
+      [ "SCIM", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aa0db34ec65d1e5407611f178dec614f94", null ],
+      [ "SCFM", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aaf7ca411436afe557014bacf993486ba6", null ],
+      [ "SCFH", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aa2028979d683cc59c3378be90dfd7adbb", null ],
+      [ "SCFD", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aadb58e1d56e6e18e1dd6a9903bd120605", null ],
+      [ "Unknown", "namespacealicat__basis2.html#a166ff0ec137fdaa244ceec32fba5a87aa88183b946cc5f0e8c96b2e66e1c74a7e", null ]
+    ] ],
+    [ "Gas", "namespacealicat__basis2.html#abefb3456872913f7b469c0193e7e8e47", [
+      [ "Air", "namespacealicat__basis2.html#abefb3456872913f7b469c0193e7e8e47a71c546fa61f3964d72bdf25223b78669", null ],
+      [ "Argon", "namespacealicat__basis2.html#abefb3456872913f7b469c0193e7e8e47a7fa430a7fc7e1a6315670366578e9b1f", null ],
+      [ "CarbonDioxide", "namespacealicat__basis2.html#abefb3456872913f7b469c0193e7e8e47af2ed8d93cf579c2988d3abcf8905db7f", null ],
+      [ "Nitrogen", "namespacealicat__basis2.html#abefb3456872913f7b469c0193e7e8e47a1e9ef3ba495fd4c6531b2841fd404a17", null ],
+      [ "Oxygen", "namespacealicat__basis2.html#abefb3456872913f7b469c0193e7e8e47a990bf420df89c0c6edf606be2022cbea", null ],
+      [ "NitrousOxide", "namespacealicat__basis2.html#abefb3456872913f7b469c0193e7e8e47a8656a967d965b21b2fab0f8677f0af88", null ],
+      [ "Hydrogen", "namespacealicat__basis2.html#abefb3456872913f7b469c0193e7e8e47ae4ce2ac56db8b92aa60065aee6884c25", null ],
+      [ "Helium", "namespacealicat__basis2.html#abefb3456872913f7b469c0193e7e8e47abaa8b7cbfdc69e07e225af7707db35a4", null ],
+      [ "Methane", "namespacealicat__basis2.html#abefb3456872913f7b469c0193e7e8e47a4e14f71c5702f5f71ad7de50587e2409", null ]
+    ] ],
+    [ "SetpointSource", "namespacealicat__basis2.html#a775c2932edb4a88eff8f93d8cfe3e48e", [
+      [ "Analog", "namespacealicat__basis2.html#a775c2932edb4a88eff8f93d8cfe3e48ea3d953aa7cfa5ffe0fde34551d918c76c", null ],
+      [ "DigitalSaved", "namespacealicat__basis2.html#a775c2932edb4a88eff8f93d8cfe3e48eabaf1ba7e5a6103d4aa1c6b6ffadebb69", null ],
+      [ "DigitalUnsaved", "namespacealicat__basis2.html#a775c2932edb4a88eff8f93d8cfe3e48ea9f70b040c2674ca60325269264516bf3", null ]
+    ] ],
+    [ "TotalizerLimitMode", "namespacealicat__basis2.html#a8235bc3f7f23806c4a3fd97b1facc1bf", [
+      [ "SaturateNoError", "namespacealicat__basis2.html#a8235bc3f7f23806c4a3fd97b1facc1bfaa461050ee43c6c6c336fb803b70ef034", null ],
+      [ "ResetNoError", "namespacealicat__basis2.html#a8235bc3f7f23806c4a3fd97b1facc1bfa9080e101bec0ed0b7ac66f4c67b0e1c4", null ],
+      [ "SaturateWithOvr", "namespacealicat__basis2.html#a8235bc3f7f23806c4a3fd97b1facc1bfa130f930cb27b870e5ece9f51fde7a3fd", null ],
+      [ "ResetWithOvr", "namespacealicat__basis2.html#a8235bc3f7f23806c4a3fd97b1facc1bfa331ed0d06b982011938bf8a033f3220d", null ]
+    ] ],
+    [ "BaudRateToBps", "namespacealicat__basis2.html#a98021ca737f5d4ec416ec9859200e253", null ],
+    [ "GasShortName", "namespacealicat__basis2.html#a1d6d55cc3ec672925e16db7dafbe4c88", null ],
+    [ "ToString", "namespacealicat__basis2.html#a8a2c1431f26db734701bd288303fa4c5", null ],
+    [ "ToString", "namespacealicat__basis2.html#a1b8421c73c699947d9b45e1d92e134b4", null ],
+    [ "kBroadcastAddress", "namespacealicat__basis2.html#a0a12bc367ea99912cbb1542ce9b72485", null ],
+    [ "kDefaultTimeoutMs", "namespacealicat__basis2.html#a2ee34d2ee050a97b6f7f8395c586c2d7", null ],
+    [ "kInterFrameDelayMs", "namespacealicat__basis2.html#a81c05770c65f213b7f5f6c366ee38499", null ],
+    [ "kMagicFactoryRestore", "namespacealicat__basis2.html#a69620d7bfe76708461aeb211f58f5255", null ],
+    [ "kMagicTare", "namespacealicat__basis2.html#a7ac23870cbb123083faf77a982e66e85", null ],
+    [ "kMaxModbusAddress", "namespacealicat__basis2.html#a0e5791506807ae5eff27f36593e1965d", null ]
+];

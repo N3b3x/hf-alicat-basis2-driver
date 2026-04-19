@@ -1,0 +1,637 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-alicat-basis2-driver/development/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-alicat-basis2-driver/development/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+    .site-nav ul li a {
+      background-image: none;
+    }
+
+  </style>
+
+  
+
+  
+    <script src="/hf-alicat-basis2-driver/development/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-alicat-basis2-driver/development/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📡 Modbus protocol | HardFOC Alicat BASIS-2 Driver - development</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📡 Modbus protocol" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Header-only Alicat BASIS-2 mass-flow meter &amp; controller driver with ESP-IDF UART RS-485 example" />
+<meta property="og:description" content="Header-only Alicat BASIS-2 mass-flow meter &amp; controller driver with ESP-IDF UART RS-485 example" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-alicat-basis2-driver/development/docs/modbus_protocol/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-alicat-basis2-driver/development/docs/modbus_protocol/" />
+<meta property="og:site_name" content="HardFOC Alicat BASIS-2 Driver - development" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📡 Modbus protocol" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"Header-only Alicat BASIS-2 mass-flow meter &amp; controller driver with ESP-IDF UART RS-485 example","headline":"📡 Modbus protocol","url":"https://n3b3x.github.io/hf-alicat-basis2-driver/development/docs/modbus_protocol/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- =============================================================================
+     Custom Head Content for HardFOC Driver Documentation
+     =============================================================================
+     This file is included in the <head> section of every page.
+     It loads custom CSS and JavaScript for enhanced functionality.
+     ============================================================================= -->
+
+<!-- Custom CSS for enhanced styling and fixes -->
+<link rel="stylesheet" href="/hf-alicat-basis2-driver/development/assets/css/custom.css">
+
+<!-- Custom JavaScript for interactive features -->
+<script src="/hf-alicat-basis2-driver/development/assets/js/custom.js" defer></script>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <header class="side-bar">
+  <div class="site-header">
+    <a href="/hf-alicat-basis2-driver/development/" class="site-title lh-tight">
+  HardFOC Alicat BASIS-2 Driver - development
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><a href="/hf-alicat-basis2-driver/development/" class="nav-list-link">🌬️ Alicat BASIS-2 Driver</a></li><li class="nav-list-item"><a href="/hf-alicat-basis2-driver/development/examples/esp32/" class="nav-list-link">ESP32 Alicat BASIS-2 examples (ESP32-S3 default)</a></li><li class="nav-list-item"><a href="/hf-alicat-basis2-driver/development/docs/datasheet/" class="nav-list-link">Manufacturer datasheet</a></li></ul>
+  
+</nav>
+
+
+<div class="d-md-block d-none site-footer">
+  
+  
+    This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
+  
+  </div>
+</header>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search HardFOC Alicat BASIS-2 Driver - development" autocomplete="off">
+    <label for="search-input" class="search-label">
+      <span class="sr-only">Search HardFOC Alicat BASIS-2 Driver - development</span>
+      <svg viewBox="0 0 24 24" class="search-icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+    </label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-alicat-basis2-driver/development/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-alicat-basis2-driver" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-alicat-basis2-driver/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-alicat-basis2-driver/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><span>📡 Modbus protocol</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="modbus-rtu-protocol">
+  
+  
+    <a href="#modbus-rtu-protocol" class="anchor-heading" aria-labelledby="modbus-rtu-protocol"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Modbus-RTU protocol
+  
+  
+</h1>
+    
+
+<p>The driver implements the <strong>Modbus-RTU</strong> subset that the Alicat BASIS-2
+firmware actually understands, per <em>DOC-MANUAL-BASIS2 Rev 4</em>:</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Function code</th>
+      <th>Name</th>
+      <th>Driver entry point</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0x03</td>
+      <td>Read Holding Registers</td>
+      <td>Internal — used by every read API</td>
+    </tr>
+    <tr>
+      <td>0x06</td>
+      <td>Write Single Register</td>
+      <td>Internal — used by every single-write API</td>
+    </tr>
+    <tr>
+      <td>0x10</td>
+      <td>Write Multiple Registers</td>
+      <td>Internal — used by 32-bit writes (setpoint, batch, ramp)</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>All other Modbus function codes are intentionally not implemented because
+the BASIS-2 returns an exception for them.</p>
+<h2 id="frame-format">
+  
+  
+    <a href="#frame-format" class="anchor-heading" aria-labelledby="frame-format"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Frame format
+  
+  
+</h2>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>┌──────────┬──────────┬─────────────────────────────┬──────────┐
+│ slave id │  fn code │  payload (≥ 2 bytes)        │  CRC-16  │
+│  1 byte  │  1 byte  │  e.g. address+count or      │  2 bytes │
+│  1..247  │ 03/06/10 │  byte_count+data            │ low,high │
+└──────────┴──────────┴─────────────────────────────┴──────────┘
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+
+<p>CRC-16 polynomial <strong>0xA001</strong> (Modbus standard, LSB first), seeded at
+<strong>0xFFFF</strong>, transmitted <strong>little-endian</strong> at the end of every frame.
+Implementation lives in <code class="language-plaintext highlighter-rouge">inc/alicat_basis2_modbus.hpp</code> (<code class="language-plaintext highlighter-rouge">Crc16</code>,
+<code class="language-plaintext highlighter-rouge">AppendCrc</code>, <code class="language-plaintext highlighter-rouge">CheckCrc</code>).</p>
+
+<p>The Modbus-RTU spec also mandates a ≥ <strong>3.5-character</strong> idle gap between
+back-to-back frames. ESP-IDF’s <code class="language-plaintext highlighter-rouge">UART_MODE_RS485_HALF_DUPLEX</code> mode handles
+the DE/RE timing automatically; the driver itself never needs to know
+about RS-485.</p>
+<h2 id="register-map-highlights">
+  
+  
+    <a href="#register-map-highlights" class="anchor-heading" aria-labelledby="register-map-highlights"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Register map highlights
+  
+  
+</h2>
+    
+
+<p>The full address table lives in <code class="language-plaintext highlighter-rouge">inc/alicat_basis2_registers.hpp</code> (one
+constant per register, names mirror the datasheet). The most useful are:</p>
+<h3 id="instantaneous-data-one-modbus-burst-10-registers">
+  
+  
+    <a href="#instantaneous-data-one-modbus-burst-10-registers" class="anchor-heading" aria-labelledby="instantaneous-data-one-modbus-burst-10-registers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Instantaneous data (one Modbus burst, 10 registers)
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Reg</th>
+      <th>Name</th>
+      <th>Decoded as</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2100</td>
+      <td>Selected gas</td>
+      <td><code class="language-plaintext highlighter-rouge">Gas</code> enum (Air / Ar / CO2 / N2 / O2 / …)</td>
+    </tr>
+    <tr>
+      <td>2101</td>
+      <td>Status bitfield</td>
+      <td>MOV / TOV / OVR / HLD / VTM bits</td>
+    </tr>
+    <tr>
+      <td>2102</td>
+      <td>Temperature (centi-°C)</td>
+      <td><code class="language-plaintext highlighter-rouge">value / 100</code> → °C</td>
+    </tr>
+    <tr>
+      <td>2103</td>
+      <td>Instantaneous flow</td>
+      <td><code class="language-plaintext highlighter-rouge">value / 10^decimals</code> → user units</td>
+    </tr>
+    <tr>
+      <td>2104–2105</td>
+      <td>Total volume</td>
+      <td>32-bit unsigned, scaled like flow</td>
+    </tr>
+    <tr>
+      <td>2106</td>
+      <td>Setpoint readback</td>
+      <td>scaled like flow</td>
+    </tr>
+    <tr>
+      <td>2107</td>
+      <td>Valve drive (centi-%)</td>
+      <td><code class="language-plaintext highlighter-rouge">value / 100</code> → %</td>
+    </tr>
+    <tr>
+      <td>2108–2109</td>
+      <td>Batch remaining</td>
+      <td>32-bit, scaled like flow</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><code class="language-plaintext highlighter-rouge">Driver::ReadInstantaneous()</code> pulls all of these in one Modbus
+transaction and returns an <code class="language-plaintext highlighter-rouge">InstantaneousData</code> struct with everything
+already decoded.</p>
+<h3 id="identity-read-once-at-boot">
+  
+  
+    <a href="#identity-read-once-at-boot" class="anchor-heading" aria-labelledby="identity-read-once-at-boot"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Identity (read once at boot)
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Reg</th>
+      <th>Name</th>
+      <th>Decoded as</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>25</td>
+      <td>Firmware version</td>
+      <td>packed <code class="language-plaintext highlighter-rouge">(a,b,c) = 256a+16b+c</code></td>
+    </tr>
+    <tr>
+      <td>26–31</td>
+      <td>Serial number</td>
+      <td>12 ASCII chars (2 per register)</td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>Modbus address</td>
+      <td>1..247</td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>ASCII unit id</td>
+      <td><code class="language-plaintext highlighter-rouge">'A'..'Z'</code></td>
+    </tr>
+    <tr>
+      <td>47–48</td>
+      <td>Full-scale flow</td>
+      <td>unsigned 32-bit; <code class="language-plaintext highlighter-rouge">value / 1000</code> in user units</td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>Flow units code</td>
+      <td><code class="language-plaintext highlighter-rouge">FlowUnits</code> enum (SCCM, SLPM, …)</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="setpoint-controllers-only">
+  
+  
+    <a href="#setpoint-controllers-only" class="anchor-heading" aria-labelledby="setpoint-controllers-only"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Setpoint (controllers only)
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Reg</th>
+      <th>Name</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2053–2054</td>
+      <td>Setpoint command</td>
+      <td>Signed 32-bit, value × 1000 = user units</td>
+    </tr>
+    <tr>
+      <td>514</td>
+      <td>Comm watchdog (ms)</td>
+      <td>0–5000; 0 disables</td>
+    </tr>
+    <tr>
+      <td>515</td>
+      <td>Autotare</td>
+      <td>1 enable / 0 disable</td>
+    </tr>
+    <tr>
+      <td>516</td>
+      <td>Setpoint source</td>
+      <td><code class="language-plaintext highlighter-rouge">0=Analog 1=DigitalSaved 2=DigitalUnsaved</code></td>
+    </tr>
+    <tr>
+      <td>524–525</td>
+      <td>Max setpoint ramp</td>
+      <td>%/ms × 10⁷</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<blockquote>
+  <p>⚠️ The datasheet warns that <code class="language-plaintext highlighter-rouge">DigitalSaved</code> (source = 1) writes to
+non-volatile memory on every change. Use <code class="language-plaintext highlighter-rouge">DigitalUnsaved</code> (source = 2)
+when the setpoint changes more often than once every few minutes.</p>
+</blockquote>
+<h3 id="configuration">
+  
+  
+    <a href="#configuration" class="anchor-heading" aria-labelledby="configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Configuration
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Reg</th>
+      <th>Name</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>21</td>
+      <td>Baud rate</td>
+      <td>0=4800 1=9600 2=19200 3=38400 4=57600 5=115200</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>Tare command</td>
+      <td>write <code class="language-plaintext highlighter-rouge">0xAA55</code></td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>Reference temperature</td>
+      <td><code class="language-plaintext highlighter-rouge">value / 100</code> → °C, 0..30</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>Totalizer reset</td>
+      <td>write <code class="language-plaintext highlighter-rouge">0xAA55</code></td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>Totalizer overflow mode</td>
+      <td>0..3 (saturate / reset, with/without OVR)</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>Flow averaging (ms)</td>
+      <td>0..2500 — IIR-style averaging on the chip</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>Command protocol</td>
+      <td>0=BASIS 2 / 1=BASIS 1</td>
+    </tr>
+    <tr>
+      <td>80</td>
+      <td>Factory restore command</td>
+      <td>write <code class="language-plaintext highlighter-rouge">0x5214</code></td>
+    </tr>
+  </tbody>
+</table></div>
+<h2 id="exception-handling">
+  
+  
+    <a href="#exception-handling" class="anchor-heading" aria-labelledby="exception-handling"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Exception handling
+  
+  
+</h2>
+    
+
+<p>When the slave doesn’t implement a register or rejects a write, it
+replies with a Modbus exception (function code OR’d with <code class="language-plaintext highlighter-rouge">0x80</code>). The
+driver maps this to <code class="language-plaintext highlighter-rouge">DriverError::ModbusException</code>. A <code class="language-plaintext highlighter-rouge">Timeout</code> means
+the slave never responded (wrong address, baud mismatch, broken bus).</p>
+
+<p>Every API call returns <code class="language-plaintext highlighter-rouge">DriverResult&lt;T&gt;</code>:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="k">auto</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">meter</span><span class="p">.</span><span class="n">ReadInstantaneous</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">rc</span><span class="p">.</span><span class="n">ok</span><span class="p">())</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">rc</span><span class="p">.</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="n">alicat_basis2</span><span class="o">::</span><span class="n">DriverError</span><span class="o">::</span><span class="n">Timeout</span><span class="p">:</span>        <span class="cm">/* bus / address */</span> <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="n">alicat_basis2</span><span class="o">::</span><span class="n">DriverError</span><span class="o">::</span><span class="n">BadCrc</span><span class="p">:</span>         <span class="cm">/* line noise */</span>    <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="n">alicat_basis2</span><span class="o">::</span><span class="n">DriverError</span><span class="o">::</span><span class="n">ModbusException</span><span class="p">:</span><span class="cm">/* meter NACKed */</span>  <span class="k">break</span><span class="p">;</span>
+        <span class="nl">default:</span> <span class="cm">/* see ToString(rc.error) */</span>                                <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+
+<p><strong>Next:</strong> <a href="/hf-alicat-basis2-driver/development/docs/hardware_setup/">Hardware setup →</a></p>
+
+          
+
+          
+            
+          
+        </main>
+        
+<hr>
+<footer>
+  
+
+  <!-- =============================================================================
+     Custom Footer Content for HardFOC Driver Documentation
+     =============================================================================
+     This footer is displayed at the bottom of every page.
+     ============================================================================= -->
+
+<footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p>
+      <a href="https://github.com/n3b3x/hf-alicat-basis2-driver/development/blob/main/LICENSE">GPL v3 License</a> • 
+      <a href="https://github.com/n3b3x/hf-alicat-basis2-driver/development">View on GitHub</a>
+    </p>
+  </div>
+</footer>
+
+
+
+  <div class="d-md-none mt-4 fs-2">
+    
+    
+      This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
+    
+  </div>
+</footer>
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

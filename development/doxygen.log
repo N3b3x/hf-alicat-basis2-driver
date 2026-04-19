@@ -1,0 +1,12 @@
+warning: ignoring unsupported tag 'PAGE_OUTLINE_PANEL' at line 1763, file /tmp/doxyfile.JluUOn
+warning: Tag 'DOT_TRANSPARENT' at line 2786 of file '/tmp/doxyfile.JluUOn' has become obsolete.
+         To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
+warning: tag INPUT: input source 'src' does not exist
+warning: source 'src' is not a readable file or directory... skipping.
+/home/runner/work/hf-alicat-basis2-driver/hf-alicat-basis2-driver/docs/datasheet/README.md:1: warning: found more than one \mainpage comment block! (first occurrence: /home/runner/work/hf-alicat-basis2-driver/hf-alicat-basis2-driver/README.md, line 2), Skipping current block!
+/home/runner/work/hf-alicat-basis2-driver/hf-alicat-basis2-driver/inc/alicat_basis2.hpp:385: warning: argument 'present' of command @param is not found in the argument list of alicat_basis2::Driver< UartT >::DiscoverPresentAddresses(uint8_t *present_bitmap, std::size_t bitmap_bytes, uint16_t probe_timeout_ms=30, uint8_t first_addr=1, uint8_t last_addr=kMaxModbusAddress)
+/home/runner/work/hf-alicat-basis2-driver/hf-alicat-basis2-driver/inc/alicat_basis2.hpp:385: warning: The following parameters of alicat_basis2::Driver::DiscoverPresentAddresses(uint8_t *present_bitmap, std::size_t bitmap_bytes, uint16_t probe_timeout_ms=30, uint8_t first_addr=1, uint8_t last_addr=kMaxModbusAddress) are not documented:
+  parameter 'present_bitmap'
+  parameter 'bitmap_bytes'
+  parameter 'last_addr'
+/home/runner/work/hf-alicat-basis2-driver/hf-alicat-basis2-driver/README.md:23: warning: unable to resolve reference to '/home/runner/work/hf-alicat-basis2-driver/hf-alicat-basis2-driver/examples/esp32/README.md' for \ref command

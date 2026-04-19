@@ -1,0 +1,7 @@
+<map id="inc/alicat_basis2.hpp" name="inc/alicat_basis2.hpp">
+<area shape="rect" id="Node000001" title="Hardware&#45;agnostic driver for Alicat BASIS&#45;2 mass&#45;flow meters and controllers (B&#45;Series / BC&#45;Series)." alt="" coords="105,5,264,31"/>
+<area shape="rect" id="Node000002" href="$alicat__basis2__full__example_8cpp.html" title=" " alt="" coords="5,79,172,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,42,120,81,116,77,160,38"/>
+<area shape="rect" id="Node000003" href="$alicat__basis2__minimal__example_8cpp.html" title=" " alt="" coords="196,79,368,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="210,38,254,77,251,81,206,42"/>
+</map>

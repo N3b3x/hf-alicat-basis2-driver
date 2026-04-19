@@ -1,0 +1,5 @@
+<map id="inc/alicat_basis2_registers.hpp" name="inc/alicat_basis2_registers.hpp">
+<area shape="rect" id="Node000001" title="Modbus&#45;RTU holding&#45;register addresses for Alicat BASIS&#45;2." alt="" coords="5,5,228,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="83,79,150,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,31,119,65,114,65,114,31"/>
+</map>

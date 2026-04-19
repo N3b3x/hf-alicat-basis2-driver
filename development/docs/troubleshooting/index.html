@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-alicat-basis2-driver/development/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-alicat-basis2-driver/development/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+    .site-nav ul li a {
+      background-image: none;
+    }
+
+  </style>
+
+  
+
+  
+    <script src="/hf-alicat-basis2-driver/development/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-alicat-basis2-driver/development/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>🛠️ Troubleshooting | HardFOC Alicat BASIS-2 Driver - development</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="🛠️ Troubleshooting" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Header-only Alicat BASIS-2 mass-flow meter &amp; controller driver with ESP-IDF UART RS-485 example" />
+<meta property="og:description" content="Header-only Alicat BASIS-2 mass-flow meter &amp; controller driver with ESP-IDF UART RS-485 example" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-alicat-basis2-driver/development/docs/troubleshooting/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-alicat-basis2-driver/development/docs/troubleshooting/" />
+<meta property="og:site_name" content="HardFOC Alicat BASIS-2 Driver - development" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="🛠️ Troubleshooting" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"Header-only Alicat BASIS-2 mass-flow meter &amp; controller driver with ESP-IDF UART RS-485 example","headline":"🛠️ Troubleshooting","url":"https://n3b3x.github.io/hf-alicat-basis2-driver/development/docs/troubleshooting/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- =============================================================================
+     Custom Head Content for HardFOC Driver Documentation
+     =============================================================================
+     This file is included in the <head> section of every page.
+     It loads custom CSS and JavaScript for enhanced functionality.
+     ============================================================================= -->
+
+<!-- Custom CSS for enhanced styling and fixes -->
+<link rel="stylesheet" href="/hf-alicat-basis2-driver/development/assets/css/custom.css">
+
+<!-- Custom JavaScript for interactive features -->
+<script src="/hf-alicat-basis2-driver/development/assets/js/custom.js" defer></script>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <header class="side-bar">
+  <div class="site-header">
+    <a href="/hf-alicat-basis2-driver/development/" class="site-title lh-tight">
+  HardFOC Alicat BASIS-2 Driver - development
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><a href="/hf-alicat-basis2-driver/development/" class="nav-list-link">🌬️ Alicat BASIS-2 Driver</a></li><li class="nav-list-item"><a href="/hf-alicat-basis2-driver/development/examples/esp32/" class="nav-list-link">ESP32 Alicat BASIS-2 examples (ESP32-S3 default)</a></li><li class="nav-list-item"><a href="/hf-alicat-basis2-driver/development/docs/datasheet/" class="nav-list-link">Manufacturer datasheet</a></li></ul>
+  
+</nav>
+
+
+<div class="d-md-block d-none site-footer">
+  
+  
+    This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
+  
+  </div>
+</header>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search HardFOC Alicat BASIS-2 Driver - development" autocomplete="off">
+    <label for="search-input" class="search-label">
+      <span class="sr-only">Search HardFOC Alicat BASIS-2 Driver - development</span>
+      <svg viewBox="0 0 24 24" class="search-icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+    </label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-alicat-basis2-driver/development/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-alicat-basis2-driver" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-alicat-basis2-driver/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-alicat-basis2-driver/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><span>🛠️ Troubleshooting</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="troubleshooting">
+  
+  
+    <a href="#troubleshooting" class="anchor-heading" aria-labelledby="troubleshooting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Troubleshooting
+  
+  
+</h1>
+    
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th>Symptom</th>
+      <th>Likely cause</th>
+      <th>What to try</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Every call returns <code class="language-plaintext highlighter-rouge">DriverError::Timeout</code></td>
+      <td>Bus / wiring / address mismatch</td>
+      <td>Run <code class="language-plaintext highlighter-rouge">DiscoverPresentAddresses()</code>. Check the RS-485 transceiver DE/RE pin and verify ESP-IDF is in <code class="language-plaintext highlighter-rouge">UART_MODE_RS485_HALF_DUPLEX</code>. Confirm the host UART baud matches the instrument (factory default 38400).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DriverError::BadCrc</code> on every read</td>
+      <td>Termination missing or noisy bus</td>
+      <td>Add 120 Ω termination at both ends; keep T-stubs short; check ground reference.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DriverError::ModbusException</code> from a meter</td>
+      <td>Wrote a controller-only register on a meter</td>
+      <td>Skip the call (or trap on the error code).</td>
+    </tr>
+    <tr>
+      <td>Setpoint writes ignored</td>
+      <td>Setpoint source set to <code class="language-plaintext highlighter-rouge">Analog</code></td>
+      <td><code class="language-plaintext highlighter-rouge">SetSetpointSource(SetpointSource::DigitalUnsaved)</code> first.</td>
+    </tr>
+    <tr>
+      <td>Setpoint changes lost across reboot</td>
+      <td><code class="language-plaintext highlighter-rouge">DigitalUnsaved</code> is volatile by design</td>
+      <td>If you really need persistence, change source to <code class="language-plaintext highlighter-rouge">DigitalSaved</code>. ⚠️ Beware NVM wear (datasheet warning).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SetBaudRate()</code> succeeds but next call times out</td>
+      <td>Forgot to reconfigure the host UART</td>
+      <td>After ack’ing the new baud, drain the response, reconfigure the host UART, then re-issue <code class="language-plaintext highlighter-rouge">ReadIdentity()</code> to confirm.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Discover</code> returns 0 with multiple instruments wired</td>
+      <td>All slaves at the factory default address 1, talking on top of each other</td>
+      <td>Connect them one-by-one and <code class="language-plaintext highlighter-rouge">SetModbusAddress(N)</code> for each before adding the next.</td>
+    </tr>
+    <tr>
+      <td>Slow / sporadic timeouts under load</td>
+      <td>Inter-frame idle (3.5 char) violated</td>
+      <td>Implement <code class="language-plaintext highlighter-rouge">delay_ms_impl()</code> on your CRTP adapter so the driver can pause when needed. ESP-IDF’s <code class="language-plaintext highlighter-rouge">uart_read_bytes</code> timeout already creates the gap, so this is almost never an issue on ESP32.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">flow</code> field looks 1000× too big or small</td>
+      <td>Decimals mismatch</td>
+      <td>The instrument’s flow register is scaled by a factory-set decimal count. The driver defaults to 3 decimals; pass the right value to <code class="language-plaintext highlighter-rouge">ReadInstantaneous(decimals)</code> or to <code class="language-plaintext highlighter-rouge">SetSetpoint(value, decimals)</code> if your unit was calibrated differently.</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2 id="extra-logging">
+  
+  
+    <a href="#extra-logging" class="anchor-heading" aria-labelledby="extra-logging"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Extra logging
+  
+  
+</h2>
+    
+
+<p>When debugging on ESP-IDF, set the per-tag log level to <strong>DEBUG</strong>:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">esp_log_level_set</span><span class="p">(</span><span class="s">"Basis2Min"</span><span class="p">,</span> <span class="n">ESP_LOG_DEBUG</span><span class="p">);</span>
+<span class="n">esp_log_level_set</span><span class="p">(</span><span class="s">"Basis2Full"</span><span class="p">,</span> <span class="n">ESP_LOG_DEBUG</span><span class="p">);</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+
+<p>…and instrument your CRTP adapter with <code class="language-plaintext highlighter-rouge">printf</code> / <code class="language-plaintext highlighter-rouge">ESP_LOGD</code> calls in
+<code class="language-plaintext highlighter-rouge">write</code> and <code class="language-plaintext highlighter-rouge">read</code> to dump raw byte traces.</p>
+<h2 id="filing-an-issue">
+  
+  
+    <a href="#filing-an-issue" class="anchor-heading" aria-labelledby="filing-an-issue"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Filing an issue
+  
+  
+</h2>
+    
+
+<p>Please attach:</p>
+
+<ul>
+  <li>Driver version (<code class="language-plaintext highlighter-rouge">HF_ALICAT_BASIS2_VERSION_STRING</code>).</li>
+  <li>ESP-IDF version (or other RTOS + compiler).</li>
+  <li>Output of <code class="language-plaintext highlighter-rouge">Driver::ReadIdentity()</code> (firmware version + serial).</li>
+  <li>A raw byte trace of the failing transaction.</li>
+</ul>
+
+<p>GitHub: <a href="https://github.com/N3b3x/hf-alicat-basis2-driver/issues">https://github.com/N3b3x/hf-alicat-basis2-driver/issues</a></p>
+
+          
+
+          
+            
+          
+        </main>
+        
+<hr>
+<footer>
+  
+
+  <!-- =============================================================================
+     Custom Footer Content for HardFOC Driver Documentation
+     =============================================================================
+     This footer is displayed at the bottom of every page.
+     ============================================================================= -->
+
+<footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p>
+      <a href="https://github.com/n3b3x/hf-alicat-basis2-driver/development/blob/main/LICENSE">GPL v3 License</a> • 
+      <a href="https://github.com/n3b3x/hf-alicat-basis2-driver/development">View on GitHub</a>
+    </p>
+  </div>
+</footer>
+
+
+
+  <div class="d-md-none mt-4 fs-2">
+    
+    
+      This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
+    
+  </div>
+</footer>
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+
