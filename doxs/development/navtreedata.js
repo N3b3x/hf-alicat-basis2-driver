@@ -96,7 +96,10 @@ var NAVTREE =
     ] ],
     [ "Troubleshooting", "md_docs_2troubleshooting.html", [
       [ "Extra logging", "md_docs_2troubleshooting.html#autotoc_md59", null ],
-      [ "Filing an issue", "md_docs_2troubleshooting.html#autotoc_md60", null ]
+      [ "Bus discovery and baud normalisation", "md_docs_2troubleshooting.html#autotoc_md60", [
+        [ "Two devices answering at the same address", "md_docs_2troubleshooting.html#autotoc_md61", null ]
+      ] ],
+      [ "Filing an issue", "md_docs_2troubleshooting.html#autotoc_md62", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -130,7 +133,7 @@ var NAVTREEINDEX =
 [
 "alicat__basis2_8hpp.html",
 "md_docs_2api__reference.html#autotoc_md2",
-"structalicat__basis2_1_1InstantaneousData.html#add100462f60f9da32aec0208f7261501"
+"structalicat__basis2_1_1InstantaneousData.html#ad7cab1a7ce4d196313acb7e9a6068874"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

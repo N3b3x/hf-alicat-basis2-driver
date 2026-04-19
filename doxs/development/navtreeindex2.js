@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"structalicat__basis2_1_1InstantaneousData.html#ad7cab1a7ce4d196313acb7e9a6068874":[11,0,0,3,13],
+"structalicat__basis2_1_1InstantaneousData.html#ad7cab1a7ce4d196313acb7e9a6068874":[10,0,0,6,13],
 "structalicat__basis2_1_1InstantaneousData.html#add100462f60f9da32aec0208f7261501":[11,0,0,3,14],
 "structalicat__basis2_1_1InstantaneousData.html#add100462f60f9da32aec0208f7261501":[10,0,0,6,14],
 "structalicat__basis2_1_1InstantaneousData.html#ae4c9b05ec10a4866e3ba7ab80e9b3c3f":[11,0,0,3,3],
