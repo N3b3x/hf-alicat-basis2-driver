@@ -1,5 +1,5 @@
-warning: ignoring unsupported tag 'PAGE_OUTLINE_PANEL' at line 1766, file /tmp/doxyfile.xpx1Ug
-warning: Tag 'DOT_TRANSPARENT' at line 2789 of file '/tmp/doxyfile.xpx1Ug' has become obsolete.
+warning: ignoring unsupported tag 'PAGE_OUTLINE_PANEL' at line 1766, file /tmp/doxyfile.mSXbGm
+warning: Tag 'DOT_TRANSPARENT' at line 2789 of file '/tmp/doxyfile.mSXbGm' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
 /home/runner/work/hf-alicat-basis2-driver/hf-alicat-basis2-driver/docs/index.md:29: warning: unable to resolve reference to '/home/runner/work/hf-alicat-basis2-driver/hf-alicat-basis2-driver/docs/datasheet/README.md' for \ref command
 /home/runner/work/hf-alicat-basis2-driver/hf-alicat-basis2-driver/inc/alicat_basis2.hpp:513: warning: argument 'present' of command @param is not found in the argument list of alicat_basis2::Driver< UartT >::DiscoverPresentAddresses(uint8_t *present_bitmap, std::size_t bitmap_bytes, uint16_t probe_timeout_ms=30, uint8_t first_addr=1, uint8_t last_addr=kMaxModbusAddress)
