@@ -64,9 +64,9 @@
   <text class="small" x="390" y="96">(MAX485 / SN65HVD11)</text>
 
   <!-- Left-side pins (UART facing) -->
-  <text class="pinR" x="320" y="130">DI</text>
-  <text class="pinR" x="320" y="156">RO</text>
-  <text class="pinR" x="320" y="182">DE+RE</text>
+  <text class="pinL" x="318" y="130">DI</text>
+  <text class="pinL" x="318" y="156">RO</text>
+  <text class="pinL" x="318" y="182">DE+RE</text>
 
   <!-- Right-side pins (bus facing) -->
   <text class="pinL" x="458" y="130">A</text>
@@ -116,9 +116,9 @@
   <line class="wire-rs485" x1="470" y1="152" x2="530" y2="152"/>
 
   <!-- Bus A trunk -->
-  <line class="wire-rs485" x1="530" y1="126" x2="900" y2="126"/>
+  <line class="wire-rs485" x1="530" y1="126" x2="882" y2="126"/>
   <!-- Bus B trunk -->
-  <line class="wire-rs485" x1="530" y1="152" x2="900" y2="152"/>
+  <line class="wire-rs485" x1="530" y1="152" x2="882" y2="152"/>
 
   <!-- Bus labels -->
   <text class="pinL" x="504" y="120">A</text>
@@ -129,8 +129,8 @@
   <text class="small" x="530" y="144">120&#937;</text>
 
   <!-- Right termination resistor (far end) -->
-  <rect class="term" x="888" y="130" width="24" height="18" rx="3"/>
-  <text class="small" x="900" y="144">120&#937;</text>
+  <rect class="term" x="870" y="130" width="24" height="18" rx="3"/>
+  <text class="small" x="882" y="144">120&#937;</text>
 
   <!-- ===== 12-24V Power rail ===== -->
   <line class="wire-pwr" x1="560" y1="72" x2="880" y2="72"/>
