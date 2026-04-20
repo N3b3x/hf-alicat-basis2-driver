@@ -344,7 +344,7 @@
   },"49": {
     "doc": "🔌 Hardware setup",
     "title": "Transceiver wiring (ESP32-S3 reference)",
-    "content": "Use any half-duplex RS-485 transceiver (SN65HVD11, MAX485, ADM2587E, …). Tie DE+RE together and drive them from a single GPIO; ESP-IDF’s UART_MODE_RS485_HALF_DUPLEX toggles the line for you. | 1 2 3 4 5 6 7 8 9 10 11 . | ESP32-S3 Transceiver BASIS-2 chain ───────── ─────────── ────────────── GPIO17 TX ────────────► DI ┌──── pin 6 (A−) GPIO18 RX ◄──────────── RO │ pin 5 (B+) GPIO8 RTS ────────────► DE + RE (tied) │ A ─────── A bus ──┘ B ─────── B bus GND ──────────────► GND ───── pin 3 (GND) 3V3 ──────────────► VCC (logic side) 120 Ω termination at each end of the bus 12–24 V ────────────────────────────── pin 4 (POWER) . | . ",
+    "content": ". Use any half-duplex RS-485 transceiver (SN65HVD11, MAX485, ADM2587E, …). Tie DE+RE together and drive them from a single GPIO; ESP-IDF’s UART_MODE_RS485_HALF_DUPLEX toggles the line for you. | 1 2 3 4 5 6 7 8 9 10 11 . | ESP32-S3 Transceiver BASIS-2 chain ───────── ─────────── ────────────── GPIO17 TX ────────────► DI ┌──── pin 6 (A−) GPIO18 RX ◄──────────── RO │ pin 5 (B+) GPIO8 RTS ────────────► DE + RE (tied) │ A ─────── A bus ──┘ B ─────── B bus GND ──────────────► GND ───── pin 3 (GND) 3V3 ──────────────► VCC (logic side) 120 Ω termination at each end of the bus 12–24 V ────────────────────────────── pin 4 (POWER) . | . ",
     "url": "/hf-alicat-basis2-driver/development/docs/hardware_setup/#transceiver-wiring-esp32-s3-reference",
     
     "relUrl": "/docs/hardware_setup/#transceiver-wiring-esp32-s3-reference"
