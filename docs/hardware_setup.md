@@ -46,6 +46,8 @@ each instrument should stay short (≤ 30 cm).
 
 ## Transceiver wiring (ESP32-S3 reference)
 
+![BASIS-2 RS-485 wiring](assets/basis2-wiring.svg)
+
 Use any half-duplex RS-485 transceiver (SN65HVD11, MAX485, ADM2587E,
 …). Tie DE+RE together and drive them from a single GPIO; ESP-IDF's
 `UART_MODE_RS485_HALF_DUPLEX` toggles the line for you.
