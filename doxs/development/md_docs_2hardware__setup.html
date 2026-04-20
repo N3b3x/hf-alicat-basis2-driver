@@ -135,6 +135,7 @@ RS-485 multidrop topology</h1>
 <div class="line">└──────┘  └──────┘  └──────┘  └──────┘  └──────┘       └──────┘</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md45"></a>
 Transceiver wiring (ESP32-S3 reference)</h1>
+<p><img src="assets/basis2-wiring.svg" alt="BASIS-2 RS-485 wiring" style="pointer-events: none;" class="inline"/></p>
 <p>Use any half-duplex RS-485 transceiver (SN65HVD11, MAX485, ADM2587E, …). Tie DE+RE together and drive them from a single GPIO; ESP-IDF's <code>UART_MODE_RS485_HALF_DUPLEX</code> toggles the line for you.</p>
 <div class="fragment"><div class="line">ESP32-S3                  Transceiver                BASIS-2 chain</div>
 <div class="line">─────────                 ───────────                ──────────────</div>
