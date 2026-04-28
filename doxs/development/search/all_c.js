@@ -8,7 +8,8 @@ var searchData=
   ['gasshortname_5',['GasShortName',['../namespacealicat__basis2.html#a1d6d55cc3ec672925e16db7dafbe4c88',1,'alicat_basis2']]],
   ['generated_20header_6',['Generated header',['../md_docs_2cmake__integration.html#autotoc_md36',1,'']]],
   ['getaddress_7',['GetAddress',['../classalicat__basis2_1_1Driver.html#a25730c6d4142bc82433d9222d17b6143',1,'alicat_basis2::Driver']]],
-  ['gettimeoutms_8',['GetTimeoutMs',['../classalicat__basis2_1_1Driver.html#ad29719cbf4ec67594e0e1d0e3b73ab2c',1,'alicat_basis2::Driver']]],
-  ['getting_20started_9',['Getting started',['../md_docs_2index.html#autotoc_md50',1,'']]],
-  ['git_20submodule_20recommended_10',['Vendoring as a Git submodule (recommended)',['../md_docs_2installation.html#autotoc_md58',1,'']]]
+  ['getdriverversion_8',['GetDriverVersion',['../namespacealicat__basis2.html#a5fb9239371574ec9171baccd04e9c9b3',1,'alicat_basis2']]],
+  ['gettimeoutms_9',['GetTimeoutMs',['../classalicat__basis2_1_1Driver.html#ad29719cbf4ec67594e0e1d0e3b73ab2c',1,'alicat_basis2::Driver']]],
+  ['getting_20started_10',['Getting started',['../md_docs_2index.html#autotoc_md50',1,'']]],
+  ['git_20submodule_20recommended_11',['Vendoring as a Git submodule (recommended)',['../md_docs_2installation.html#autotoc_md58',1,'']]]
 ];
