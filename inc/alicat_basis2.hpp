@@ -42,6 +42,7 @@
 #include "alicat_basis2_registers.hpp"
 #include "alicat_basis2_types.hpp"
 #include "alicat_basis2_uart_interface.hpp"
+#include "alicat_basis2_version.h"
 
 #include <array>
 #include <cstdint>
@@ -49,6 +50,11 @@
 #include <cstring>
 
 namespace alicat_basis2 {
+
+/** @brief Driver version string (from generated @ref alicat_basis2_version.h). */
+inline const char* GetDriverVersion() noexcept {
+    return HF_ALICAT_BASIS2_VERSION_STRING;
+}
 
 /**
  * @brief Main BASIS-2 driver.
