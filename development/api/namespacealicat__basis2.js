@@ -95,6 +95,7 @@ var namespacealicat__basis2 =
     ] ],
     [ "BaudRateToBps", "namespacealicat__basis2.html#a98021ca737f5d4ec416ec9859200e253", null ],
     [ "GasShortName", "namespacealicat__basis2.html#a1d6d55cc3ec672925e16db7dafbe4c88", null ],
+    [ "GetDriverVersion", "namespacealicat__basis2.html#a5fb9239371574ec9171baccd04e9c9b3", null ],
     [ "ToString", "namespacealicat__basis2.html#a8a2c1431f26db734701bd288303fa4c5", null ],
     [ "ToString", "namespacealicat__basis2.html#a1b8421c73c699947d9b45e1d92e134b4", null ],
     [ "kBroadcastAddress", "namespacealicat__basis2.html#a0a12bc367ea99912cbb1542ce9b72485", null ],

@@ -132,8 +132,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "alicat__basis2_8hpp.html",
-"index.html#autotoc_md13",
-"structalicat__basis2_1_1InstantaneousData.html#a204353730cde96f42405ff4d618ed77a"
+"index.html#autotoc_md12",
+"structalicat__basis2_1_1InstantaneousData.html#a1e5caf9245dd0bb1745f916d9e1139e0"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
